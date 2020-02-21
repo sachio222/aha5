@@ -322,7 +322,7 @@ dataset = Omniglot(data_path, background=False, transform=tsfm, download=True)
 
 test_dataset = []
 
-torch.manual_seed(333)
+torch.manual_seed(params.test_seed)
 # Get batch_size random samples
 idxs = torch.randint(len(dataset), (1, params.batch_size))
 # Make sure one of them is our control.
@@ -330,7 +330,7 @@ idxs[0, 0] = 0
 
 
 for i, idx in enumerate(idxs[0]):
-    test_dataset.append(dataset[idx + 1][0][0])
+    test_dataset.append(dataset[idx + params.train_shift][0][0])
     # utils.animate_weights(test_dataset[i], auto=True)
 
 dataloader = torch.stack(test_dataset)
@@ -383,5 +383,5 @@ train(dataloader,
       ca1_loss_fn,
       params,
       autosave=True,
-      train_mode=False,
-      display=True)
+      train_mode=True,
+      display=False)
