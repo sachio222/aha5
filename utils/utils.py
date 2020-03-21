@@ -13,7 +13,6 @@ from pathlib2 import Path
 
 
 class Params():
-
     def __init__(self, json_path):
         with open(json_path) as f:
             params = json.load(f)
@@ -196,3 +195,19 @@ def animate_weights(t, nrow=11, label=None, auto=False):
         plt.show(block=False)
         plt.pause(0.0001)
         plt.close()
+
+
+def check_os():
+    my_system = platform.system()
+    return my_system
+
+
+def clear_terminal(system=None):
+    """Clear the terminal on load with ANSI <ESC>"""
+
+    system = system or check_os()
+
+    if system != "Windows":
+        print("\033c", end="")
+    elif system == "Windows":
+        print("\033[H\033[2J", end="")
