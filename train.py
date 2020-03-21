@@ -120,14 +120,14 @@ def train(model,
             with torch.no_grad():
                 dg_sparse = step2_dg(ec_maxpool_flat, k=10)
 
-            ## DISPLAY 
+            ## DISPLAY
             # utils.showme(dg_sparse)
             # exit()
 
             # Polarize output from (0, 1) to (-1, 1) for step3_ca3
             dg_sparse_dressed = modules.all_dressed(dg_sparse)
 
-            ## DISPLAY 
+            ## DISPLAY
             # utils.showme(dg_sparse_dressed)
             # exit()
 
@@ -147,7 +147,7 @@ def train(model,
                                           model_path,
                                           name="ca3_weights",
                                           silent=False)
-            
+
             ## DISPLAY
             # utils.showme(ca3_weights)
             # exit()
@@ -162,10 +162,12 @@ def train(model,
                 # Run training
                 loss_avg = utils.RunningAverage()
 
-                with tqdm (desc="Updating EC->CA3", total=params.ectoca3_iters) as t1:
+                with tqdm(desc="Updating EC->CA3",
+                          total=params.ectoca3_iters) as t1:
                     for i in range(params.ectoca3_iters):
                         trained_sparse = step4_ectoca3(ec_maxpool_flat)
-                        ectoca3_loss = ectoca3_loss_fn(trained_sparse, dg_sparse)
+                        ectoca3_loss = ectoca3_loss_fn(trained_sparse,
+                                                       dg_sparse)
                         ectoca3_optimizer.zero_grad()
                         ectoca3_loss.backward(retain_graph=True)
                         # print(i, ectoca3_loss)
@@ -178,7 +180,8 @@ def train(model,
                         t1.update()
 
                         ## DISPLAY
-                        utils.animate_weights(trained_sparse.detach(), auto=True)
+                        utils.animate_weights(trained_sparse.detach(),
+                                              auto=True)
 
                 if autosave:
                     ec_state = utils.get_save_state(epoch, step4_ectoca3,
@@ -213,7 +216,7 @@ def train(model,
             else:
                 loss_avg.reset()
 
-                with tqdm (desc="Updating CA1", total=params.ca1_iters) as t2:
+                with tqdm(desc="Updating CA1", total=params.ca1_iters) as t2:
                     for i in range(params.ca1_iters):
                         ca1_reconstruction = step5_ca1(ca3_out_recall)
                         ca1_loss = ca1_loss_fn(ca1_reconstruction, x)
@@ -233,7 +236,9 @@ def train(model,
                         t2.update()
 
                         ## DISPLAY
-                        utils.animate_weights(ca1_reconstruction.detach(), nrow=5, auto=True)
+                        utils.animate_weights(ca1_reconstruction.detach(),
+                                              nrow=5,
+                                              auto=True)
 
                 if autosave:
                     ec_state = utils.get_save_state(epoch, step5_ca1,
@@ -242,7 +247,7 @@ def train(model,
                                           model_path,
                                           name="ca1_weights",
                                           silent=False)
-                
+
                 print("Graph cleared.", end=" ")
                 print("Weights successfully updated.\n")
                 #=============END CA1 =============#
@@ -303,7 +308,7 @@ ca1_optimizer = optim.Adam(step5_ca1.parameters(),
 utils.load_checkpoint(pretrain_path, step1_ec, name="pre_train")
 
 # Start training
-# Train mode runs backprop and stores weights in the Hopfield net. 
+# Train mode runs backprop and stores weights in the Hopfield net.
 # Autosave over-writes existing weights if set to true.
 
 train(step1_ec,
