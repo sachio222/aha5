@@ -13,6 +13,7 @@ from pathlib2 import Path
 
 
 class Params():
+
     def __init__(self, json_path):
         with open(json_path) as f:
             params = json.load(f)

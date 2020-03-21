@@ -1,7 +1,6 @@
 # Copyright 2020 Jacob Krajewski
 #
 #
-
 """Description"""
 # Imports
 import argparse
@@ -39,7 +38,10 @@ def make_dataset():
     ])
 
     # Import from torchvision.datasets Omniglot
-    dataset = Omniglot(data_path, background=True, transform=tsfm, download=True)
+    dataset = Omniglot(data_path,
+                       background=True,
+                       transform=tsfm,
+                       download=True)
 
     dataloader = DataLoader(dataset,
                             params.batch_size,
@@ -51,10 +53,10 @@ def make_dataset():
 def load_model():
     # Load visual cortex model here.
     model = modules.ECPretrain(D_in=1,
-                            D_out=121,
-                            KERNEL_SIZE=9,
-                            STRIDE=5,
-                            PADDING=1)
+                               D_out=121,
+                               KERNEL_SIZE=9,
+                               STRIDE=5,
+                               PADDING=1)
 
     # Set loss_fn to Binary cross entropy for Autoencoder.
     loss_fn = nn.BCELoss()
@@ -76,24 +78,24 @@ def train(model, dataloader, optimizer, loss_fn, params, autosave=True):
 
         with tqdm(desc=desc, total=len(dataloader)) as t:
             for i, (x, _) in enumerate(dataloader):
-                if params. cuda:
+                if params.cuda:
                     x, _ = x.cuda(non_blocking=True)
 
-                y_pred = model(x, k=1) 
+                y_pred = model(x, k=1)
 
                 # Set loss comparison to input x
                 loss = loss_fn(y_pred, x)
 
                 optimizer.zero_grad()
                 loss.backward()
- 
+
                 #=====MONITORING=====#
 
                 enc_weights = model.encoder.weight.data
                 # utils.animate_weights(enc_weights, label=i, auto=False)
                 # for s in range(len(x)):
                 #     utils.animate_weights(y_pred[s].detach(), label=i, auto=True)
-                
+
                 #=====END MONIT.=====#
 
                 optimizer.step()
@@ -121,7 +123,8 @@ def train(model, dataloader, optimizer, loss_fn, params, autosave=True):
 
 def main():
     check_os()
-    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--data", help="relative path to data")
     parser.add_argument("--model", help="")
     parser.add_argument("--json", help="")
@@ -150,7 +153,6 @@ def main():
         params.num_workers = 2
 
     train(model, dataloader, optimizer, loss_fn, params, autosave=True)
-
 
 
 if __name__ == '__main__':

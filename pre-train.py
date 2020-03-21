@@ -33,9 +33,7 @@ from tqdm import tqdm
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
 
-# Clear terminal with ANSI <ESC> c "\033c"
-# print("\033c", end="") # Doesn't work on PC
-print("\033[H\033[2J", end="")
+clear_terminal()
 
 # Initialize paths to json parameters
 data_path = Path().absolute() / "data"
@@ -69,24 +67,24 @@ def train(model, dataloader, optimizer, loss_fn, params, autosave=True):
 
         with tqdm(desc=desc, total=len(dataloader)) as t:
             for i, (x, _) in enumerate(dataloader):
-                if params. cuda:
+                if params.cuda:
                     x, _ = x.cuda(non_blocking=True)
 
-                y_pred = model(x, k=1) 
+                y_pred = model(x, k=1)
 
                 # Set loss comparison to input x
                 loss = loss_fn(y_pred, x)
 
                 optimizer.zero_grad()
                 loss.backward()
- 
+
                 #=====MONITORING=====#
 
                 enc_weights = model.encoder.weight.data
                 # utils.animate_weights(enc_weights, label=i, auto=False)
                 # for s in range(len(x)):
                 #     utils.animate_weights(y_pred[s].detach(), label=i, auto=True)
-                
+
                 #=====END MONIT.=====#
 
                 optimizer.step()
@@ -110,6 +108,7 @@ def train(model, dataloader, optimizer, loss_fn, params, autosave=True):
         # grid_img = torchvision.utils.make_grid(y_pred, nrow=8)
         # plt.imshow(grid_img.detach().numpy()[0])
         # plt.show()
+
 
 # Define transforms
 tsfm = transforms.Compose([
@@ -143,5 +142,3 @@ utils.load_checkpoint(model_path, model, optimizer, name="pre_train")
 
 # Start training
 train(model, dataloader, optimizer, loss_fn, params, autosave=True)
-
-

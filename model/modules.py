@@ -51,7 +51,8 @@ def get_top_k(x, k=10, mask_type="pass_through", topk_dim=0, scatter_dim=0):
 
         else:
             raise Exception(
-                'Valid options: "pass_through", "hopfield" (-1, 1), or "binary" (0, 1)')
+                'Valid options: "pass_through", "hopfield" (-1, 1), or "binary" (0, 1)'
+            )
 
     return top_ks
 
@@ -287,13 +288,13 @@ class ECPretrain(nn.Module):
         x = get_top_k(x, 1, topk_dim=0, scatter_dim=0)
         # Size: [64, 121, 10, 10]
 
-
         x = self.decoder(x)  # Desired size: [64, 1, 52, 52]
 
         return torch.sigmoid(x)
 
 
 class ECToCA3(nn.Module):
+
     def __init__(self, D_in, D_out):
         super(ECToCA3, self).__init__()
 
