@@ -5,6 +5,7 @@
 # for deep learning projects. Original repository available below:
 # https://github.com/cs230-stanford/cs230-code-examples/blob/master/pytorch/vision/utils.py
 
+import platform
 import json
 import torch
 import torchvision

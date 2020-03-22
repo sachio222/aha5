@@ -33,7 +33,7 @@ from tqdm import tqdm
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
 
-clear_terminal()
+utils.clear_terminal()
 
 # Initialize paths to json parameters
 data_path = Path().absolute() / "data"
