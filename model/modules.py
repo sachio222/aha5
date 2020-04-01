@@ -4,6 +4,10 @@ import torch.nn.functional as F
 
 import matplotlib.pyplot as plt
 
+def accuracy(out, labels):
+    outputs = np.argmax(out, axis=1)
+    return np.sum(outputs==labels)/float(labels.size)
+
 
 def get_top_k(x, k=10, mask_type="pass_through", topk_dim=0, scatter_dim=0):
     """Finds the top k values in a tensor, returns them as a tensor. 
