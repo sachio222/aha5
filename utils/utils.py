@@ -106,7 +106,7 @@ def save_checkpoint(state, checkpoint, name="last", silent=True):
         Path(checkpoint).mkdir()
     else:
         if not silent:
-            print("Getting checkpoint directory...")
+            print("\nGetting checkpoint directory...")
     if not silent:
         print("Saving file...")
     # Remember to convert filepath to str or it flips out when trying to save
