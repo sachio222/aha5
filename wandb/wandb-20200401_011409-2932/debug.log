@@ -1,0 +1,40 @@
+2020-04-01 01:14:09,636 INFO    MainThread:2932 [wandb_setup.py:_log_setup():205] Logging to wandb\wandb-20200401_011409-2932\debug.log
+2020-04-01 01:14:09,636 INFO    MainThread:2932 [wandb_setup.py:_setup():231] multiprocessing start_methods=spawn
+2020-04-01 01:14:09,663 INFO    MainThread:2932 [wandb_init.py:init():303] runconfig: {'_wandb': {'desc': None, 'value': {'cli_version': '0.0.14'}}}
+2020-04-01 01:14:11,311 INFO    MainThread:2932 [wandb_init.py:init():323] atexit reg
+2020-04-01 01:14:11,311 INFO    MainThread:2932 [wandb_init.py:_redirect():177] redirect
+2020-04-01 01:14:11,311 INFO    MainThread:2932 [redirect.py:install():72] install start
+2020-04-01 01:14:11,313 INFO    MainThread:2932 [redirect.py:install():87] install stop
+2020-04-01 01:14:11,315 INFO    MainThread:2932 [redirect.py:install():72] install start
+2020-04-01 01:14:11,316 INFO    MainThread:2932 [redirect.py:install():87] install stop
+2020-04-01 01:14:11,316 INFO    MainThread:2932 [wandb_init.py:_redirect():204] redirect2
+2020-04-01 01:14:11,318 INFO    MainThread:2932 [wandb_run.py:save():186] Saving from wandb-jobspec.json to wandb\wandb-20200401_011409-2932\files\wandb-jobspec.json
+2020-04-01 01:14:12,392 INFO    stdout    :2932 [wandb_init.py:_callback():173] callback: stdout, b'\x1b[H\x1b[2J'
+2020-04-01 01:14:12,398 INFO    stderr    :2932 [wandb_init.py:_callback():173] callback: stderr, b'Traceback (most recent call last):\r\n'
+2020-04-01 01:14:12,398 INFO    stderr    :2932 [wandb_init.py:_callback():173] callback: stderr, b'  File ".\\pre-train.py", line 62, in <module>\r\n'
+2020-04-01 01:14:12,399 INFO    stderr    :2932 [wandb_init.py:_callback():173] callback: stderr, b'    '
+2020-04-01 01:14:12,400 INFO    stderr    :2932 [wandb_init.py:_callback():173] callback: stderr, b"wandb.watch(model)\r\nNameError: name 'model' is not defined"
+2020-04-01 01:14:12,401 INFO    stderr    :2932 [wandb_init.py:_callback():173] callback: stderr, b'\r\n'
+2020-04-01 01:14:12,405 INFO    MainThread:2932 [wandb_init.py:_atexit_cleanup():163] got exit ret: exit {
+}
+control {
+  req_resp: true
+}
+
+2020-04-01 01:14:12,407 INFO    MainThread:2932 [wandb_init.py:_restore():226] restore
+2020-04-01 01:14:12,407 INFO    MainThread:2932 [redirect.py:uninstall():90] uninstall start
+2020-04-01 01:14:12,407 INFO    MainThread:2932 [redirect.py:_stop():130] _stop: stdout
+2020-04-01 01:14:12,407 INFO    MainThread:2932 [redirect.py:_stop():136] _stop closed: stdout
+2020-04-01 01:14:12,408 INFO    stdout    :2932 [redirect.py:_pipe_relay():41] relay done saw last write: stdout
+2020-04-01 01:14:12,408 INFO    stdout    :2932 [redirect.py:_pipe_relay():47] relay done done: stdout
+2020-04-01 01:14:12,408 INFO    MainThread:2932 [redirect.py:_stop():142] _stop joined: stdout
+2020-04-01 01:14:12,408 INFO    MainThread:2932 [redirect.py:_stop():144] _stop rd closed: stdout
+2020-04-01 01:14:12,408 INFO    MainThread:2932 [redirect.py:uninstall():93] uninstall done
+2020-04-01 01:14:12,408 INFO    MainThread:2932 [redirect.py:uninstall():90] uninstall start
+2020-04-01 01:14:12,409 INFO    MainThread:2932 [redirect.py:_stop():130] _stop: stderr
+2020-04-01 01:14:12,409 INFO    stderr    :2932 [redirect.py:_pipe_relay():41] relay done saw last write: stderr
+2020-04-01 01:14:12,409 INFO    MainThread:2932 [redirect.py:_stop():136] _stop closed: stderr
+2020-04-01 01:14:12,409 INFO    stderr    :2932 [redirect.py:_pipe_relay():47] relay done done: stderr
+2020-04-01 01:14:12,409 INFO    MainThread:2932 [redirect.py:_stop():142] _stop joined: stderr
+2020-04-01 01:14:12,410 INFO    MainThread:2932 [redirect.py:_stop():144] _stop rd closed: stderr
+2020-04-01 01:14:12,410 INFO    MainThread:2932 [redirect.py:uninstall():93] uninstall done

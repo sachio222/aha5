@@ -1,0 +1,29 @@
+{
+    "kind": "WandbJob",
+    "version": "v0",
+    "environment": {
+        "python": "python3.6",
+        "requirements": []
+    },
+    "source": {
+        "git": "git@github.com:wandb/examples.git",
+        "branch": "master",
+        "commit": "bbd8d23"
+    },
+    "exec": {
+        "program": "train.py",
+        "directory": "keras-cnn-fashion",
+        "envvars": {
+            "WANDB_DISABLE_CODE": "True"
+        },
+        "args": []
+    },
+    "input": {
+        "config": [
+            {}
+        ],
+        "artifacts": {
+            "dataset": "v1"
+        }
+    }
+}

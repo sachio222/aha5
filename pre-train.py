@@ -26,6 +26,10 @@ import torchvision
 from torchvision import transforms
 from torchvision.datasets import Omniglot
 
+import wandb
+
+wandb.init(entity="redtailedhawk", project="aha")
+
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
@@ -54,7 +58,6 @@ if params.cuda:
     torch.cuda.manual_seed(42)
     # Update num_workers to 2 if running on GPU
     params.num_workers = 2
-
 
 def train(model, dataloader, optimizer, loss_fn, params, autosave=True):
     # Set model to train or eval.
@@ -96,6 +99,8 @@ def train(model, dataloader, optimizer, loss_fn, params, autosave=True):
 
             # Show one last time
             # utils.animate_weights(enc_weights, auto=False)
+        
+        wandb.log({"Train Loss": loss_avg()})
 
         if autosave:
             # Autosaves latest state after each epoch (overwrites previous state)
@@ -132,6 +137,8 @@ model = modules.ECPretrain(D_in=1,
                            KERNEL_SIZE=9,
                            STRIDE=5,
                            PADDING=1)
+
+wandb.watch(model)
 
 # Set loss_fn to Binary cross entropy for Autoencoder.
 loss_fn = nn.BCELoss()
