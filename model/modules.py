@@ -298,6 +298,7 @@ class ECPretrain(nn.Module):
 
 
 class ECToCA3(nn.Module):
+    """"""
 
     def __init__(self, D_in, D_out):
         super(ECToCA3, self).__init__()
