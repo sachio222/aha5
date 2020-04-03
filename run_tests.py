@@ -64,25 +64,54 @@ def load_model():
             if not params.silent:
                 print('OK: Loaded weights successfully.')
         except Exception:
-            print('WARNING: --load request failed. Continue without pre-trained weights?', end=' ')
-            choice = input('y/n: ')
-            if choice.lower() == 'y':
-                print('Wise choice')
-            elif choice.lower() == 'n':
-                print('Sucka! Try running again without the --load flag.')
-                exit()
-            else:
-                print('try again later.')
-                exit()
+            print('WARNING: --load request failed. Continuing without pre-trained weights.')
+            pass
             
     return model, loss_fn, optimizer
 
 def train(model, dataloader, optimizer, loss_fn):
-    print(params.autosave)
+    model.train()
+
+    for epoch in range(params.num_epochs):
+
+        loss_avg = utils.RunningAverage()
+        desc = "Epoch: {}".format(epoch)  # Informational only, used in tqdm.
+
+        with tqdm(desc=desc, total=len(dataloader)) as t:
+            for i, (x, _) in enumerate(dataloader):
+                if params.cuda:
+                    x, _ = x.cuda(non_blocking=True)
+
+                y_pred = model(x)
+
+                # Set loss comparison to input x
+                loss = loss_fn(y_pred, x)
+
+                optimizer.zero_grad()
+                loss.backward()
+
+                #=====MONITORING=====#
+
+                enc_weights = model.encoder.weight.data
+                # utils.animate_weights(enc_weights, label=i, auto=False)
+                # for s in range(len(x)):
+                #     utils.animate_weights(y_pred[s].detach(), label=i, auto=True)
+
+                #=====END MONIT.=====#
+
+                optimizer.step()
+                loss_avg.update(loss.item())
+
+                # Update tqdm progress bar.
+                t.set_postfix(loss="{:05.8f}".format(loss_avg()))
+                t.update()
+
+            # Show one last time
+            # utils.animate_weights(enc_weights, auto=False)
+
 
 
 def main():
-    
     # If GPU
     params.cuda = torch.cuda.is_available()
 
@@ -95,6 +124,7 @@ def main():
 
     dataloader = make_dataset()
     model, loss_fn, optimizer = load_model()
+
     wandb.watch(model)
 
     train(model, dataloader, optimizer, loss_fn)
