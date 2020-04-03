@@ -122,7 +122,7 @@ def train(model, dataloader, optimizer, loss_fn, params, autosave=True):
 
 
 def main():
-    check_os()
+    # check_os()
     parser = argparse.ArgumentParser(
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument("--data", help="relative path to data")
