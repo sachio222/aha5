@@ -36,6 +36,7 @@ class Experiment():
             --paths: (bool) Print loaded paths to console. 
             --silent: (bool) Do not print status.
             --load: (bool) Load pretrained weights.
+            -a, --autosave: (bool)
         """
 
         parser = argparse.ArgumentParser(
