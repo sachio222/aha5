@@ -1,7 +1,8 @@
 {
-    "data_path": "data222",
+    "data_path": "data",
     "model_path": "experiments/train", 
     "batch_size": [16, 32, 64, 128],
+    "learning_rate": [22],
     "ca1_iters": 80,
     "ca1_learning_rate": 67e-4, 
     "ca1_weight_decay": 1e-4,
