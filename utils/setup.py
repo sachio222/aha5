@@ -3,6 +3,7 @@ import argparse
 
 from utils import utils
 
+
 class Experiment():
     """An Experiment class sets up a new experiment.
 
@@ -85,16 +86,13 @@ class Experiment():
             type=bool,
             help='(bool) Load pretrained weights from model path.')
 
-        parser.add_argument(
-            '-a',
-            '--autosave',
-            nargs='?',
-            const=True,
-            default=False,
-            type=bool,
-            help='(bool) Autosave.'
-
-        )
+        parser.add_argument('-a',
+                            '--autosave',
+                            nargs='?',
+                            const=True,
+                            default=False,
+                            type=bool,
+                            help='(bool) Autosave.')
         return parser.parse_args()
 
     def _load_params(self, path):
@@ -118,7 +116,7 @@ class Experiment():
             self.params.data_path = self.args.data
         if self.args.model:
             self.params.model_path = self.args.model
-       
+
         self.params.load = self.args.load
         self.params.silent = self.args.silent
         self.params.autosave = self.args.autosave

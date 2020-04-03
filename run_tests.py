@@ -17,7 +17,6 @@ from tqdm import tqdm
 import wandb
 wandb.init(entity="redtailedhawk", project="aha")
 
-
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils, setup  # pylint: disable=RP0003, F0401
@@ -26,6 +25,7 @@ utils.clear_terminal()
 aha = setup.Experiment()
 params = aha.get_params()
 json_path, data_path, model_path = aha.get_paths()
+
 
 def make_dataset():
     """"""
@@ -45,20 +45,20 @@ def make_dataset():
                             shuffle=True,
                             num_workers=params.num_workers,
                             drop_last=True)
-    
+
     if not params.silent:
         print('OK: Data loaded successfully.')
-    
+
     return dataloader
 
 
 def load_model():
     # model = modules.ECToCA3(D_in=1, D_out=121)
     model = modules.ECPretrain(D_in=1,
-                           D_out=121,
-                           KERNEL_SIZE=9,
-                           STRIDE=5,
-                           PADDING=1)
+                               D_out=121,
+                               KERNEL_SIZE=9,
+                               STRIDE=5,
+                               PADDING=1)
 
     loss_fn = nn.BCELoss()
     optimizer = optim.Adam(model.parameters(), lr=params.learning_rate[0])
@@ -66,13 +66,18 @@ def load_model():
     if params.load:
         # Get last trained weights.
         try:
-            utils.load_checkpoint(params.model_path, model, optimizer, name="pre_train")
+            utils.load_checkpoint(params.model_path,
+                                  model,
+                                  optimizer,
+                                  name="pre_train")
             if not params.silent:
                 print('OK: Loaded weights successfully.')
         except Exception:
-            print('WARNING: --load request failed. Continuing without pre-trained weights.')
+            print(
+                'WARNING: --load request failed. Continuing without pre-trained weights.'
+            )
             pass
-            
+
     return model, loss_fn, optimizer
 
 
