@@ -34,6 +34,7 @@ class NewExperiment():
         _init_paths
 
     """
+
     def __init__(self):
         """Initialize new experiment. Run argparser, grab params file, init paths.
         """
@@ -50,7 +51,10 @@ class NewExperiment():
             --json: (str, required) Path to params.json.
             --data: (str) Override params.json model path.
             --model: (str) Override params.json model path.
-            --show_paths: (bool) Print loaded paths to console. 
+            --seed: (int) Manual seed for stochasticity
+            --paths: (bool) Print loaded paths to console. 
+            --silent: (bool) Do not print status.
+            --load: (bool) Load pretrained weights.
         """
 
         parser = argparse.ArgumentParser(
@@ -72,7 +76,7 @@ class NewExperiment():
                             default=None,
                             type=str)
 
-        parser.add_argument('--show_paths',
+        parser.add_argument('--paths',
                             nargs='?',
                             const=True,
                             help='(boolean) Print file paths in console.',
@@ -83,7 +87,7 @@ class NewExperiment():
                             help='(int) Set manual seed for randomization.',
                             default=None,
                             type=int)
-        
+
         parser.add_argument('--silent',
                             nargs='?',
                             const=True,
@@ -91,6 +95,24 @@ class NewExperiment():
                             type=bool,
                             help='(bool) Turns off loading info.')
 
+        parser.add_argument(
+            '--load',
+            nargs='?',
+            const=True,
+            default=False,
+            type=bool,
+            help='(bool) Load pretrained weights from model path.')
+
+        parser.add_argument(
+            '-a',
+            '--autosave',
+            nargs='?',
+            const=True,
+            default=False,
+            type=bool,
+            help='(bool) Autosave.'
+
+        )
         return parser.parse_args()
 
     def _load_params(self, path):
@@ -106,7 +128,7 @@ class NewExperiment():
             print(f'\n\nERROR: No params.json file found at {self.json_path}\n')
 
         return _params
-    
+
     def _set_params(self):
         if self.args.seed:
             self.params.seed = self.args.seed
@@ -114,8 +136,10 @@ class NewExperiment():
             self.params.data_path = self.args.data
         if self.args.model:
             self.params.model_path = self.args.model
-        
-        print(self.params.data_path)
+       
+        self.params.load = self.args.load
+        self.params.silent = self.args.silent
+        self.params.autosave = self.args.autosave
 
     def get_params(self):
         return self.params
@@ -133,15 +157,15 @@ class NewExperiment():
         """
 
         # Load from args if present, else params file.
-        
+
         self.data_path = Path().absolute() / self.params.data_path
         self.model_path = Path().absolute() / self.params.model_path
 
         if not self.args.silent:
             print('OK: Paths initialized successfully.')
 
-        if args.show_paths:
-            print('Paths:')
+        if args.paths:
+            print('PATHS:')
             print(f'- json path: {self.json_path}')
             print(f'- data path: {self.data_path}')
             print(f'- model path: {self.model_path}')
@@ -155,9 +179,6 @@ class NewExperiment():
         """
         return self.json_path, self.data_path, self.model_path
 
-aha = NewExperiment()
-params = aha.get_params()
-json_path, data_path, model_path = aha.get_paths()
 
 def make_dataset():
     """"""
@@ -171,20 +192,58 @@ def make_dataset():
                        background=True,
                        transform=tsfm,
                        download=True)
-    
+
     dataloader = DataLoader(dataset,
-                            params.batch_size,
+                            params.batch_size[0],
                             shuffle=True,
                             num_workers=params.num_workers,
                             drop_last=True)
+    
+    if not params.silent:
+        print('OK: Data loaded successfully.')
+    
+    return dataloader
 
+
+def load_model():
+    model = modules.ECToCA3(D_in=1, D_out=121)
+
+    loss_fn = nn.BCELoss()
+    optimizer = optim.Adam(model.parameters(), lr=params.learning_rate[0])
+
+    if params.load:
+        # Get last trained weights.
+        try:
+            utils.load_checkpoint(params.model_path, model, optimizer, name="pre_train")
+            if not params.silent:
+                print('OK: Loaded weights successfully.')
+        except Exception:
+            print('WARNING: --load request failed. Continue without pre-trained weights?', end=' ')
+            choice = input('y/n: ')
+            if choice.lower() == 'y':
+                print('Wise choice')
+            elif choice.lower() == 'n':
+                print('Sucka! Try running again without the --load flag.')
+                exit()
+            else:
+                print('try again later.')
+                exit()
+            
+    return model, loss_fn, optimizer
+
+def train(model, dataloader, optimizer, loss_fn):
+    print(params.autosave)
+
+utils.clear_terminal()
+aha = NewExperiment()
+params = aha.get_params()
+json_path, data_path, model_path = aha.get_paths()
 
 def main():
-    # utils.clear_terminal()
-
+    
     # If GPU
     params.cuda = torch.cuda.is_available()
-    
+
     # Set random seed
     seed = params.seed
     torch.manual_seed(seed)
@@ -192,10 +251,12 @@ def main():
         torch.cuda.manual_seed(seed)
         params.num_workers = 2
 
-    # make_dataset()
+    dataloader = make_dataset()
+    model, loss_fn, optimizer = load_model()
+    wandb.watch(model)
+
+    train(model, dataloader, optimizer, loss_fn)
 
 
 if __name__ == '__main__':
     main()
-
-

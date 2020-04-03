@@ -139,7 +139,7 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
     if optimizer:
         optimizer.load_state_dict(checkpoint.get("optim_dict"))
 
-    print("Loading saved weights complete.")
+    print("OK. Loading saved weights complete.")
     return checkpoint
 
 
