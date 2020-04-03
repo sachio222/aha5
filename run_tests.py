@@ -150,6 +150,9 @@ def main():
 
     wandb.watch(model)
 
+    if not params.silent:
+        print(f'AUTOSAVE: {params.autosave}')
+        
     train(model, dataloader, optimizer, loss_fn)
 
 
