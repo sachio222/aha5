@@ -59,6 +59,7 @@ if params.cuda:
     # Update num_workers to 2 if running on GPU
     params.num_workers = 2
 
+
 def train(model, dataloader, optimizer, loss_fn, params, autosave=True):
     # Set model to train or eval.
     model.train()
@@ -99,7 +100,7 @@ def train(model, dataloader, optimizer, loss_fn, params, autosave=True):
 
             # Show one last time
             # utils.animate_weights(enc_weights, auto=False)
-        
+
         wandb.log({"Train Loss": loss_avg()})
 
         if autosave:
