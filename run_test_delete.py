@@ -2,6 +2,7 @@ import torch
 from torch.nn import functional as F
 from torch import nn
 from torch.optim import Adam
+
 import pytorch_lightning as pl
 from pytorch_lightning import Trainer
 
@@ -44,11 +45,8 @@ class LitECToCA3(pl.LightningModule):
             transforms.Grayscale(),
             transforms.ToTensor()
         ])
-
-        train_x = Omniglot(data_path,
-                           background=True,
-                           transform=tsfm,
-                           download=True)
+    
+        train_x = Omniglot(data_path, background=True, transform=tsfm, download=True)
         return DataLoader(train_x, 32, shuffle=True)
 
     def configure_optimizers(self):
@@ -58,14 +56,16 @@ class LitECToCA3(pl.LightningModule):
         x, y = batch
         logits = self(x)
         loss = F.cross_entropy(logits, y)
-
+        
         # Add logging
         logs = {'loss': loss}
         return {'loss': loss, 'log:': logs}
+
 
 
 model = LitECToCA3(52, 1500)
 trainer = Trainer()
 
 if __name__ == '__main__':
+    
     trainer.fit(model)
