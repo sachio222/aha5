@@ -19,8 +19,12 @@ import wandb
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
-from utils import utils, exp  # pylint: disable=RP0003, F0401
+from utils import utils, setup  # pylint: disable=RP0003, F0401
 
+utils.clear_terminal()
+aha = setup.Experiment()
+params = aha.get_params()
+json_path, data_path, model_path = aha.get_paths()
 
 def make_dataset():
     """"""
@@ -76,10 +80,6 @@ def load_model():
 def train(model, dataloader, optimizer, loss_fn):
     print(params.autosave)
 
-utils.clear_terminal()
-aha = exp.Experiment()
-params = aha.get_params()
-json_path, data_path, model_path = aha.get_paths()
 
 def main():
     
