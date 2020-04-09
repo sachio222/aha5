@@ -5,8 +5,9 @@
 # for deep learning projects. Original repository available below:
 # https://github.com/cs230-stanford/cs230-code-examples/blob/master/pytorch/vision/utils.py
 
-import platform
 import json
+import logging
+import platform
 import torch
 import torchvision
 import matplotlib.pyplot as plt
@@ -142,6 +143,33 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
     print("OK. Loading saved weights complete.")
     return checkpoint
 
+
+def set_logger(log_path):
+    """Logs info in terminal and file at log_path.
+
+    Example:
+    ```
+    logging.info('Starting Training...')
+
+    Args:
+        log_path: (string) where to log.
+    """
+
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
+
+    if not logger.handlers:
+        # Logging to a file
+        file_handler = logging.FileHandler(log_path)
+        file_handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s: %(message)s'))
+        logger.addHandler(file_handler)
+
+
+        # Logging to console
+        stream_handler = logging.StreamHandler()
+        stream_handler.setFormatter(logging.Formatter('%(message)s'))
+        logger.addHandler(stream_handler)
+        
 
 def showme(tnsr,
            size_dim0=10,
