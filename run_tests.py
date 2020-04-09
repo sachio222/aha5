@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 import wandb
-wandb.init(entity="redtailedhawk", project="aha")
+# wandb.init(entity="redtailedhawk", project="aha")
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
@@ -133,11 +133,40 @@ def train(model, dataloader, optimizer, loss_fn):
                                   name="pre_train",
                                   silent=False)
 
+from collections import namedtuple
+from itertools import product
+
+class RunBuilder():
+    """Kinda cool thing that turns params lists into lists of params"""
+    @staticmethod
+    def get_runs(params):
+        Run = namedtuple('Run', params.keys())
+
+        runs = []
+        for v in product(*params.values()):
+            runs.append(Run(*v))
+        return runs
 
 def main():
     # If GPU
     params.cuda = torch.cuda.is_available()
+    # print(f'params: {params.dict.keys()}')
+    # for key in params.dict.keys():
+        # print(key)
+        
+    Run = namedtuple('Run', params.dict.keys())
+    print(Run)
+    runs = []
+    for item in params.dict.values():
+        runs.append(Run(*item))
+        print(runs)
+        # runs.append()
+    exit()
+'''
+    for key in params per key:vals:
 
+            
+'''
     # Set random seed
     seed = params.seed
     torch.manual_seed(seed)
@@ -152,7 +181,7 @@ def main():
 
     if not params.silent:
         print(f'AUTOSAVE: {params.autosave}')
-        
+
     train(model, dataloader, optimizer, loss_fn)
 
 
