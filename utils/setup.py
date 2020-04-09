@@ -1,7 +1,7 @@
 from pathlib2 import Path
 import argparse
 
-from utils import utils
+import utils
 
 
 class Experiment():
@@ -21,6 +21,7 @@ class Experiment():
         """Initialize new experiment. Run argparser, grab params file, init paths.
         """
         super(Experiment, self).__init__()
+        # self.init_logger()
         self.args = self._set_args()
         self.params = self._load_params(path=self.args.json)
         self._set_params()
@@ -104,10 +105,13 @@ class Experiment():
             _params = utils.Params(self.json_path)
             if not self.args.silent:
                 print('OK: Params file loaded successfully.')
+            
+            return _params
+        
+        
         except:
             print(f'\n\nERROR: No params.json file found at {self.json_path}\n')
 
-        return _params
 
     def _set_params(self):
         if self.args.seed:
@@ -159,5 +163,7 @@ class Experiment():
         """
         return self.json_path, self.data_path, self.model_path
 
-    def init_logger(self):
-        set_logger(PosixPath(self.model_path, 'train.log'))
+    # def init_logger(self):
+    #     p = Path(self.model_path, 'train.log')
+    #     set_logger(p)
+    #     print(p)
