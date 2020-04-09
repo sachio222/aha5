@@ -106,12 +106,10 @@ class Experiment():
             if not self.args.silent:
                 print('OK: Params file loaded successfully.')
             
-            return _params
-        
-        
         except:
             print(f'\n\nERROR: No params.json file found at {self.json_path}\n')
 
+        return _params
 
     def _set_params(self):
         if self.args.seed:
