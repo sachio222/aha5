@@ -158,3 +158,6 @@ class Experiment():
             self.model_path
         """
         return self.json_path, self.data_path, self.model_path
+
+    def init_logger(self):
+        set_logger(PosixPath(self.model_path, 'train.log'))
