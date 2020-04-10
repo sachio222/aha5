@@ -162,9 +162,9 @@ def set_logger(log_path):
     if not logger.handlers:
         # Logging to a file
         file_handler = logging.FileHandler(log_path)
-        file_handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s: %(message)s'))
+        file_handler.setFormatter(
+            logging.Formatter('%(asctime)s:%(levelname)s: %(message)s'))
         logger.addHandler(file_handler)
-
 
         # Logging to console
         stream_handler = logging.StreamHandler()
@@ -346,7 +346,7 @@ class Experiment():
 
             if not self.args.silent:
                 print('OK: Params file loaded successfully.')
-            
+
         except:
             print(f'\nERROR: No params.json file found at {self.json_path}\n')
             exit()

@@ -22,17 +22,17 @@ from utils import utils  # pylint: disable=RP0003, F0401
 
 # pylint: disable=no-member
 
-
 utils.clear_terminal()
 my_system = utils.check_os()
 aha = utils.Experiment()
-params = aha.get_params()  
+params = aha.get_params()
 json_path, data_path, model_path = aha.get_paths()
+
 
 def make_dataset():
     """"""
     tsfm = transforms.Compose([
-        transforms.Resize(params.resize_dim), 
+        transforms.Resize(params.resize_dim),
         transforms.Grayscale(1),
         transforms.ToTensor()
     ])
@@ -97,7 +97,7 @@ def train(model, dataloader, optimizer, loss_fn):
         with tqdm(desc=desc, total=len(dataloader)) as t:
             for i, (x, _) in enumerate(dataloader):
 
-                if params.cuda: #if GPU
+                if params.cuda:  #if GPU
                     x, _ = x.cuda(non_blocking=True)
 
                 y_pred = model(x, k=1)
@@ -115,7 +115,9 @@ def train(model, dataloader, optimizer, loss_fn):
                 if my_system.lower() != 'windows':
                     utils.animate_weights(enc_weights, label=i, auto=False)
                     for s in range(len(x)):
-                        utils.animate_weights(y_pred[s].detach(), label=i, auto=True)
+                        utils.animate_weights(y_pred[s].detach(),
+                                              label=i,
+                                              auto=True)
 
                 #=====END MONIT.=====#
 
@@ -139,6 +141,7 @@ def train(model, dataloader, optimizer, loss_fn):
                                   model_path,
                                   name="pre_train",
                                   silent=False)
+
 
 def main():
     # If GPU
