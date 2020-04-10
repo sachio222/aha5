@@ -2,7 +2,7 @@
     "data_path": "data",
     "model_path": "experiments/train",
     "log_path" : "train.log",
-    "batch_size": [16, 32, 64, 128],
+    "batch_size": [20, 32, 64, 128],
     "learning_rate": [1e-1, 1e-2, 1e-3, 1e-4],
     "ca1_iters": 80,
     "ca1_learning_rate": 67e-4, 
