@@ -2,6 +2,8 @@ from pathlib2 import Path
 import json
 import argparse
 
+# from utils import utils
+
 
 class Params():
 
@@ -43,7 +45,7 @@ class Experiment():
         """Initialize new experiment. Run argparser, grab params file, init paths.
         """
         super(Experiment, self).__init__()
-        # self.init_logger()
+        self.init_logger()
         self.args = self._set_args()
         self.params = self._load_params(path=self.args.json)
         self._set_params()
@@ -185,7 +187,7 @@ class Experiment():
         """
         return self.json_path, self.data_path, self.model_path
 
-    # def init_logger(self):
-    #     p = Path(self.model_path, 'train.log')
-    #     set_logger(p)
-    #     print(p)
+    def init_logger(self):
+        p = Path(self.params.model_path, 'train.log')
+        utils.set_logger(p)
+        print(p)

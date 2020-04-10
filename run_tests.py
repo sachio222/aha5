@@ -1,12 +1,11 @@
 # Imports
 from pathlib2 import Path
-
+import logging
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import DataLoader
-
 import torchvision
 from torchvision import transforms
 from torchvision.datasets import Omniglot
@@ -19,18 +18,22 @@ import wandb
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
-from utils import utils, setup  # pylint: disable=RP0003, F0401
+from utils import utils  # pylint: disable=RP0003, F0401
+
+# pylint: disable=no-member
+
 
 utils.clear_terminal()
-aha = setup.Experiment()
-params = aha.get_params()
-json_path, data_path, model_path = aha.get_paths()
-
+aha = utils.Experiment()
+params = aha.get_params()  
+json_path, data_path, model_path, log_path = aha.get_paths()
+# utils.set_logger(log_path)
+# logging.info('hello world')
 
 def make_dataset():
     """"""
     tsfm = transforms.Compose([
-        transforms.Resize(params.resize_dim),
+        transforms.Resize(params.resize_dim), 
         transforms.Grayscale(1),
         transforms.ToTensor()
     ])
@@ -147,7 +150,7 @@ def main():
     dataloader = make_dataset()
     model, loss_fn, optimizer = load_model()
 
-    wandb.watch(model)
+    # wandb.watch(model)
 
     if not params.silent:
         print(f'AUTOSAVE: {params.autosave}')
