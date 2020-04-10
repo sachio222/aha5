@@ -1,3 +1,6 @@
+# Clear terminal
+utils.clear_terminal()
+
 # Imports
 from pathlib2 import Path
 import logging
@@ -22,8 +25,10 @@ from utils import utils  # pylint: disable=RP0003, F0401
 
 # pylint: disable=no-member
 
-utils.clear_terminal()
+# Constants
 my_system = utils.check_os()
+
+# Instantiate
 aha = utils.Experiment()
 params = aha.get_params()
 json_path, data_path, model_path = aha.get_paths()
