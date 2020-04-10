@@ -130,7 +130,7 @@ class Experiment():
 
             if not self.args.silent:
                 print('OK: Params file loaded successfully.')
-            
+
         except:
             print(f'\nERROR: No params.json file found at {self.json_path}\n')
             exit()
