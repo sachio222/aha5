@@ -70,14 +70,14 @@ def show_sample_img(dataset, idx):
 
 
 def print_full_tensor(tensor):
-    """You know how it only shows part of the tensor when you logging.info?
+    """You know how it only shows part of the tensor when you print?
 
     Well use this to show the whole thing.
     """
 
-    torch.set_logging.infooptions(profile="full")
-    logging.info(tensor)
-    torch.set_logging.infooptions(profile="default")
+    torch.set_printoptions(profile="full")
+    print(tensor)
+    torch.set_printoptions(profile="default")
 
 
 def get_save_state(epoch, model, optimizer):
@@ -104,17 +104,17 @@ def save_checkpoint(state, checkpoint, name="last", silent=True):
     filepath = checkpoint / "{}.pth.tar".format(name)
     if not Path(checkpoint).exists():
         if not silent:
-            logging.info("Creating checkpoint directory {}".format(checkpoint))
+            print("Creating checkpoint directory {}".format(checkpoint))
         Path(checkpoint).mkdir()
     else:
         if not silent:
-            logging.info("\nGetting checkpoint directory...")
+            print("\nGetting checkpoint directory...")
     if not silent:
-        logging.info("Saving file...")
+        print("Saving file...")
     # Remember to convert filepath to str or it flips out when trying to save
     torch.save(state, str(filepath))
     if not silent:
-        logging.info("File saved successfully.")
+        print("File saved successfully.")
 
 
 def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
@@ -128,48 +128,48 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
     """
     filepath = checkpoint / "{}.pth.tar".format(name)
 
-    logging.info("Looking for saved files...", end=" ")
+    print("Looking for saved files...", end=" ")
 
     if not Path(checkpoint).exists():
         raise ("File does not exist at {}".format(checkpoint))
     checkpoint = torch.load(str(filepath))
 
-    logging.info("Found.")
+    print("Found.")
 
     model.load_state_dict(checkpoint.get("state_dict"), strict=False)
 
     if optimizer:
         optimizer.load_state_dict(checkpoint.get("optim_dict"))
 
-    logging.info("OK. Loading saved weights complete.")
+    print("OK. Loading saved weights complete.")
     return checkpoint
 
 
-# def set_logger(log_path):
-#     """Logs info in terminal and file at log_path.
+def set_logger(log_path):
+    """Logs info in terminal and file at log_path.
 
-#     Example:
-#     ```
-#     logging.info('Starting Training...')
+    Example:
+    ```
+    logging.info('Starting Training...')
 
-#     Args:
-#         log_path: (string) where to log.
-#     """
+    Args:
+        log_path: (string) where to log.
+    """
 
-#     logger = logging.getLogger()
-#     logger.setLevel(logging.INFO)
+    logger = logging.getLogger()
+    logger.setLevel(logging.INFO)
 
-#     if not logger.handlers:
-#         # Logging to a file
-#         file_handler = logging.FileHandler(log_path)
-#         file_handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s: %(message)s'))
-#         logger.addHandler(file_handler)
+    if not logger.handlers:
+        # Logging to a file
+        file_handler = logging.FileHandler(log_path)
+        file_handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s: %(message)s'))
+        logger.addHandler(file_handler)
 
 
-#         # Logging to console
-#         stream_handler = logging.StreamHandler()
-#         stream_handler.setFormatter(logging.Formatter('%(message)s'))
-#         logger.addHandler(stream_handler)
+        # Logging to console
+        stream_handler = logging.StreamHandler()
+        stream_handler.setFormatter(logging.Formatter('%(message)s'))
+        logger.addHandler(stream_handler)
 
 
 def showme(tnsr,
@@ -192,14 +192,14 @@ def showme(tnsr,
         ax.set_title(title, color="blue", loc="left", pad=20)
         ax.matshow(tnsr)
         plt.show()
-        logging.info(tnsr.shape)
+        print(tnsr.shape)
         if full:
-            logging.info(tnsr)
+            print(tnsr)
     else:
         grid_img = torchvision.utils.make_grid(tnsr, nrow=5)
         plt.imshow(grid_img.permute(1, 2, 0))
         plt.show()
-        logging.info(tnsr.shape)
+        print(tnsr.shape)
 
 
 def animate_weights(t, nrow=11, label=None, auto=False):
@@ -237,11 +237,12 @@ def clear_terminal(system=None):
     """Clear the terminal on load with ANSI <ESC>"""
 
     system = system or check_os()
+    system = system.lower()
 
-    if system != "Windows":
-        logging.info("\033c", end="")
-    elif system == "Windows":
-        logging.info("\033[H\033[2J", end="")
+    if system != "windows":
+        print("\033c", end="")
+    elif system == "windows":
+        print("\033[H\033[2J", end="")
 
 
 class Experiment():
@@ -262,7 +263,6 @@ class Experiment():
         """
         super(Experiment, self).__init__()
         self.args = self._set_args()
-        self._init_logging(self.args)
         self.params = self._load_params(path=self.args.json)
         self._set_params()
         self._init_paths(params=self.params, args=self.args)
@@ -274,10 +274,9 @@ class Experiment():
             --json: (str, required) Path to params.json.
             --data: (str) Override params.json model path.
             --model: (str) Override params.json model path.
-            --log: (str) Override params.json logging path.
             --seed: (int) Manual seed for stochasticity
-            --paths: (bool) logging.info loaded paths to console. 
-            --silent: (bool) Do not logging.info status.
+            --paths: (bool) Print loaded paths to console. 
+            --silent: (bool) Do not print status.
             --load: (bool) Load pretrained weights.
             -a, --autosave: (bool)
         """
@@ -301,22 +300,10 @@ class Experiment():
                             default=None,
                             type=str)
 
-        parser.add_argument('--log',
-                            help='(str) Log file name, eg."train.log".',
-                            default='experiments/train/train.log',
-                            type=str)
-        
-        parser.add_argument('--nolog',
-                            nargs='?',
-                            const=True,
-                            help='(boolean) Disable log file.',
-                            default=False,
-                            type=bool)
-
         parser.add_argument('--paths',
                             nargs='?',
                             const=True,
-                            help='(boolean) logging.info file paths in console.',
+                            help='(boolean) Print file paths in console.',
                             default=False,
                             type=bool)
 
@@ -358,10 +345,10 @@ class Experiment():
             _params = Params(self.json_path)
 
             if not self.args.silent:
-                logging.info('OK: Params file loaded successfully.')
+                print('OK: Params file loaded successfully.')
             
         except:
-            logging.info(f'\nERROR: No params.json file found at {self.json_path}\n')
+            print(f'\nERROR: No params.json file found at {self.json_path}\n')
             exit()
 
         return _params
@@ -373,8 +360,6 @@ class Experiment():
             self.params.data_path = self.args.data
         if self.args.model:
             self.params.model_path = self.args.model
-        if self.args.log:
-            self.params.log_path = self.args.log
 
         self.params.load = self.args.load
         self.params.silent = self.args.silent
@@ -393,24 +378,21 @@ class Experiment():
             data_path: (path) Path to data file(s).
             model_path: (path) Path to model weights.
             json_path: (path) Path to params json file.
-            log_path: (path) Path to log file
         """
 
         # Load from args if present, else params file.
 
         self.data_path = Path().absolute() / self.params.data_path
         self.model_path = Path().absolute() / self.params.model_path
-        self.log_path = Path().absolute() / self.params.log_path
 
         if not self.args.silent:
-            logging.info('OK: Paths initialized successfully.')
+            print('OK: Paths initialized successfully.')
 
         if args.paths:
-            logging.info('PATHS:')
-            logging.info(f'- json path: {self.json_path}')
-            logging.info(f'- data path: {self.data_path}')
-            logging.info(f'- model path: {self.model_path}')
-            logging.info(f'- log path: {self.log_path}')
+            print('PATHS:')
+            print(f'- json path: {self.json_path}')
+            print(f'- data path: {self.data_path}')
+            print(f'- model path: {self.model_path}')
 
     def get_paths(self):
         """
@@ -418,40 +400,5 @@ class Experiment():
             self.json_path
             self.data_path
             self.model_path
-            self.log_path
         """
-        return self.json_path, self.data_path, self.model_path, self.log_path
-
-    def _init_logging(self, args):
-        """Logs info in terminal and file at log_path.
-
-        Example:
-        ```
-        logging.info('Starting Training...')
-
-        Args:
-            log_path: (string) where to log.
-        """
-
-        if not args.nolog:
-            log_path = args.log
-            log_path = Path().absolute() / log_path
-            print(log_path)
-            exit()
-            logger = logging.getLogger()
-            logger.setLevel(logging.INFO)
-
-            if not logger.handlers:
-                # Logging to a file
-                file_handler = logging.FileHandler(log_path)
-                file_handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s: %(message)s'))
-                logger.addHandler(file_handler)
-
-
-                # Logging to console
-                logging.basicConfig(format='%(message)s')
-                stream_handler = logging.StreamHandler()
-                stream_handler.setFormatter(logging.Formatter('%(message)s'))
-                logger.addHandler(stream_handler)
-        else:
-            print(f'Logging: {(args.nolog)}')
+        return self.json_path, self.data_path, self.model_path
