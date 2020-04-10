@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 import wandb
-wandb.init(entity="redtailedhawk", project="aha")
+# wandb.init(entity="redtailedhawk", project="aha")
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
@@ -157,7 +157,7 @@ def main():
     dataloader = make_dataset()
     model, loss_fn, optimizer = load_model()
 
-    wandb.watch(model)
+    # wandb.watch(model)
 
     if not params.silent:
         print(f'AUTOSAVE: {params.autosave}')
