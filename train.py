@@ -1,5 +1,3 @@
-# Clear terminal
-utils.clear_terminal()
 
 # Imports
 from pathlib2 import Path
@@ -22,6 +20,9 @@ import wandb
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
+
+# Clear terminal
+utils.clear_terminal()
 
 # pylint: disable=no-member
 
@@ -172,4 +173,5 @@ def main():
 
 
 if __name__ == '__main__':
+    logging.info('testing logger main')
     main()
