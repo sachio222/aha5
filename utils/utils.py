@@ -14,7 +14,7 @@ import platform
 import torch
 import torchvision
 
-log =  logging.getLogger(__name__)
+logger =  logging.getLogger('__main__.' + __name__)
 
 class Params():
     """Loads params file from params.json"""
@@ -139,10 +139,10 @@ class Experiment():
             _params = Params(self.json_path)
 
             if not self.args.silent:
-                log.info('Params file loaded successfully.')
+                logger.info('Params file loaded successfully.')
 
         except:
-            log.error(f'No params.json file found at {self.json_path}\n')
+            logger.error(f'No params.json file found at {self.json_path}\n')
             exit()
 
         return _params
@@ -180,7 +180,7 @@ class Experiment():
         self.model_path = Path().absolute() / self.params.model_path
 
         if not self.args.silent:
-            log.info('Paths initialized successfully.')
+            logger.info('Paths initialized successfully.')
 
         if args.paths:
             print('PATHS:')
@@ -304,6 +304,23 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
     print("OK. Loading saved weights complete.")
     return checkpoint
 
+def set_logger():
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+
+    # Output to console
+    c_handler = logging.StreamHandler()
+    c_handler.setLevel(logging.DEBUG)
+    c_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s | %(name)s')
+    c_handler.setFormatter(c_formatter)
+    logger.addHandler(c_handler)
+
+    # Output to file
+    f_handler = logging.FileHandler('training.log')
+    f_handler.setLevel(logging.DEBUG)
+    f_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s | %(name)s.py')
+    f_handler.setFormatter(f_formatter)
+    logger.addHandler(f_handler)
 
 def showme(tnsr,
            size_dim0=10,
