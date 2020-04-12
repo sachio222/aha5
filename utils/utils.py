@@ -14,6 +14,7 @@ import platform
 import torch
 import torchvision
 
+log =  logging.getLogger(__name__)
 
 class Params():
     """Loads params file from params.json"""
@@ -37,6 +38,7 @@ class Params():
         """Gives dict-like access to Params instance by 'params.dict['learning_rate]."""
         return self.__dict__
 
+
 class Experiment():
     """An Experiment class sets up a new experiment.
 
@@ -54,7 +56,6 @@ class Experiment():
         """Initialize new experiment. Run argparser, grab params file, init paths.
         """
         super(Experiment, self).__init__()
-        logging.info('testing also')
         self.args = self._set_args()
         self.params = self._load_params(path=self.args.json)
         self._set_params()
@@ -138,10 +139,10 @@ class Experiment():
             _params = Params(self.json_path)
 
             if not self.args.silent:
-                print('OK: Params file loaded successfully.')
+                log.info('Params file loaded successfully.')
 
         except:
-            print(f'\nERROR: No params.json file found at {self.json_path}\n')
+            log.error(f'No params.json file found at {self.json_path}\n')
             exit()
 
         return _params
@@ -179,7 +180,7 @@ class Experiment():
         self.model_path = Path().absolute() / self.params.model_path
 
         if not self.args.silent:
-            print('OK: Paths initialized successfully.')
+            log.info('Paths initialized successfully.')
 
         if args.paths:
             print('PATHS:')
