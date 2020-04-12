@@ -30,12 +30,12 @@ utils.clear_terminal()
 my_system = utils.check_os()
 
 # Instantiate
-aha = utils.Experiment()
-params = aha.get_params()
-json_path, data_path, model_path = aha.get_paths()
+# aha = utils.Experiment()
+# params = aha.get_params()
+# json_path, data_path, model_path = aha.get_paths()
 
 
-def make_dataset():
+def make_dataset(data_path, params):
     """"""
     tsfm = transforms.Compose([
         transforms.Resize(params.resize_dim),
@@ -55,12 +55,12 @@ def make_dataset():
                             drop_last=True)
 
     if not params.silent:
-        print('OK: Data loaded successfully.')
+        log.info('Data loaded successfully.')
 
     return dataloader
 
 
-def load_model():
+def load_model(model_path, params):
     # model = modules.ECToCA3(D_in=1, D_out=121)
     model = modules.ECPretrain(D_in=1,
                                D_out=121,
@@ -79,17 +79,17 @@ def load_model():
                                   optimizer,
                                   name="pre_train")
             if not params.silent:
-                print('OK: Loaded weights successfully.')
+                log.info('Loaded weights successfully.')
         except Exception:
-            print(
-                'WARNING: --load request failed. Continuing without pre-trained weights.'
+            log.warning(
+                '--load request failed. Continuing without pre-trained weights.'
             )
             pass
 
     return model, loss_fn, optimizer
 
 
-def train(model, dataloader, optimizer, loss_fn):
+def train(model, dataloader, optimizer, loss_fn, params):
     if not params.silent:
         print('\n[---TRAINING START---]')
     model.train()
@@ -138,7 +138,7 @@ def train(model, dataloader, optimizer, loss_fn):
             if my_system.lower() != 'windows':
                 utils.animate_weights(enc_weights, auto=False)
 
-        wandb.log({"Train Loss": loss_avg()})
+        # wandb.log({"Train Loss": loss_avg()})
 
         if params.autosave:
             # Autosaves latest state after each epoch (overwrites previous state)
@@ -150,6 +150,11 @@ def train(model, dataloader, optimizer, loss_fn):
 
 
 def main():
+
+    aha = utils.Experiment()
+    params = aha.get_params()
+    json_path, data_path, model_path = aha.get_paths()
+
     # If GPU
     params.cuda = torch.cuda.is_available()
 
@@ -160,18 +165,51 @@ def main():
         torch.cuda.manual_seed(seed)
         params.num_workers = 2
 
-    dataloader = make_dataset()
-    model, loss_fn, optimizer = load_model()
+    dataloader = make_dataset(data_path, params)
+    model, loss_fn, optimizer = load_model(model_path, params)
 
     # wandb.watch(model)
 
     if not params.silent:
-        print(f'AUTOSAVE: {params.autosave}')
+        log.info(f'AUTOSAVE: {params.autosave}')
 
     # Run training
-    train(model, dataloader, optimizer, loss_fn)
+    train(model, dataloader, optimizer, loss_fn, params)
 
 
 if __name__ == '__main__':
-    logging.info('testing logger main')
+    log =  logging.getLogger(__name__)
+       
+    # for handler in logging.root.handlers[:]:
+    #     logging.root.removeHandler(handler)
+    
+    for handler in log.handlers[:]:
+        log.removeHandler(handler)
+
+    # logging.root.setLevel(logging.INFO)
+    
+    # logging.basicConfig(filename='example.log',
+    #                     filemode='w',
+    #                     format='%(asctime)s, %(name)s - %(levelname)s: %(message)s',
+    #                     level=logging.INFO
+    # )
+
+    # Console and file handlers
+    c_handler = logging.StreamHandler()
+    c_handler.setLevel(logging.INFO)
+    
+    f_handler = logging.FileHandler('examplefile.log')
+    f_handler.setLevel(logging.INFO)
+
+    # Formatters
+
+    c_format = logging.Formatter('%(name)s')
+    c_handler.setFormatter(c_format)
+
+    f_format = logging.Formatter('%(name)s')
+    f_handler.setFormatter(f_format)
+    
+    log.addHandler(c_handler)
+    log.addHandler(f_format)
+
     main()
