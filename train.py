@@ -1,5 +1,6 @@
 
 # Imports
+import sys
 from pathlib2 import Path
 import logging
 import torch
@@ -23,6 +24,10 @@ from utils import utils  # pylint: disable=RP0003, F0401
 
 # Clear terminal
 utils.clear_terminal()
+utils.set_logger()
+logger =  logging.getLogger(__name__)
+
+
 
 # pylint: disable=no-member
 
@@ -35,7 +40,7 @@ my_system = utils.check_os()
 # json_path, data_path, model_path = aha.get_paths()
 
 
-def make_dataset(data_path, params):
+def make_dataset(params):
     """"""
     tsfm = transforms.Compose([
         transforms.Resize(params.resize_dim),
@@ -43,7 +48,7 @@ def make_dataset(data_path, params):
         transforms.ToTensor()
     ])
 
-    dataset = Omniglot(data_path,
+    dataset = Omniglot(params.data_path,
                        background=True,
                        transform=tsfm,
                        download=True)
@@ -55,12 +60,12 @@ def make_dataset(data_path, params):
                             drop_last=True)
 
     if not params.silent:
-        log.info('Data loaded successfully.')
+        logger.info('Data loaded successfully.')
 
     return dataloader
 
 
-def load_model(model_path, params):
+def load_model(params):
     # model = modules.ECToCA3(D_in=1, D_out=121)
     model = modules.ECPretrain(D_in=1,
                                D_out=121,
@@ -79,9 +84,9 @@ def load_model(model_path, params):
                                   optimizer,
                                   name="pre_train")
             if not params.silent:
-                log.info('Loaded weights successfully.')
+                logger.info('Loaded weights successfully.')
         except Exception:
-            log.warning(
+            logger.warning(
                 '--load request failed. Continuing without pre-trained weights.'
             )
             pass
@@ -144,13 +149,12 @@ def train(model, dataloader, optimizer, loss_fn, params):
             # Autosaves latest state after each epoch (overwrites previous state)
             state = utils.get_save_state(epoch, model, optimizer)
             utils.save_checkpoint(state,
-                                  model_path,
+                                  params.model_path,
                                   name="pre_train",
                                   silent=False)
 
 
 def main():
-
     aha = utils.Experiment()
     params = aha.get_params()
     json_path, data_path, model_path = aha.get_paths()
@@ -165,51 +169,18 @@ def main():
         torch.cuda.manual_seed(seed)
         params.num_workers = 2
 
-    dataloader = make_dataset(data_path, params)
-    model, loss_fn, optimizer = load_model(model_path, params)
+    dataloader = make_dataset(params)
+    model, loss_fn, optimizer = load_model(params)
 
     # wandb.watch(model)
 
     if not params.silent:
-        log.info(f'AUTOSAVE: {params.autosave}')
+        logger.info(f'AUTOSAVE: {params.autosave}')
 
     # Run training
     train(model, dataloader, optimizer, loss_fn, params)
 
 
 if __name__ == '__main__':
-    log =  logging.getLogger(__name__)
-       
-    # for handler in logging.root.handlers[:]:
-    #     logging.root.removeHandler(handler)
     
-    for handler in log.handlers[:]:
-        log.removeHandler(handler)
-
-    # logging.root.setLevel(logging.INFO)
-    
-    # logging.basicConfig(filename='example.log',
-    #                     filemode='w',
-    #                     format='%(asctime)s, %(name)s - %(levelname)s: %(message)s',
-    #                     level=logging.INFO
-    # )
-
-    # Console and file handlers
-    c_handler = logging.StreamHandler()
-    c_handler.setLevel(logging.INFO)
-    
-    f_handler = logging.FileHandler('examplefile.log')
-    f_handler.setLevel(logging.INFO)
-
-    # Formatters
-
-    c_format = logging.Formatter('%(name)s')
-    c_handler.setFormatter(c_format)
-
-    f_format = logging.Formatter('%(name)s')
-    f_handler.setFormatter(f_format)
-    
-    log.addHandler(c_handler)
-    log.addHandler(f_format)
-
     main()
