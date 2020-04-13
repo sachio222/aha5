@@ -22,10 +22,10 @@ import wandb
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
 
-# Clear terminal
+# Clear terminal & Set logs
 utils.clear_terminal()
-utils.set_logger()
 logger =  logging.getLogger(__name__)
+utils.set_logger(logger)
 
 
 
@@ -143,6 +143,7 @@ def train(model, dataloader, optimizer, loss_fn, params):
             if my_system.lower() != 'windows':
                 utils.animate_weights(enc_weights, auto=False)
 
+        logger.info(f'Epoch: {epoch} - Train Loss: {loss_avg()}')
         # wandb.log({"Train Loss": loss_avg()})
 
         if params.autosave:

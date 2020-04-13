@@ -304,8 +304,12 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
     print("OK. Loading saved weights complete.")
     return checkpoint
 
-def set_logger():
-    logger = logging.getLogger(__name__)
+def set_logger(logger):
+    # logger = logging.getLogger(__name__)
+
+    for handler in logger.handlers[:]:
+        logger.removeHandler(handler)
+    
     logger.setLevel(logging.DEBUG)
 
     # Output to console
@@ -316,11 +320,12 @@ def set_logger():
     logger.addHandler(c_handler)
 
     # Output to file
-    f_handler = logging.FileHandler('training.log')
+    f_handler = logging.FileHandler('./experiments/train/training.log', mode='w')
     f_handler.setLevel(logging.DEBUG)
     f_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s | %(name)s.py')
     f_handler.setFormatter(f_formatter)
     logger.addHandler(f_handler)
+    
 
 def showme(tnsr,
            size_dim0=10,
