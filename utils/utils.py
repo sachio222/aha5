@@ -306,6 +306,7 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
 
 def set_logger(logger):
     # logger = logging.getLogger(__name__)
+    log_path = './experiments/train/session.log'
 
     for handler in logger.handlers[:]:
         logger.removeHandler(handler)
@@ -320,12 +321,12 @@ def set_logger(logger):
     logger.addHandler(c_handler)
 
     # Output to file
-    f_handler = logging.FileHandler('./experiments/train/training.log', mode='w')
+    f_handler = logging.FileHandler(filename=log_path, mode='w')
     f_handler.setLevel(logging.DEBUG)
     f_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s | %(name)s.py')
     f_handler.setFormatter(f_formatter)
     logger.addHandler(f_handler)
-    
+
 
 def showme(tnsr,
            size_dim0=10,
