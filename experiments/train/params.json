@@ -16,6 +16,7 @@
     "num_workers": 0,
 
     "resize_dim": 52,
+    "save_summary_steps": 100,
     "seed": 100,
     "test_seed": 33,
     "test_shift": 1,
