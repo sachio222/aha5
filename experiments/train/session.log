@@ -1,5 +1,5 @@
-2020-04-15 19:30:32,779 | INFO: Params file loaded successfully. | __main__.utils.utils.py
-2020-04-15 19:30:32,779 | INFO: Paths initialized successfully. | __main__.utils.utils.py
-2020-04-15 19:30:33,429 | INFO: Data loaded successfully. | __main__.py
-2020-04-15 19:30:33,440 | INFO: AUTOSAVE: False | __main__.py
-2020-04-15 19:30:33,441 | INFO: Starting training for 100 epoch(s) | __main__.py
+2020-04-16 19:23:48,960 | INFO: Params file loaded successfully. | __main__.utils.utils.py
+2020-04-16 19:23:48,961 | INFO: Paths initialized successfully. | __main__.utils.utils.py
+2020-04-16 19:23:51,979 | INFO: Data loaded successfully. | __main__.py
+2020-04-16 19:23:51,981 | INFO: AUTOSAVE: False | __main__.py
+2020-04-16 19:23:51,981 | INFO: Training set for 100 epoch(s). | __main__.py

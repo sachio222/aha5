@@ -98,12 +98,12 @@ def load_model(params):
 def train(model, dataloader, optimizer, loss_fn, metrics, params):
     """
     Args:
-        model:
-        dataloader:
-        optimizer:
-        loss_fn:
+        model: (nn.Module) the neural network.
+        dataloader: (DataLoader) torch.utils.data.Dataloader object
+        optimizer: (optim) optimizer for model params
+        loss_fn: function. 
         metrics: (dict) of functions that compute metrics from output and labels
-        params:
+        params: (Params) hyperparameters
     """
     if not params.silent:
         print('\n[---TRAINING START---]')
@@ -112,7 +112,10 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
     for epoch in range(params.num_epochs):
 
+        # Summary for this training loop, as well as avg loss. 
+        summ = []
         loss_avg = utils.RunningAverage()
+        
 
         desc = "Epoch: {}".format(epoch)  # Informational only, used in tqdm.
 
@@ -135,7 +138,8 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                 enc_weights = model.encoder.weight.data
 
                 if my_system.lower() != 'windows':
-                    # Run 1 of the following at a time to view kernels while training:
+                    # For mac only
+                    # Uncomment 1 of the following at a time to view kernels while training:
 
                     # FULL VIEW
                     # --------------------------
@@ -155,9 +159,30 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
                     # --------------------------
 
+                else:
+                    '''Show full kernels on windows'''
+
+                    # FULL VIEW
+                    # ------------------------- -
+                    
+                    utils.animate_weights(enc_weights, label=i, auto=True)
+
+                    # --------------------------
+
                 #=====END MONIT.=====#
 
                 optimizer.step()
+
+                # Evaluate summaries periodically (Should be own function)
+                if i % params.save_summary_steps == 0:
+
+                    # Compute all metrics on this batch
+                    batch_summary = {metric: metrics[metric](y_pred, x)
+                                     for metric in metrics}
+                    batch_summary['loss'] = loss.item()
+                    summ.append(batch_summary)
+
+                # Update avg. loss after batch.
                 loss_avg.update(loss.item())
 
                 # Update tqdm progress bar.
@@ -168,6 +193,13 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
         
             if my_system.lower() != 'windows':
                 utils.animate_weights(enc_weights, auto=False)
+
+        # Compute mean of all metrics in summary.
+        metrics_mean = {metric: np.mean([x[metric]
+                                        for x in summ]) for metric in summ[0]}
+        metrics_string = ' ; '.join('{}: {:05.3f}'.format(k, v)
+                                    for k, v in metrics_mean.items())
+        logger.info('- Train metrics: ' + metrics_string)
 
         logger.info(f'Epoch: {epoch} - Train Loss: {loss_avg()}')
         # wandb.log({"Train Loss": loss_avg()})
