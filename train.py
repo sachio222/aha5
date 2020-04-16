@@ -3,6 +3,7 @@
 import sys
 from pathlib2 import Path
 import logging
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -161,11 +162,14 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
                 else:
                     '''Show full kernels on windows'''
-
+                    """
+                    Todo:
+                        If args.display is true.
+                    """
                     # FULL VIEW
                     # ------------------------- -
                     
-                    utils.animate_weights(enc_weights, label=i, auto=True)
+                    # utils.animate_weights(enc_weights, label=i, auto=False)
 
                     # --------------------------
 
@@ -175,6 +179,8 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
                 # Evaluate summaries periodically (Should be own function)
                 if i % params.save_summary_steps == 0:
+                    y_pred = y_pred.detach().numpy()
+                    x = x.detach().numpy()
 
                     # Compute all metrics on this batch
                     batch_summary = {metric: metrics[metric](y_pred, x)

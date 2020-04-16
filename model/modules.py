@@ -442,7 +442,7 @@ class CA3():
         """
         self.W = torch.zeros(self.dim1, self.dim1)
 
-def accuracy(outputs, labes):
+def accuracy(outputs, labels):
     """Compute the accuracy, given the outputs and labels for all images.
 
     Args:
