@@ -1,13 +1,10 @@
+import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
 import matplotlib.pyplot as plt
 
-
-def accuracy(out, labels):
-    outputs = np.argmax(out, axis=1)
-    return np.sum(outputs == labels) / float(labels.size)
 
 
 def get_top_k(x, k=10, mask_type="pass_through", topk_dim=0, scatter_dim=0):
@@ -444,3 +441,19 @@ class CA3():
         """Resets weight matrix to 0.
         """
         self.W = torch.zeros(self.dim1, self.dim1)
+
+def accuracy(outputs, labes):
+    """Compute the accuracy, given the outputs and labels for all images.
+
+    Args:
+        outputs: (np.ndarray) output of model.
+        labels: (np.ndarray)
+    """
+    outputs = np.argmax(outputs, axis=1)
+    return np.sum(outputs==labels) / float(labels.size)
+
+# write metrics to dictionary. 
+metrics = {
+    'accuracy': accuracy,
+    # could add more metrics such as accuracy for each token type
+}
