@@ -15,11 +15,11 @@ from torchvision.datasets import Omniglot
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-import wandb
+# import wandb
 # wandb.init(entity="redtailedhawk", project="aha")
 
 # User modules
-from model import modules  # pylint: disable=no-name-in-module
+from model import modules # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
 
 # Clear terminal & Set logs
@@ -66,6 +66,7 @@ def make_dataset(params):
 
 
 def load_model(params):
+
     # model = modules.ECToCA3(D_in=1, D_out=121)
     model = modules.ECPretrain(D_in=1,
                                D_out=121,
@@ -94,10 +95,20 @@ def load_model(params):
     return model, loss_fn, optimizer
 
 
-def train(model, dataloader, optimizer, loss_fn, params):
+def train(model, dataloader, optimizer, loss_fn, metrics, params):
+    """
+    Args:
+        model:
+        dataloader:
+        optimizer:
+        loss_fn:
+        metrics: (dict) of functions that compute metrics from output and labels
+        params:
+    """
     if not params.silent:
         print('\n[---TRAINING START---]')
-    model.train()
+
+    model.train()  # Set model to train mode
 
     for epoch in range(params.num_epochs):
 
@@ -124,11 +135,25 @@ def train(model, dataloader, optimizer, loss_fn, params):
                 enc_weights = model.encoder.weight.data
 
                 if my_system.lower() != 'windows':
-                    utils.animate_weights(enc_weights, label=i, auto=False)
-                    for s in range(len(x)):
-                        utils.animate_weights(y_pred[s].detach(),
-                                              label=i,
-                                              auto=True)
+                    # Run 1 of the following at a time to view kernels while training:
+
+                    # FULL VIEW
+                    # --------------------------
+                    
+                    utils.animate_weights(enc_weights, label=i, auto=True)
+
+                    # --------------------------
+
+
+                    # SINGLE VIEW
+                    # --------------------------
+                    
+                    # for s in range(len(x)):
+                    #     utils.animate_weights(y_pred[s].detach(),
+                    #                           label=i,
+                    #                           auto=True)
+
+                    # --------------------------
 
                 #=====END MONIT.=====#
 
@@ -140,6 +165,7 @@ def train(model, dataloader, optimizer, loss_fn, params):
                 t.update()
 
             # Show one last time
+        
             if my_system.lower() != 'windows':
                 utils.animate_weights(enc_weights, auto=False)
 
@@ -172,14 +198,16 @@ def main():
 
     dataloader = make_dataset(params)
     model, loss_fn, optimizer = load_model(params)
+    metrics = modules.metrics
 
     # wandb.watch(model)
 
     if not params.silent:
         logger.info(f'AUTOSAVE: {params.autosave}')
+        logger.info(f"Training set for {params.num_epochs} epoch(s).")
 
     # Run training
-    train(model, dataloader, optimizer, loss_fn, params)
+    train(model, dataloader, optimizer, loss_fn, metrics, params)
 
 
 if __name__ == '__main__':
