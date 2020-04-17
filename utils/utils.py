@@ -81,7 +81,7 @@ class Experiment():
             --paths: (bool) Print loaded paths to console. 
             --silent: (bool) Do not print status.
             --wandb: (bool) Upload results to wandb.
-            -d, --display: (bool) Show image after each epoch.
+            --showlast: (bool) Show image after each epoch.
             --animate: (bool) Shows image after each step.
             --load: (bool) Load pretrained weights.
             -a, --autosave: (bool)
@@ -140,7 +140,7 @@ class Experiment():
                             type=bool,
                             help='(bool) Uploads data to wandb.')
 
-        parser.add_argument('-d', '--display',
+        parser.add_argument('--showlast',
                             nargs='?',
                             const=True,
                             default=False,
@@ -152,7 +152,7 @@ class Experiment():
                             const=True,
                             default=False,
                             type=bool,
-                            help='(bool) Shows weights after each step.')
+                            help='(bool) Shows weights after eacg step.')
 
         parser.add_argument('-a',
                             '--autosave',
@@ -208,10 +208,10 @@ class Experiment():
         self.params.load = self.args.load
         self.params.silent = self.args.silent
         self.params.animate = self.args.animate
-        self.params.display = self.args.display
-        
+        self.params.showlast = self.args.showlast
+
         if not self.params.silent:
-            logger.info(f'DISPLAY: {self.params.display}')
+            logger.info(f'SHOW LAST: {self.params.showlast}')
 
         self.params.autosave = self.args.autosave
         if not self.params.silent:
