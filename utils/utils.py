@@ -325,8 +325,9 @@ def set_logger(logger):
     c_handler.setFormatter(c_formatter)
     logger.addHandler(c_handler)
 
-    # Output to file
-    f_handler = logging.FileHandler(filename=log_path, mode='w')
+    # Output to file 
+    # Set mode to 'w' for overwrite for each session. 
+    f_handler = logging.FileHandler(filename=log_path, mode='a')
     f_handler.setLevel(logging.DEBUG)
     f_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s | %(name)s.py')
     f_handler.setFormatter(f_formatter)
