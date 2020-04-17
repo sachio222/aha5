@@ -14,6 +14,7 @@ import platform
 import torch
 import torchvision
 
+# Set global logger
 logger = logging.getLogger('__main__.' + __name__)
 
 class Params():

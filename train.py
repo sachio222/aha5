@@ -1,4 +1,4 @@
-# Keep false unless uploading to weights and balances account.
+"""aha_v0.5"""
 
 # Imports
 import sys
