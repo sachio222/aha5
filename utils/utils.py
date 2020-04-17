@@ -81,6 +81,7 @@ class Experiment():
             --paths: (bool) Print loaded paths to console. 
             --silent: (bool) Do not print status.
             --wandb: (bool) Upload results to wandb.
+            -d, --display: (bool) Show image after each epoch.
             --load: (bool) Load pretrained weights.
             -a, --autosave: (bool)
         """
@@ -138,6 +139,14 @@ class Experiment():
                             type=bool,
                             help='(bool) Uploads data to wandb.')
 
+        parser.add_argument('-d', '--display',
+                            nargs='?',
+                            const=True,
+                            default=False,
+                            type=bool,
+                            help='(bool) Shows output img after each epoch.')
+        
+
         parser.add_argument('-a',
                             '--autosave',
                             nargs='?',
@@ -191,6 +200,10 @@ class Experiment():
         # Bool flags get written to params.
         self.params.load = self.args.load
         self.params.silent = self.args.silent
+
+        self.params.display = self.args.display
+        if not self.params.silent:
+            logger.info(f'DISPLAY: {self.params.display}')
 
         self.params.autosave = self.args.autosave
         if not self.params.silent:
