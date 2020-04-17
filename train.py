@@ -1,5 +1,5 @@
 # Keep false unless uploading to weights and balances account.
-wandb_upload = False
+wandb_upload = True
 
 # Imports
 import sys
