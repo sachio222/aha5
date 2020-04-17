@@ -22,6 +22,8 @@ from tqdm import tqdm
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
 
+"""Todo: store, access multisession train loss.
+"""
 
 # Clear terminal & Set logger variable
 utils.clear_terminal()
@@ -31,8 +33,8 @@ utils.set_logger(logger)
 # pylint: disable=no-member
 
 # Constants
+# Check OS
 my_system = utils.check_os()
-
 
 def make_dataset(params):
     """"""
@@ -215,8 +217,10 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
 def main():
 
-    # Instantiate
+    # Create Experiment object
     aha = utils.Experiment()
+
+    # Get params file updated from custom args
     params = aha.get_params()
 
     # If GPU
@@ -241,7 +245,6 @@ def main():
 
     # Run training
     train(model, dataloader, optimizer, loss_fn, metrics, params)
-
 
 if __name__ == '__main__':
     main()
