@@ -212,3 +212,9 @@
 2020-04-17 14:24:32,755 | INFO: Weights found. | __main__.utils.utils.py
 2020-04-17 14:24:32,776 | INFO: Loading saved weights complete. | __main__.utils.utils.py
 2020-04-17 14:24:32,778 | INFO: Epochs: 100, lr: 0.001, batch_size: 64 | __main__.py
+2020-04-17 14:26:08,606 | INFO: - Train metrics: accuracy: 1.635 ; loss: 0.148 | __main__.py
+2020-04-17 14:26:08,607 | INFO: Epoch: 0 - Train Loss: 0.14684232316935975 | __main__.py
+2020-04-17 14:26:08,608 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 14:26:08,608 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 14:26:08,611 | INFO: File saved successfully. | __main__.utils.utils.py
