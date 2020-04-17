@@ -265,6 +265,12 @@ def print_full_tensor(tensor):
     """You know how it only shows part of the tensor when you print?
 
     Well use this to show the whole thing.
+
+    Example:
+
+        print_full_tensor(tensor_name)
+
+        >>> # Prints all in tensor without elipses.
     """
 
     torch.set_printoptions(profile="full")
@@ -338,9 +344,15 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
 
 
 def set_logger(logger):
-    # logger = logging.getLogger(__name__)
+    """Creates logger object for logging to log. 
 
-    # path = params.model_path
+    Stores log relative to project root. 
+
+    Todo:
+        customize log path from args.
+
+    """
+
     log_path = './session.log'
 
     for handler in logger.handlers[:]:
@@ -423,12 +435,17 @@ def animate_weights(t, nrow=11, label=None, auto=False):
 
 
 def check_os():
+    """Returns string for os. Used for os specific performance differences. 
+    """
     my_system = platform.system()
     return my_system
 
 
 def clear_terminal(system=None):
-    """Clear the terminal on load with ANSI <ESC>"""
+    """Clear the terminal on load with ANSI <ESC>
+    
+    Gets rid of some of the noise for a freshs start in terminal.
+    """
 
     system = system or check_os()
     system = system.lower()
