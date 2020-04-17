@@ -1,0 +1,73 @@
+2020-04-17 01:19:40,046 INFO    wandb_write:10608 [datastore.py:open():19] open: wandb\wandb-20200417_011938-14588\wandb-20200417_011938-14588-data.bin
+2020-04-17 01:19:40,053 DEBUG   wandb_send:10608 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 01:19:41,413 DEBUG   wandb_send:10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-04-17 01:19:41,419 INFO    wandb_send:10608 [internal.py:handle_run():184] run started: 3eo89yhv
+2020-04-17 01:19:41,419 INFO    wandb_send:10608 [internal.py:_save_file():241] saving file wandb-metadata.json at wandb\wandb-20200417_011938-14588\files
+2020-04-17 01:19:41,419 INFO    wandb_send:10608 [internal.py:_save_file():243] saving file wandb-metadata.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_011938-14588\files\wandb-metadata.json
+2020-04-17 01:19:41,432 INFO    wandb_send:10608 [internal.py:_save_file():241] saving file wandb-jobspec.json at wandb\wandb-20200417_011938-14588\files
+2020-04-17 01:19:41,432 INFO    wandb_send:10608 [internal.py:_save_file():243] saving file wandb-jobspec.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_011938-14588\files\wandb-jobspec.json
+2020-04-17 01:19:44,434 DEBUG   Thread-9  :10608 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 01:19:44,535 DEBUG   Thread-10 :10608 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 01:19:45,144 DEBUG   Thread-9  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-04-17 01:19:45,148 DEBUG   Thread-9  :10608 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): storage.googleapis.com:443
+2020-04-17 01:19:45,269 DEBUG   Thread-10 :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-04-17 01:19:45,274 DEBUG   Thread-10 :10608 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): storage.googleapis.com:443
+2020-04-17 01:19:45,399 DEBUG   Thread-6  :10608 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 01:19:46,119 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:19:46,740 DEBUG   Thread-9  :10608 [connectionpool.py:_make_request():437] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/redtailedhawk/aha/3eo89yhv/wandb-metadata.json?Expires=1587100843&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=qzOP9NIdKHFBcp6%2BDgs7hMXfiyeXL%2FSRcdEEPJszxGzYzgIBfR5ZkfUWLzXlXC1WZN7twT0Ahp0dzWMZeWjnX1vZPxmQ1nZvjZx1Ns6F9gdCAC0hwBw06VHXq4sA0znyCPFvtYYdO9nfAaPRbXL0jHaI8wRPuYg3r50vnWLpUvjZZOcyypyEPyeFzqFpbTS6hFl%2F%2FsGzwpYi6oGydsxUuZaqKcy2Jt2tLq88FoShQdVBBuPbWvB%2BtOe0Oljde%2FxFywA4CCE8NiQDV%2Ba8z9AJD%2FfNPJ%2BqAwfH4FUwr7TiCcO6AU2CGD4Aswzz9h8hAwXO9gkEyuCg0uYDJ9ztanMB0Q%3D%3D HTTP/1.1" 200 0
+2020-04-17 01:19:48,220 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:19:52,693 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:19:55,462 DEBUG   Thread-10 :10608 [connectionpool.py:_make_request():437] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/redtailedhawk/aha/3eo89yhv/wandb-jobspec.json?Expires=1587100843&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=P%2BCIovlB3ZEs85BMCR0mFdfd87bZETdoh2jgps1Suzp4EcfA35Vi41xa09DdKHxGD2Fq%2BkBbApjIUq5pd%2FC7grDlYq4SL8B%2BRlLoy2mXRn9XXdPbF5cXjysafDRsmRZRobRp8PjsBaudbXUbMlnDw0tDgHh3nz6Dx1IIB%2FnNSGr75VDKZwXyORgWfvcvk1ypCzFOWv7bsuJ66aubQG6VOygV78JnvkT4TxiEB4sw%2B9s5yn2kxRHv0T1TbModWPFQVgrEeDygqi3NmLdvor0X0sg%2F36G82fnK6dFpXWgGMSMPLlVnCVc5LIYuQhtQSHAS3yDHjGgSpgh9DnYR7549EA%3D%3D HTTP/1.1" 200 0
+2020-04-17 01:19:57,204 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:20:01,696 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:20:06,163 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:20:10,720 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:20:15,213 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:20:19,712 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:20:24,186 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:20:28,666 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:20:33,134 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:20:37,643 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:20:51,101 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:21:04,538 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:21:17,986 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:21:31,476 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:21:44,959 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:21:58,384 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:22:11,873 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:22:25,321 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:22:38,781 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:22:52,436 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:23:05,907 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:23:19,416 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:23:32,898 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:23:46,375 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:23:59,820 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:24:13,709 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:24:26,755 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:24:58,104 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:25:29,573 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:26:00,938 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:26:32,457 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:27:04,042 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:27:35,528 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:27:37,001 INFO    wandb_send:10608 [internal.py:handle_exit():139] scan: wandb\wandb-20200417_011938-14588\files
+2020-04-17 01:27:37,002 INFO    wandb_send:10608 [internal.py:handle_exit():145] scan save: wandb\wandb-20200417_011938-14588\files\wandb-jobspec.json wandb-jobspec.json
+2020-04-17 01:27:37,002 INFO    wandb_send:10608 [internal.py:_save_file():241] saving file wandb-jobspec.json at wandb\wandb-20200417_011938-14588\files
+2020-04-17 01:27:37,002 INFO    wandb_send:10608 [internal.py:_save_file():243] saving file wandb-jobspec.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_011938-14588\files\wandb-jobspec.json
+2020-04-17 01:27:37,003 INFO    wandb_send:10608 [internal.py:handle_exit():145] scan save: wandb\wandb-20200417_011938-14588\files\wandb-metadata.json wandb-metadata.json
+2020-04-17 01:27:37,003 INFO    wandb_send:10608 [internal.py:_save_file():241] saving file wandb-metadata.json at wandb\wandb-20200417_011938-14588\files
+2020-04-17 01:27:37,003 INFO    wandb_send:10608 [internal.py:_save_file():243] saving file wandb-metadata.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_011938-14588\files\wandb-metadata.json
+2020-04-17 01:27:38,002 INFO    wandb_write:10608 [datastore.py:close():68] close: wandb\wandb-20200417_011938-14588\wandb-20200417_011938-14588-data.bin
+2020-04-17 01:27:38,013 DEBUG   Thread-11 :10608 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 01:27:38,110 DEBUG   Thread-12 :10608 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 01:27:38,637 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:27:38,969 DEBUG   Thread-6  :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/3eo89yhv/file_stream HTTP/1.1" 200 None
+2020-04-17 01:27:38,971 INFO    wandb_send:10608 [internal.py:finish():263] Finish Sync: wandb-metadata.json
+2020-04-17 01:27:38,971 INFO    wandb_send:10608 [internal.py:finish():263] Finish Sync: wandb-jobspec.json
+2020-04-17 01:27:38,998 DEBUG   Thread-11 :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-04-17 01:27:39,004 DEBUG   Thread-12 :10608 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-04-17 01:27:39,005 DEBUG   Thread-11 :10608 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): storage.googleapis.com:443
+2020-04-17 01:27:39,010 DEBUG   Thread-12 :10608 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): storage.googleapis.com:443
+2020-04-17 01:27:40,204 DEBUG   Thread-11 :10608 [connectionpool.py:_make_request():437] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/redtailedhawk/aha/3eo89yhv/wandb-jobspec.json?Expires=1587101317&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=H41IvoRcz0OeJ%2F0PWDT2keoOO1fwxK93fpQISUtJbvEUj6xijBrNjfolBO%2BlIMdjL8DPkfRAT3i7RHK4ni4zKyuO8qkZ%2BUPEl3M4RFOkd1R31I4aYuOrWHt7XRmhNlZlRHE00rqpJESYyCz%2B3qBbW%2FktPjp9uf87CtbtK6hYK9H9rgT2fCbgj2bXscAz8KgYqtzrWvrUPpGNtDh9qWXv%2Fy85FE6myfewkUS7wHuJ5tJJRBgvsj50oNgDTNE0Py2pD9dNJUla9z%2FW%2FSxGzBvb9pzU8pqAPBHKU3uemkXe%2F2M4Yr%2BE9Vdk4miY1DyX9mmoJv77dWekpqqYPZXJKeoTbw%3D%3D HTTP/1.1" 200 0
+2020-04-17 01:27:40,364 DEBUG   Thread-12 :10608 [connectionpool.py:_make_request():437] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/redtailedhawk/aha/3eo89yhv/wandb-metadata.json?Expires=1587101317&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=LQsl0qsSIlAv0QsvyUuOLHSnqHgRytTH3INPCGSdsrxHSnmVGoiVDuf9Y%2FCKWMJkpUZRxIynnOsULxS1zSD%2B6lv1IR9RzBICJYxH2VkP1aztLrx7NcBCceKHljoGWMeApMZ%2BNW1CehrozXy3e3%2FZgJiGzxPK7VSgLpOqo8d1CgUamUxtQtLtQhh1cznoyhruQkDXp9fCBlkx%2BnxtDBB8ZfXE7D8oKNMWCHI%2FPywudR3Zs5oX9bdUgV0Tc%2FFK24PUKCLce7lwEUi5AyhUKVVe7f%2Bing%2FJkm2BuVS9uTbPN38ShJTK2Q%2FzEADyIxEYJgbVB6kVBVynFs3Aabg06AO55g%3D%3D HTTP/1.1" 200 0

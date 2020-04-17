@@ -1,3 +1,6 @@
+# Keep false unless uploading to weights and balances account.
+wandb_upload = False
+
 # Imports
 import sys
 from pathlib2 import Path
@@ -15,8 +18,9 @@ from torchvision.datasets import Omniglot
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-# import wandb
-# wandb.init(entity="redtailedhawk", project="aha")
+if wandb_upload:
+    import wandb
+    wandb.init(entity="redtailedhawk", project="aha")
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
@@ -50,7 +54,7 @@ def make_dataset(params):
                        download=True)
 
     dataloader = DataLoader(dataset,
-                            params.batch_size[0],
+                            params.batch_size,
                             shuffle=True,
                             num_workers=params.num_workers,
                             drop_last=True)
@@ -204,7 +208,9 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
         logger.info('- Train metrics: ' + metrics_string)
 
         logger.info(f'Epoch: {epoch} - Train Loss: {loss_avg()}')
-        # wandb.log({"Train Loss": loss_avg()})
+
+        if wandb_upload:
+            wandb.log({"Train Loss": loss_avg()})
 
         if params.autosave:
             # Autosaves latest state after each epoch (overwrites previous state)
@@ -236,12 +242,15 @@ def main():
     dataloader = make_dataset(params)
     model, loss_fn, optimizer = load_model(params)
     metrics = modules.metrics
-
-    # wandb.watch(model)
+    
+    if wandb_upload:
+        wandb.watch(model)
 
     if not params.silent:
         logger.info(f'AUTOSAVE: {params.autosave}')
-        logger.info(f"Epochs: {params.num_epochs}, lr: {params.learning_rate[2]}")
+        logger.info(f"Epochs: {params.num_epochs},
+                    lr: {params.learning_rate[2]},
+                    batch_size: {params.batch_size}")
 
     # Run training
     train(model, dataloader, optimizer, loss_fn, metrics, params)
