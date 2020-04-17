@@ -14,13 +14,8 @@ Use Pipenv to install dependencies and create compatible virtual environment. (h
 ### Running
 Weights should already be trained for the VC module, so to run predictions, do the following:
 
-1. run /eval.py
-2. Save training set image.
-3. run /test.py
-4. Save test set image, save predictions image.
+1. run /train.py
 
-In /experiments/train/params.json:
- - modify test_seed or test_shift values to change the test set variations.
 
 
 ## Built With
