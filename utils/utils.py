@@ -14,10 +14,12 @@ import platform
 import torch
 import torchvision
 
-logger =  logging.getLogger('__main__.' + __name__)
+logger = logging.getLogger('__main__.' + __name__)
+
 
 class Params():
     """Loads params file from params.json"""
+
     def __init__(self, json_path):
         with open(json_path) as f:
             params = json.load(f)
@@ -149,7 +151,7 @@ class Experiment():
 
     def _set_params(self):
         """Creates params from args"""
-        
+
         # Check if user supplied args.
         if self.args.seed:
             self.params.seed = self.args.seed
@@ -157,7 +159,7 @@ class Experiment():
             self.params.data_path = self.args.data
         if self.args.model:
             self.params.model_path = self.args.model
-        
+
         # json path already exists in order to have loaded json file.
         self.params.json_path = self.json_path
 
@@ -309,27 +311,30 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
     print("OK. Loading saved weights complete.")
     return checkpoint
 
+
 def set_logger(logger):
     # logger = logging.getLogger(__name__)
     log_path = './experiments/train/session.log'
 
     for handler in logger.handlers[:]:
         logger.removeHandler(handler)
-    
+
     logger.setLevel(logging.DEBUG)
 
     # Output to console
     c_handler = logging.StreamHandler()
     c_handler.setLevel(logging.DEBUG)
-    c_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s | (%(name)s)')
+    c_formatter = logging.Formatter(
+        '%(asctime)s | %(levelname)s: %(message)s | (%(name)s)')
     c_handler.setFormatter(c_formatter)
     logger.addHandler(c_handler)
 
-    # Output to file 
+    # Output to file
     # Set mode to 'a' for append, 'w' for overwrite.
     f_handler = logging.FileHandler(filename=log_path, mode='w')
     f_handler.setLevel(logging.DEBUG)
-    f_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s | %(name)s.py')
+    f_formatter = logging.Formatter(
+        '%(asctime)s | %(levelname)s: %(message)s | %(name)s.py')
     f_handler.setFormatter(f_formatter)
     logger.addHandler(f_handler)
 
@@ -405,5 +410,3 @@ def clear_terminal(system=None):
         print("\033c", end="")
     elif system == "windows":
         print("\033[H\033[2J", end="")
-
-

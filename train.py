@@ -1,4 +1,3 @@
-
 # Imports
 import sys
 from pathlib2 import Path
@@ -20,20 +19,19 @@ from tqdm import tqdm
 # wandb.init(entity="redtailedhawk", project="aha")
 
 # User modules
-from model import modules # pylint: disable=no-name-in-module
+from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
 
 # Clear terminal & Set logs
 utils.clear_terminal()
-logger =  logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 utils.set_logger(logger)
-
-
 
 # pylint: disable=no-member
 
 # Constants
 my_system = utils.check_os()
+
 
 def make_dataset(params):
     """"""
@@ -107,10 +105,9 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
     for epoch in range(params.num_epochs):
 
-        # Summary for this training loop, as well as avg loss. 
+        # Summary for this training loop, as well as avg loss.
         summ = []
         loss_avg = utils.RunningAverage()
-        
 
         desc = "Epoch: {}".format(epoch)  # Informational only, used in tqdm.
 
@@ -138,15 +135,14 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
                     # FULL VIEW
                     # --------------------------
-                    
+
                     utils.animate_weights(enc_weights, label=i, auto=True)
 
                     # --------------------------
 
-
                     # SINGLE VIEW
                     # --------------------------
-                    
+
                     # for s in range(len(x)):
                     #     utils.animate_weights(y_pred[s].detach(),
                     #                           label=i,
@@ -162,7 +158,7 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                     """
                     # FULL VIEW
                     # ------------------------- -
-                    
+
                     # utils.animate_weights(enc_weights, label=i, auto=False)
 
                     # --------------------------
@@ -177,8 +173,9 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                     x = x.detach().numpy()
 
                     # Compute all metrics on this batch
-                    batch_summary = {metric: metrics[metric](y_pred, x)
-                                     for metric in metrics}
+                    batch_summary = {
+                        metric: metrics[metric](y_pred, x) for metric in metrics
+                    }
                     batch_summary['loss'] = loss.item()
                     summ.append(batch_summary)
 
@@ -190,15 +187,16 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                 t.update()
 
             # Show one last time
-        
+
             if my_system.lower() != 'windows':
                 utils.animate_weights(enc_weights, auto=False)
 
         # Compute mean of all metrics in summary.
-        metrics_mean = {metric: np.mean([x[metric]
-                                        for x in summ]) for metric in summ[0]}
-        metrics_string = ' ; '.join('{}: {:05.3f}'.format(k, v)
-                                    for k, v in metrics_mean.items())
+        metrics_mean = {
+            metric: np.mean([x[metric] for x in summ]) for metric in summ[0]
+        }
+        metrics_string = ' ; '.join(
+            '{}: {:05.3f}'.format(k, v) for k, v in metrics_mean.items())
         logger.info('- Train metrics: ' + metrics_string)
 
         logger.info(f'Epoch: {epoch} - Train Loss: {loss_avg()}')
@@ -244,5 +242,5 @@ def main():
 
 
 if __name__ == '__main__':
-    
+
     main()
