@@ -277,17 +277,17 @@ def save_checkpoint(state, checkpoint, name="last", silent=True):
     filepath = checkpoint / "{}.pth.tar".format(name)
     if not Path(checkpoint).exists():
         if not silent:
-            print("Creating checkpoint directory {}".format(checkpoint))
+            logger.info("Creating checkpoint directory {}".format(checkpoint))
         Path(checkpoint).mkdir()
     else:
         if not silent:
-            print("\nGetting checkpoint directory...")
+            logger.info("\nGetting checkpoint directory...")
     if not silent:
-        print("Saving file...")
+        logger.info("Saving file...")
     # Remember to convert filepath to str or it flips out when trying to save
     torch.save(state, str(filepath))
     if not silent:
-        print("File saved successfully.")
+        logger.info("File saved successfully.")
 
 
 def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
