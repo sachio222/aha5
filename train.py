@@ -19,7 +19,7 @@ from tqdm import tqdm
 
 
 import wandb
-wandb.init(entity="redtailedhawk", project="aha")
+
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
@@ -49,7 +49,7 @@ def make_dataset(params):
     ])
 
     dataset = Omniglot(params.data_path,
-                       background=True,
+                       background=params.background_set,
                        transform=tsfm,
                        download=True)
 
@@ -238,6 +238,10 @@ def main():
 
     # Get params file updated from custom args
     params = aha.get_params()
+
+    # Wandb Credentials
+    if params.wandb:
+        wandb.init(entity="redtailedhawk", project="aha")
 
     # If GPU
     params.cuda = torch.cuda.is_available()

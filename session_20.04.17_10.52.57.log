@@ -1,0 +1,5 @@
+2020-04-17 18:52:57,745 | INFO: Params file loaded successfully. | __main__.utils.utils.py
+2020-04-17 18:52:57,746 | INFO: AUTOSAVE: False | __main__.utils.utils.py
+2020-04-17 18:52:57,746 | INFO: Paths initialized successfully. | __main__.utils.utils.py
+2020-04-17 18:52:59,316 | INFO: Data loaded successfully. | __main__.py
+2020-04-17 18:52:59,319 | INFO: Epochs: 100, lr: 0.001, batch_size: 64 | __main__.py
