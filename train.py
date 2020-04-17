@@ -140,7 +140,7 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
                 #=====MONITORING=====#
                 enc_weights = model.encoder.weight.data
-                
+
                 if params.animate:
 
                     if my_system.lower() != 'windows':
@@ -187,8 +187,10 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                     batch_summary = {
                         metric: metrics[metric](y_pred, x) for metric in metrics
                     }
+
                     batch_summary['loss'] = loss.item()
                     summ.append(batch_summary)
+
 
                 # Update avg. loss after batch.
                 loss_avg.update(loss.item())
