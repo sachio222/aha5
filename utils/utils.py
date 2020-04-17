@@ -16,6 +16,7 @@ import torchvision
 
 logger = logging.getLogger('__main__.' + __name__)
 
+
 class Params():
     """Loads params file from params.json"""
 
@@ -298,7 +299,7 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
         optimizer: (torch.optim) optional: resume optimizer from checkpoint
         name: (string) previx to '.pth.tar' eg: name.pth.tar
     """
-    filepath = checkpoint/ "{}.pth.tar".format(name)
+    filepath = checkpoint / "{}.pth.tar".format(name)
 
     logger.info("Looking for saved files...")
 
@@ -319,7 +320,7 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
 
 def set_logger(logger):
     # logger = logging.getLogger(__name__)
-    
+
     # path = params.model_path
     log_path = './session.log'
 
