@@ -1,0 +1,9 @@
+2020-04-17 01:13:06,789 | INFO: Params file loaded successfully. | __main__.utils.utils.py
+2020-04-17 01:13:06,790 | INFO: Paths initialized successfully. | __main__.utils.utils.py
+2020-04-17 01:13:08,406 | INFO: Data loaded successfully. | __main__.py
+2020-04-17 01:13:08,409 | INFO: Looking for saved files... | __main__.utils.utils.py
+2020-04-17 01:13:08,413 | INFO: Weights found. | __main__.utils.utils.py
+2020-04-17 01:13:08,414 | INFO: Loading saved weights complete. | __main__.utils.utils.py
+2020-04-17 01:13:08,415 | INFO: Loaded weights successfully. | __main__.py
+2020-04-17 01:13:08,415 | INFO: AUTOSAVE: True | __main__.py
+2020-04-17 01:13:08,415 | INFO: Epochs: 100, lr: 0.001 | __main__.py
