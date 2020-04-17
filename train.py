@@ -35,12 +35,6 @@ utils.set_logger(logger)
 # Constants
 my_system = utils.check_os()
 
-# Instantiate
-# aha = utils.Experiment()
-# params = aha.get_params()
-# json_path, data_path, model_path = aha.get_paths()
-
-
 def make_dataset(params):
     """"""
     tsfm = transforms.Compose([
@@ -220,9 +214,13 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
 
 def main():
+
+    # Instantiate
     aha = utils.Experiment()
     params = aha.get_params()
-    json_path, data_path, model_path = aha.get_paths()
+
+    # A little redundant
+    params.json_path, params.data_path, params.model_path = aha.get_paths()
 
     # If GPU
     params.cuda = torch.cuda.is_available()
@@ -243,7 +241,8 @@ def main():
     if not params.silent:
         logger.info(f'AUTOSAVE: {params.autosave}')
         logger.info(f"Training set for {params.num_epochs} epoch(s).")
-
+    print(model_path)
+    exit()
     # Run training
     train(model, dataloader, optimizer, loss_fn, metrics, params)
 

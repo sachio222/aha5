@@ -45,10 +45,10 @@ class Experiment():
     Consists of an argparser, loads params.json, initializes read/write paths.
 
     Methods:
-        _set_args
-        get_args
-        _load_params
-        _init_paths
+        _set_args: Define arg parsers
+        get_args:
+        _load_params:
+        _init_paths:
 
     """
 
@@ -148,12 +148,18 @@ class Experiment():
         return _params
 
     def _set_params(self):
+        """Creates params from args"""
+        
+        # Check if user supplied args.
         if self.args.seed:
             self.params.seed = self.args.seed
         if self.args.data:
             self.params.data_path = self.args.data
         if self.args.model:
             self.params.model_path = self.args.model
+        
+        # json path already exists in order to have loaded json file.
+        self.params.json_path = self.json_path
 
         self.params.load = self.args.load
         self.params.silent = self.args.silent
@@ -171,22 +177,21 @@ class Experiment():
         Returns:
             data_path: (path) Path to data file(s).
             model_path: (path) Path to model weights.
-            json_path: (path) Path to params json file.
         """
 
-        # Load from args if present, else params file.
-
-        self.data_path = Path().absolute() / self.params.data_path
-        self.model_path = Path().absolute() / self.params.model_path
+        # Write full path to params.
+        self.params.data_path = Path().absolute() / self.params.data_path
+        self.params.model_path = Path().absolute() / self.params.model_path
 
         if not self.args.silent:
             logger.info('Paths initialized successfully.')
 
+        # Output paths if arg --paths (bool) applied.
         if args.paths:
-            print('PATHS:')
-            print(f'- json path: {self.json_path}')
-            print(f'- data path: {self.data_path}')
-            print(f'- model path: {self.model_path}')
+            logger.info('PATHS:')
+            logger.info(f'- json path: {self.params.json_path}')
+            logger.info(f'- data path: {self.params.data_path}')
+            logger.info(f'- model path: {self.params.model_path}')
 
     def get_paths(self):
         """
@@ -195,7 +200,7 @@ class Experiment():
             self.data_path
             self.model_path
         """
-        return self.json_path, self.data_path, self.model_path
+        return self.params.json_path, self.params.data_path, self.params.model_path
 
 
 class RunningAverage():
@@ -316,7 +321,7 @@ def set_logger(logger):
     # Output to console
     c_handler = logging.StreamHandler()
     c_handler.setLevel(logging.DEBUG)
-    c_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s | %(name)s')
+    c_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s (%(name)s)')
     c_handler.setFormatter(c_formatter)
     logger.addHandler(c_handler)
 
