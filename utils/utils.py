@@ -16,7 +16,6 @@ import torchvision
 
 logger = logging.getLogger('__main__.' + __name__)
 
-
 class Params():
     """Loads params file from params.json"""
 
@@ -47,11 +46,12 @@ class Experiment():
     Consists of an argparser, loads params.json, initializes read/write paths.
 
     Methods:
-        _set_args: Define arg parsers
-        get_args:
-        _load_params:
-        _init_paths:
-
+        _set_args: (Private) Define all arg parsers here.
+        _load_params: (Private) Load parameters file from json path.
+        _set_params: (Private) Write custom args to params file when applicable.
+        get_params: (Public) Get params object.
+        _init_paths: (Private) Create absolute paths from args or params.
+        get_paths: (Public) Returns tuple of json path, model path and data paths.
     """
 
     def __init__(self):
@@ -67,7 +67,7 @@ class Experiment():
         self._set_params()
 
         # Complete the paths relative to __main__
-        self._init_paths(params=self.params, args=self.args)
+        self._init_paths()
 
     def _set_args(self):
         """Set path variables, settings, etc.
@@ -147,7 +147,14 @@ class Experiment():
         return parser.parse_args()
 
     def _load_params(self, path):
-        """Loads parameters from json file."""
+        """Loads parameters from json file.
+        
+        Args:
+            path: (string) relative path to params.json file.
+        
+        Returns:
+            _params: (Params object) contains default parameters from json file.
+        """
 
         self.json_path = Path().absolute() / path
 
@@ -158,17 +165,19 @@ class Experiment():
                 logger.info('Params file loaded successfully.')
 
         except:
-            logger.error(f'No params.json file found at {self.json_path}\n')
+            logger.error(f'No params.json file found at {self.json_path}.\n')
             exit()
 
         return _params
 
     def _set_params(self):
-        """Creates params from args.
+        """Adds/overwrites params.json with user args if applicable.
         
         Todo:
             Make the conversion automatic and flexible for every entry in args.
         """
+        # json path already exists in order to have loaded json file.
+        self.params.json_path = self.json_path
 
         # Check if user supplied args.
         if self.args.seed:
@@ -178,10 +187,7 @@ class Experiment():
         if self.args.model:
             self.params.model_path = self.args.model
 
-
-        # json path already exists in order to have loaded json file.
-        self.params.json_path = self.json_path
-
+        # Bool flags get written to params.
         self.params.load = self.args.load
         self.params.silent = self.args.silent
 
@@ -194,19 +200,16 @@ class Experiment():
             if self.params.wandb:
                 logger.info('Uploading to W&B')
         
-        
+
     def get_params(self):
         return self.params
 
-    def _init_paths(self, params, args):
-        """Initialize paths relative to __main__.
+    def _init_paths(self):
+        """Creates absolute paths from inputs relative to __main__.
 
-        Checks for params.json file. Uses paths from file. If path is provided
-            as argument, uses argument instead.
-
-        Returns:
-            data_path: (path) Path to data file(s).
-            model_path: (path) Path to model weights.
+        Checks params.json file for default paths. If path is provided
+            as argument, uses argument instead. Shows output if paths flag
+            present.
         """
 
         # Write full path to params.
@@ -217,19 +220,13 @@ class Experiment():
             logger.info('Paths initialized successfully.')
 
         # Output paths if arg --paths (bool) applied.
-        if args.paths:
+        if self.args.paths:
             logger.info('PATHS:')
             logger.info(f'- json path: {self.params.json_path}')
             logger.info(f'- data path: {self.params.data_path}')
             logger.info(f'- model path: {self.params.model_path}')
 
     def get_paths(self):
-        """
-        Returns:
-            self.json_path
-            self.data_path
-            self.model_path
-        """
         return self.params.json_path, self.params.data_path, self.params.model_path
 
 
