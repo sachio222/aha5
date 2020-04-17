@@ -23,3 +23,5 @@
 2020-04-17 19:10:38,973 | INFO: Epoch: 8 - Train Loss: 0.22305443665117916 | __main__.py
 2020-04-17 19:12:35,876 | INFO: - Train metrics: accuracy: 1.710 ; loss: 0.214 | __main__.py
 2020-04-17 19:12:35,876 | INFO: Epoch: 9 - Train Loss: 0.21100328149787612 | __main__.py
+2020-04-17 19:14:46,564 | INFO: - Train metrics: accuracy: 1.696 ; loss: 0.203 | __main__.py
+2020-04-17 19:14:46,565 | INFO: Epoch: 10 - Train Loss: 0.20124959559535663 | __main__.py
