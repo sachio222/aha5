@@ -1,6 +1,7 @@
 # Ignore personal workspace, vscode, ds_store
 *.code-workspace
-/.vscode
+.vscode
 .DS_Store
 __pycache__/
 venv
+old/
