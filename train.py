@@ -1,5 +1,4 @@
 # Keep false unless uploading to weights and balances account.
-wandb_upload = False
 
 # Imports
 import sys
@@ -18,9 +17,9 @@ from torchvision.datasets import Omniglot
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-if wandb_upload:
-    import wandb
-    wandb.init(entity="redtailedhawk", project="aha")
+
+import wandb
+wandb.init(entity="redtailedhawk", project="aha")
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
@@ -215,7 +214,7 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
         logger.info(f'Epoch: {epoch} - Train Loss: {loss_avg()}')
 
-        if wandb_upload:
+        if params.wandb:
             wandb.log({"Train Loss": loss_avg()})
 
         # SAVE WEIGHTS
@@ -254,7 +253,7 @@ def main():
     model, loss_fn, optimizer = load_model(params)
     metrics = modules.metrics
 
-    if wandb_upload:
+    if params.wandb:
         wandb.watch(model)
 
     if not params.silent:

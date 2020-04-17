@@ -79,6 +79,7 @@ class Experiment():
             --seed: (int) Manual seed for stochasticity
             --paths: (bool) Print loaded paths to console. 
             --silent: (bool) Do not print status.
+            --wandb: (bool) Upload results to wandb.
             --load: (bool) Load pretrained weights.
             -a, --autosave: (bool)
         """
@@ -128,6 +129,13 @@ class Experiment():
             default=False,
             type=bool,
             help='(bool) Load pretrained weights from model path.')
+        
+        parser.add_argument('--wandb',
+                            nargs='?',
+                            const=True,
+                            default=False,
+                            type=bool,
+                            help='(bool) Uploads data to wandb.')
 
         parser.add_argument('-a',
                             '--autosave',
@@ -156,7 +164,11 @@ class Experiment():
         return _params
 
     def _set_params(self):
-        """Creates params from args"""
+        """Creates params from args.
+        
+        Todo:
+            Make the conversion automatic and flexible for every entry in args.
+        """
 
         # Check if user supplied args.
         if self.args.seed:
@@ -166,16 +178,23 @@ class Experiment():
         if self.args.model:
             self.params.model_path = self.args.model
 
+
         # json path already exists in order to have loaded json file.
         self.params.json_path = self.json_path
 
         self.params.load = self.args.load
         self.params.silent = self.args.silent
-        self.params.autosave = self.args.autosave
 
+        self.params.autosave = self.args.autosave
         if not self.params.silent:
             logger.info(f'AUTOSAVE: {self.params.autosave}')
 
+        self.params.wandb = self.args.wandb
+        if not self.params.silent:
+            if self.params.wandb:
+                logger.info('Uploading to W&B')
+        
+        
     def get_params(self):
         return self.params
 
