@@ -1,9 +1,0 @@
-2020-04-12 17:27:33,874 | INFO: Params file loaded successfully. | __main__.utils.utils.py
-2020-04-12 17:27:33,875 | INFO: Paths initialized successfully. | __main__.utils.utils.py
-2020-04-12 17:27:35,387 | INFO: Data loaded successfully. | __main__.py
-2020-04-12 17:27:35,403 | INFO: AUTOSAVE: False | __main__.py
-2020-04-12 17:31:41,217 | INFO: Epoch: 0 - Train Loss: 0.45725583903398753 | __main__.py
-2020-04-12 17:35:47,715 | INFO: Epoch: 1 - Train Loss: 0.2629750851402639 | __main__.py
-2020-04-12 17:40:03,589 | INFO: Epoch: 2 - Train Loss: 0.1823857538556657 | __main__.py
-2020-04-12 17:45:58,341 | INFO: Epoch: 3 - Train Loss: 0.13628295546250718 | __main__.py
-2020-04-12 17:51:52,372 | INFO: Epoch: 4 - Train Loss: 0.10724169880739139 | __main__.py
