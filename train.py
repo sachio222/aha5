@@ -75,7 +75,7 @@ def load_model(params):
                                PADDING=1)
 
     loss_fn = nn.BCELoss()
-    optimizer = optim.Adam(model.parameters(), lr=params.learning_rate[2])
+    optimizer = optim.Adam(model.parameters(), lr=params.learning_rate)
 
     if params.load:
         # Get last trained weights.
@@ -249,7 +249,7 @@ def main():
     if not params.silent:
         logger.info(f'AUTOSAVE: {params.autosave}')
         logger.info(
-            f"Epochs: {params.num_epochs}, lr: {params.learning_rate[2]}, batch_size: {params.batch_size}"
+            f"Epochs: {params.num_epochs}, lr: {params.learning_rate}, batch_size: {params.batch_size}"
         )
 
     # Run training
