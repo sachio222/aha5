@@ -1,0 +1,10 @@
+{
+    "os": "Windows-10-10.0.18362-SP0",
+    "python": "3.7.6",
+    "args": [
+        "--model=experiments/pretrain"
+    ],
+    "state": "running",
+    "heartbeatAt": "2020-04-17T05:35:01.013920",
+    "startedAt": "2020-04-17T05:34:59.098047"
+}

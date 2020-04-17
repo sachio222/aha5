@@ -16,3 +16,8 @@
 2020-04-17 01:24:05,369 | INFO: Epoch: 0 - Train Loss: 0.45725583903398753 | __main__.py
 2020-04-17 01:33:34,562 | INFO: Params file loaded successfully. | __main__.utils.utils.py
 2020-04-17 01:33:34,563 | INFO: Paths initialized successfully. | __main__.utils.utils.py
+2020-04-17 01:35:01,813 | INFO: Params file loaded successfully. | __main__.utils.utils.py
+2020-04-17 01:35:01,814 | INFO: Paths initialized successfully. | __main__.utils.utils.py
+2020-04-17 01:37:29,102 | INFO: Params file loaded successfully. | __main__.utils.utils.py
+2020-04-17 01:37:29,102 | INFO: Paths initialized successfully. | __main__.utils.utils.py
+2020-04-17 01:37:30,749 | INFO: Data loaded successfully. | __main__.py

@@ -1,0 +1,11 @@
+{
+    "os": "Windows-10-10.0.18362-SP0",
+    "python": "3.7.6",
+    "args": [
+        "--model=experiments/pretrain",
+        "--json=experiments/pretrain/params.json"
+    ],
+    "state": "running",
+    "heartbeatAt": "2020-04-17T05:37:28.328832",
+    "startedAt": "2020-04-17T05:37:27.047562"
+}
