@@ -26,6 +26,7 @@ from utils import utils  # pylint: disable=RP0003, F0401
 # Clear terminal & Set logger variable
 utils.clear_terminal()
 logger = logging.getLogger(__name__)
+utils.set_logger(logger)
 
 # pylint: disable=no-member
 
@@ -73,12 +74,13 @@ def load_model(params):
     if params.load:
         # Get last trained weights.
         try:
+            
             utils.load_checkpoint(params.model_path,
                                   model,
                                   optimizer,
                                   name="pre_train")
-            if not params.silent:
-                logger.info('Loaded weights successfully.')
+            # if not params.silent:
+            #     logger.info('Loaded weights successfully.')
         except Exception:
             logger.warning(
                 '--load request failed. Continuing without pre-trained weights.'
@@ -217,9 +219,6 @@ def main():
     aha = utils.Experiment()
     params = aha.get_params()
 
-    # Set logs
-    utils.set_logger(logger, params)
-
     # If GPU
     params.cuda = torch.cuda.is_available()
 
@@ -238,7 +237,7 @@ def main():
 
     if not params.silent:
         logger.info(f'AUTOSAVE: {params.autosave}')
-        logger.info(f"Training set for {params.num_epochs} epoch(s).")
+        logger.info(f"Epochs: {params.num_epochs}, lr: {params.learning_rate[2]}")
 
     # Run training
     train(model, dataloader, optimizer, loss_fn, metrics, params)
