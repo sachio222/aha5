@@ -321,7 +321,7 @@ def set_logger(logger):
     # Output to console
     c_handler = logging.StreamHandler()
     c_handler.setLevel(logging.DEBUG)
-    c_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s (%(name)s)')
+    c_formatter = logging.Formatter('%(asctime)s | %(levelname)s: %(message)s | (%(name)s)')
     c_handler.setFormatter(c_formatter)
     logger.addHandler(c_handler)
 
