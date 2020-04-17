@@ -25,7 +25,6 @@ if wandb_upload:
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
-
 """Todo: store, access multisession train loss.
 """
 
@@ -39,6 +38,7 @@ utils.set_logger(logger)
 # Constants
 # Check OS
 my_system = utils.check_os()
+
 
 def make_dataset(params):
     """"""
@@ -80,7 +80,7 @@ def load_model(params):
     if params.load:
         # Get last trained weights.
         try:
-            
+
             utils.load_checkpoint(params.model_path,
                                   model,
                                   optimizer,
@@ -242,18 +242,19 @@ def main():
     dataloader = make_dataset(params)
     model, loss_fn, optimizer = load_model(params)
     metrics = modules.metrics
-    
+
     if wandb_upload:
         wandb.watch(model)
 
     if not params.silent:
         logger.info(f'AUTOSAVE: {params.autosave}')
-        logger.info(f"Epochs: {params.num_epochs},
-                    lr: {params.learning_rate[2]},
-                    batch_size: {params.batch_size}")
+        logger.info(
+            f"Epochs: {params.num_epochs}, lr: {params.learning_rate[2]}, batch_size: {params.batch_size}"
+        )
 
     # Run training
     train(model, dataloader, optimizer, loss_fn, metrics, params)
+
 
 if __name__ == '__main__':
     main()
