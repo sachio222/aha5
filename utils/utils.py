@@ -126,8 +126,8 @@ class Experiment():
         parser.add_argument('-a',
                             '--autosave',
                             nargs='?',
-                            const=True,
-                            default=False,
+                            const=False,
+                            default=True,
                             type=bool,
                             help='(bool) Autosave.')
         return parser.parse_args()
@@ -312,9 +312,11 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
     return checkpoint
 
 
-def set_logger(logger):
+def set_logger(logger, params):
     # logger = logging.getLogger(__name__)
-    log_path = './experiments/train/session.log'
+    
+    path = params.model_path
+    log_path = Path(path, 'session.log')
 
     for handler in logger.handlers[:]:
         logger.removeHandler(handler)

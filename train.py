@@ -22,10 +22,10 @@ from tqdm import tqdm
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
 
-# Clear terminal & Set logs
+
+# Clear terminal & Set logger variable
 utils.clear_terminal()
 logger = logging.getLogger(__name__)
-utils.set_logger(logger)
 
 # pylint: disable=no-member
 
@@ -217,6 +217,9 @@ def main():
     aha = utils.Experiment()
     params = aha.get_params()
 
+    # Set logs
+    utils.set_logger(logger, params)
+
     # If GPU
     params.cuda = torch.cuda.is_available()
 
@@ -242,5 +245,4 @@ def main():
 
 
 if __name__ == '__main__':
-
     main()
