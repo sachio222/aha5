@@ -173,6 +173,9 @@ class Experiment():
         self.params.silent = self.args.silent
         self.params.autosave = self.args.autosave
 
+        if not self.params.silent:
+            logger.info(f'AUTOSAVE: {self.params.autosave}')
+
     def get_params(self):
         return self.params
 

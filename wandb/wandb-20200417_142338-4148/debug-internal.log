@@ -1,0 +1,25 @@
+2020-04-17 14:23:39,828 INFO    wandb_write:3808 [datastore.py:open():19] open: wandb\wandb-20200417_142338-4148\wandb-20200417_142338-4148-data.bin
+2020-04-17 14:23:39,840 DEBUG   wandb_send:3808 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 14:23:40,882 DEBUG   wandb_send:3808 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-04-17 14:23:40,891 INFO    wandb_send:3808 [internal.py:handle_run():184] run started: yil2aj1e
+2020-04-17 14:23:40,891 INFO    wandb_send:3808 [internal.py:_save_file():241] saving file wandb-metadata.json at wandb\wandb-20200417_142338-4148\files
+2020-04-17 14:23:40,891 INFO    wandb_send:3808 [internal.py:_save_file():243] saving file wandb-metadata.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_142338-4148\files\wandb-metadata.json
+2020-04-17 14:23:40,905 INFO    wandb_send:3808 [internal.py:_save_file():241] saving file wandb-jobspec.json at wandb\wandb-20200417_142338-4148\files
+2020-04-17 14:23:40,905 INFO    wandb_send:3808 [internal.py:_save_file():243] saving file wandb-jobspec.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_142338-4148\files\wandb-jobspec.json
+2020-04-17 14:23:40,925 INFO    wandb_send:3808 [internal.py:handle_exit():139] scan: wandb\wandb-20200417_142338-4148\files
+2020-04-17 14:23:40,926 INFO    wandb_send:3808 [internal.py:handle_exit():145] scan save: wandb\wandb-20200417_142338-4148\files\wandb-jobspec.json wandb-jobspec.json
+2020-04-17 14:23:40,926 INFO    wandb_send:3808 [internal.py:_save_file():241] saving file wandb-jobspec.json at wandb\wandb-20200417_142338-4148\files
+2020-04-17 14:23:40,926 INFO    wandb_send:3808 [internal.py:_save_file():243] saving file wandb-jobspec.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_142338-4148\files\wandb-jobspec.json
+2020-04-17 14:23:40,927 INFO    wandb_send:3808 [internal.py:handle_exit():145] scan save: wandb\wandb-20200417_142338-4148\files\wandb-metadata.json wandb-metadata.json
+2020-04-17 14:23:40,927 INFO    wandb_send:3808 [internal.py:_save_file():241] saving file wandb-metadata.json at wandb\wandb-20200417_142338-4148\files
+2020-04-17 14:23:40,927 INFO    wandb_send:3808 [internal.py:_save_file():243] saving file wandb-metadata.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_142338-4148\files\wandb-metadata.json
+2020-04-17 14:23:41,926 INFO    wandb_write:3808 [datastore.py:close():68] close: wandb\wandb-20200417_142338-4148\wandb-20200417_142338-4148-data.bin
+2020-04-17 14:23:41,931 DEBUG   Thread-6  :3808 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 14:23:41,940 DEBUG   Thread-9  :3808 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 14:23:42,660 DEBUG   Thread-9  :3808 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-04-17 14:23:42,669 DEBUG   Thread-9  :3808 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): storage.googleapis.com:443
+2020-04-17 14:23:42,686 DEBUG   Thread-6  :3808 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/yil2aj1e/file_stream HTTP/1.1" 200 None
+2020-04-17 14:23:43,003 DEBUG   Thread-6  :3808 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/yil2aj1e/file_stream HTTP/1.1" 200 None
+2020-04-17 14:23:43,005 INFO    wandb_send:3808 [internal.py:finish():263] Finish Sync: wandb-metadata.json
+2020-04-17 14:23:43,006 INFO    wandb_send:3808 [internal.py:finish():263] Finish Sync: wandb-jobspec.json
+2020-04-17 14:23:45,024 DEBUG   Thread-9  :3808 [connectionpool.py:_make_request():437] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/redtailedhawk/aha/yil2aj1e/___batch_archive_1.tgz?Expires=1587147882&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=mK7z5ROWzsaMaNFvtvlsKv7oeXxFrQ4mE6o3DhRvj4ra1M25hVWNFSX5%2FS93G%2FvlsBPspnEnqaB2bKgRMA9nQJlkqXUxiJXj8EohqtJQPA4MHxG7lztD5DTS9nddMJNuAYWyhFhC0CeTHfTYuyHqud8Pq8V%2BZrt1aaNhsyMWKkMYyoLwMfSDqYf35kwm1KgEGNwjB0P5Y7BClCW2M%2BtZTpz4JOEnljfyR%2FWNwhhTt63A5wDU7AKtFgwRR4oHwr0bK52gdfjvDKtRdyY%2FAm%2B86lr%2BHds8niMu89jVeieikEvdiDzBl1V8a6fl%2B%2Bi9l1N8XfxSMuMFsNgRXHJQbottAA%3D%3D HTTP/1.1" 200 0
