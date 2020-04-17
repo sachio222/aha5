@@ -1,5 +1,5 @@
 # Keep false unless uploading to weights and balances account.
-wandb_upload = False
+wandb_upload = True
 
 # Imports
 import sys
@@ -41,7 +41,8 @@ my_system = utils.check_os()
 
 
 def make_dataset(params):
-    """"""
+    """Returns DataLoader object"""
+
     tsfm = transforms.Compose([
         transforms.Resize(params.resize_dim),
         transforms.Grayscale(1),
@@ -66,8 +67,8 @@ def make_dataset(params):
 
 
 def load_model(params):
+    """Returns model, loss function and optimizer for training"""
 
-    # model = modules.ECToCA3(D_in=1, D_out=121)
     model = modules.ECPretrain(D_in=1,
                                D_out=121,
                                KERNEL_SIZE=9,
@@ -77,10 +78,12 @@ def load_model(params):
     loss_fn = nn.BCELoss()
     optimizer = optim.Adam(model.parameters(), lr=params.learning_rate)
 
+    # LOAD WEIGHTS
+    # --------------------------
+
     if params.load:
         # Get last trained weights.
         try:
-
             utils.load_checkpoint(params.model_path,
                                   model,
                                   optimizer,
@@ -92,6 +95,8 @@ def load_model(params):
                 '--load request failed. Continuing without pre-trained weights.'
             )
             pass
+    
+    # --------------------------
 
     return model, loss_fn, optimizer
 
@@ -106,6 +111,7 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
         metrics: (dict) of functions that compute metrics from output and labels
         params: (Params) hyperparameters
     """
+
     if not params.silent:
         print('\n[---TRAINING START---]')
 
@@ -212,6 +218,9 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
         if wandb_upload:
             wandb.log({"Train Loss": loss_avg()})
 
+        # SAVE WEIGHTS
+        # --------------------------
+
         if params.autosave:
             # Autosaves latest state after each epoch (overwrites previous state)
             state = utils.get_save_state(epoch, model, optimizer)
@@ -219,6 +228,8 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                                   params.model_path,
                                   name="pre_train",
                                   silent=False)
+
+        # --------------------------
 
 
 def main():
@@ -247,7 +258,6 @@ def main():
         wandb.watch(model)
 
     if not params.silent:
-        logger.info(f'AUTOSAVE: {params.autosave}')
         logger.info(
             f"Epochs: {params.num_epochs}, lr: {params.learning_rate}, batch_size: {params.batch_size}"
         )
