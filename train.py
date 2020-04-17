@@ -139,7 +139,7 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                 loss.backward()
 
                 #=====MONITORING=====#
-                if params.display:
+                if params.animate:
                     enc_weights = model.encoder.weight.data
 
                     if my_system.lower() != 'windows':
@@ -198,7 +198,7 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
             # Show one last time
 
-            if my_system.lower() != 'windows':
+            if params.animate:
                 utils.animate_weights(enc_weights, auto=False)
 
         # Compute mean of all metrics in summary.

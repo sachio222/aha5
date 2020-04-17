@@ -82,6 +82,7 @@ class Experiment():
             --silent: (bool) Do not print status.
             --wandb: (bool) Upload results to wandb.
             -d, --display: (bool) Show image after each epoch.
+            --animate: (bool) Shows image after each step.
             --load: (bool) Load pretrained weights.
             -a, --autosave: (bool)
         """
@@ -146,6 +147,12 @@ class Experiment():
                             type=bool,
                             help='(bool) Shows output img after each epoch.')
         
+        parser.add_argument('--animate',
+                            nargs='?',
+                            const=True,
+                            default=False,
+                            type=bool,
+                            help='(bool) Shows weights after each step.')
 
         parser.add_argument('-a',
                             '--autosave',
@@ -200,8 +207,9 @@ class Experiment():
         # Bool flags get written to params.
         self.params.load = self.args.load
         self.params.silent = self.args.silent
-
+        self.params.animate = self.args.animate
         self.params.display = self.args.display
+        
         if not self.params.silent:
             logger.info(f'DISPLAY: {self.params.display}')
 
