@@ -219,9 +219,6 @@ def main():
     aha = utils.Experiment()
     params = aha.get_params()
 
-    # A little redundant
-    # params.json_path, params.data_path, params.model_path = aha.get_paths()
-
     # If GPU
     params.cuda = torch.cuda.is_available()
 
