@@ -97,7 +97,7 @@ class Experiment():
         parser.add_argument('--paths',
                             nargs='?',
                             const=True,
-                            help='(boolean) Print file paths in console.',
+                            help='(bool) Print file paths in console.',
                             default=False,
                             type=bool)
 
