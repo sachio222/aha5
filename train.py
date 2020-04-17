@@ -139,44 +139,41 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                 loss.backward()
 
                 #=====MONITORING=====#
+                if params.display:
+                    enc_weights = model.encoder.weight.data
 
-                enc_weights = model.encoder.weight.data
+                    if my_system.lower() != 'windows':
+                        # For mac only
+                        # Uncomment 1 of the following at a time to view kernels while training:
 
-                if my_system.lower() != 'windows':
-                    # For mac only
-                    # Uncomment 1 of the following at a time to view kernels while training:
+                        # FULL VIEW
+                        # --------------------------
 
-                    # FULL VIEW
-                    # --------------------------
+                        utils.animate_weights(enc_weights, label=i, auto=True)
 
-                    utils.animate_weights(enc_weights, label=i, auto=True)
+                        # --------------------------
 
-                    # --------------------------
+                        # SINGLE VIEW
+                        # --------------------------
 
-                    # SINGLE VIEW
-                    # --------------------------
+                        # for s in range(len(x)):
+                        #     utils.animate_weights(y_pred[s].detach(),
+                        #                           label=i,
+                        #                           auto=True)
 
-                    # for s in range(len(x)):
-                    #     utils.animate_weights(y_pred[s].detach(),
-                    #                           label=i,
-                    #                           auto=True)
+                        # --------------------------
 
-                    # --------------------------
+                    else:
+                        '''Show full kernels on windows'''
+                        
+                        # FULL VIEW
+                        # ------------------------- -
 
-                else:
-                    '''Show full kernels on windows'''
-                    """
-                    Todo:
-                        If args.display is true.
-                    """
-                    # FULL VIEW
-                    # ------------------------- -
+                        utils.animate_weights(enc_weights, label=i, auto=False)
 
-                    # utils.animate_weights(enc_weights, label=i, auto=False)
+                        # --------------------------
 
-                    # --------------------------
-
-                #=====END MONIT.=====#
+                    #=====END MONIT.=====#
 
                 optimizer.step()
 
