@@ -10,13 +10,26 @@ Use Pipenv to install dependencies and create compatible virtual environment. (h
 
  - Requires Python version >= 3.6
 
+### Pretraining weights
+To pretrain the visual cortex modules, run the following:
+
+```python train.py --model=experiments/pretrain --json=experiments/pretrain/params.json```
+
+It will autosave to the model folder after every epoch. If you want to disable autosave use:
+
+```--autosave=False```
+
+To load pre-trained weights, include:
+
+```--load```
 
 ### Running
 Weights should already be trained for the VC module, so to run predictions, do the following:
 
 1. run /train.py
 
-
+### Logs
+Logs are stored in session.log in the project root dir. They are currently set to overwrite (```w```) and can be set to append with an ```a``` in the ```set_logs```
 
 ## Built With
 
