@@ -356,3 +356,123 @@ Getting checkpoint directory... | __main__.utils.utils.py
 Getting checkpoint directory... | __main__.utils.utils.py
 2020-04-17 15:06:13,649 | INFO: Saving file... | __main__.utils.utils.py
 2020-04-17 15:06:13,652 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:08:20,591 | INFO: - Train metrics: accuracy: 1.643 ; loss: 0.144 | __main__.py
+2020-04-17 15:08:20,591 | INFO: Epoch: 24 - Train Loss: 0.1438230798886068 | __main__.py
+2020-04-17 15:08:20,592 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:08:20,593 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:08:20,595 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:09:55,047 | INFO: - Train metrics: accuracy: 1.671 ; loss: 0.143 | __main__.py
+2020-04-17 15:09:55,047 | INFO: Epoch: 25 - Train Loss: 0.14355074735574944 | __main__.py
+2020-04-17 15:09:55,048 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:09:55,049 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:09:55,052 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:11:32,203 | INFO: - Train metrics: accuracy: 1.759 ; loss: 0.154 | __main__.py
+2020-04-17 15:11:32,203 | INFO: Epoch: 26 - Train Loss: 0.14280816066106689 | __main__.py
+2020-04-17 15:11:32,204 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:11:32,205 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:11:32,208 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:13:08,194 | INFO: - Train metrics: accuracy: 1.648 ; loss: 0.144 | __main__.py
+2020-04-17 15:13:08,194 | INFO: Epoch: 27 - Train Loss: 0.14183284124464687 | __main__.py
+2020-04-17 15:13:08,196 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:13:08,197 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:13:08,200 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:14:41,964 | INFO: - Train metrics: accuracy: 1.640 ; loss: 0.141 | __main__.py
+2020-04-17 15:14:41,965 | INFO: Epoch: 28 - Train Loss: 0.14153816778695463 | __main__.py
+2020-04-17 15:14:41,966 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:14:41,967 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:14:41,970 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:16:17,834 | INFO: - Train metrics: accuracy: 1.708 ; loss: 0.142 | __main__.py
+2020-04-17 15:16:17,834 | INFO: Epoch: 29 - Train Loss: 0.14141400366328483 | __main__.py
+2020-04-17 15:16:17,835 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:16:17,836 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:16:17,838 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:17:51,120 | INFO: - Train metrics: accuracy: 1.617 ; loss: 0.137 | __main__.py
+2020-04-17 15:17:51,120 | INFO: Epoch: 30 - Train Loss: 0.14130222745413004 | __main__.py
+2020-04-17 15:17:51,121 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:17:51,122 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:17:51,125 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:19:25,548 | INFO: - Train metrics: accuracy: 1.707 ; loss: 0.144 | __main__.py
+2020-04-17 15:19:25,549 | INFO: Epoch: 31 - Train Loss: 0.1407694419307566 | __main__.py
+2020-04-17 15:19:25,550 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:19:25,550 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:19:25,553 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:20:59,286 | INFO: - Train metrics: accuracy: 1.608 ; loss: 0.134 | __main__.py
+2020-04-17 15:20:59,287 | INFO: Epoch: 32 - Train Loss: 0.13992318944182508 | __main__.py
+2020-04-17 15:20:59,288 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:20:59,289 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:20:59,292 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:22:32,268 | INFO: - Train metrics: accuracy: 1.604 ; loss: 0.137 | __main__.py
+2020-04-17 15:22:32,269 | INFO: Epoch: 33 - Train Loss: 0.13955463511108163 | __main__.py
+2020-04-17 15:22:32,270 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:22:32,270 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:22:32,273 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:24:06,548 | INFO: - Train metrics: accuracy: 1.561 ; loss: 0.132 | __main__.py
+2020-04-17 15:24:06,548 | INFO: Epoch: 34 - Train Loss: 0.13939480983537694 | __main__.py
+2020-04-17 15:24:06,549 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:24:06,550 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:24:06,552 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:25:39,905 | INFO: - Train metrics: accuracy: 1.704 ; loss: 0.138 | __main__.py
+2020-04-17 15:25:39,905 | INFO: Epoch: 35 - Train Loss: 0.1391046905883919 | __main__.py
+2020-04-17 15:25:39,906 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:25:39,907 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:25:39,910 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:27:14,546 | INFO: - Train metrics: accuracy: 1.633 ; loss: 0.138 | __main__.py
+2020-04-17 15:27:14,547 | INFO: Epoch: 36 - Train Loss: 0.13904743218342727 | __main__.py
+2020-04-17 15:27:14,548 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:27:14,549 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:27:14,552 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:28:48,812 | INFO: - Train metrics: accuracy: 1.626 ; loss: 0.136 | __main__.py
+2020-04-17 15:28:48,812 | INFO: Epoch: 37 - Train Loss: 0.139035462392525 | __main__.py
+2020-04-17 15:28:48,813 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:28:48,814 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:28:48,817 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:30:23,306 | INFO: - Train metrics: accuracy: 1.714 ; loss: 0.140 | __main__.py
+2020-04-17 15:30:23,306 | INFO: Epoch: 38 - Train Loss: 0.13881604442762774 | __main__.py
+2020-04-17 15:30:23,308 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:30:23,308 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:30:23,311 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:31:56,533 | INFO: - Train metrics: accuracy: 1.658 ; loss: 0.142 | __main__.py
+2020-04-17 15:31:56,533 | INFO: Epoch: 39 - Train Loss: 0.138680898667966 | __main__.py
+2020-04-17 15:31:56,534 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:31:56,536 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:31:56,538 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:33:30,885 | INFO: - Train metrics: accuracy: 1.651 ; loss: 0.139 | __main__.py
+2020-04-17 15:33:30,886 | INFO: Epoch: 40 - Train Loss: 0.13866636260997417 | __main__.py
+2020-04-17 15:33:30,887 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:33:30,888 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:33:30,891 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:35:06,339 | INFO: - Train metrics: accuracy: 1.665 ; loss: 0.140 | __main__.py
+2020-04-17 15:35:06,339 | INFO: Epoch: 41 - Train Loss: 0.13882333812523523 | __main__.py
+2020-04-17 15:35:06,341 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:35:06,342 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:35:06,345 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:37:04,518 | INFO: - Train metrics: accuracy: 1.748 ; loss: 0.145 | __main__.py
+2020-04-17 15:37:04,518 | INFO: Epoch: 42 - Train Loss: 0.1387008727339415 | __main__.py
+2020-04-17 15:37:04,519 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:37:04,520 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:37:04,523 | INFO: File saved successfully. | __main__.utils.utils.py
+2020-04-17 15:38:54,674 | INFO: - Train metrics: accuracy: 1.642 ; loss: 0.139 | __main__.py
+2020-04-17 15:38:54,674 | INFO: Epoch: 43 - Train Loss: 0.13869784945665403 | __main__.py
+2020-04-17 15:38:54,676 | INFO: 
+Getting checkpoint directory... | __main__.utils.utils.py
+2020-04-17 15:38:54,676 | INFO: Saving file... | __main__.utils.utils.py
+2020-04-17 15:38:54,679 | INFO: File saved successfully. | __main__.utils.utils.py
