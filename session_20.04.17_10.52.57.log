@@ -3,3 +3,23 @@
 2020-04-17 18:52:57,746 | INFO: Paths initialized successfully. | __main__.utils.utils.py
 2020-04-17 18:52:59,316 | INFO: Data loaded successfully. | __main__.py
 2020-04-17 18:52:59,319 | INFO: Epochs: 100, lr: 0.001, batch_size: 64 | __main__.py
+2020-04-17 18:54:58,610 | INFO: - Train metrics: accuracy: 1.635 ; loss: 0.604 | __main__.py
+2020-04-17 18:54:58,610 | INFO: Epoch: 0 - Train Loss: 0.5987963514074535 | __main__.py
+2020-04-17 18:56:54,021 | INFO: - Train metrics: accuracy: 1.629 ; loss: 0.484 | __main__.py
+2020-04-17 18:56:54,036 | INFO: Epoch: 1 - Train Loss: 0.48249067093842846 | __main__.py
+2020-04-17 18:58:44,959 | INFO: - Train metrics: accuracy: 1.570 ; loss: 0.402 | __main__.py
+2020-04-17 18:58:44,965 | INFO: Epoch: 2 - Train Loss: 0.4001480957796407 | __main__.py
+2020-04-17 19:00:33,903 | INFO: - Train metrics: accuracy: 1.551 ; loss: 0.345 | __main__.py
+2020-04-17 19:00:33,907 | INFO: Epoch: 3 - Train Loss: 0.34765265154284103 | __main__.py
+2020-04-17 19:02:24,567 | INFO: - Train metrics: accuracy: 1.598 ; loss: 0.309 | __main__.py
+2020-04-17 19:02:24,574 | INFO: Epoch: 4 - Train Loss: 0.30974779136949204 | __main__.py
+2020-04-17 19:04:27,766 | INFO: - Train metrics: accuracy: 1.680 ; loss: 0.282 | __main__.py
+2020-04-17 19:04:27,771 | INFO: Epoch: 5 - Train Loss: 0.2798870187067114 | __main__.py
+2020-04-17 19:06:31,916 | INFO: - Train metrics: accuracy: 1.705 ; loss: 0.258 | __main__.py
+2020-04-17 19:06:31,920 | INFO: Epoch: 6 - Train Loss: 0.2567851130055431 | __main__.py
+2020-04-17 19:08:35,843 | INFO: - Train metrics: accuracy: 1.627 ; loss: 0.237 | __main__.py
+2020-04-17 19:08:35,847 | INFO: Epoch: 7 - Train Loss: 0.23814075546605246 | __main__.py
+2020-04-17 19:10:38,967 | INFO: - Train metrics: accuracy: 1.667 ; loss: 0.224 | __main__.py
+2020-04-17 19:10:38,973 | INFO: Epoch: 8 - Train Loss: 0.22305443665117916 | __main__.py
+2020-04-17 19:12:35,876 | INFO: - Train metrics: accuracy: 1.710 ; loss: 0.214 | __main__.py
+2020-04-17 19:12:35,876 | INFO: Epoch: 9 - Train Loss: 0.21100328149787612 | __main__.py
