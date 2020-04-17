@@ -354,7 +354,7 @@ def set_logger(logger):
 
     """
 
-    log_path = './session.log'
+    log_path = './session'
 
     for handler in logger.handlers[:]:
         logger.removeHandler(handler)
@@ -371,7 +371,9 @@ def set_logger(logger):
 
     # Output to file
     # Set mode to 'a' for append, 'w' for overwrite.
-    f_handler = logging.FileHandler(filename=log_path, mode='a')
+    from datetime import datetime
+    time = str(datetime.utcnow().strftime('%y.%m.%d_%I.%M.%S')) 
+    f_handler = logging.FileHandler(filename=f'{log_path}_{time}.log', mode='a')
     f_handler.setLevel(logging.DEBUG)
     f_formatter = logging.Formatter(
         '%(asctime)s | %(levelname)s: %(message)s | %(name)s.py')

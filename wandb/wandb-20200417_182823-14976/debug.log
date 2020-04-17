@@ -1,0 +1,175 @@
+2020-04-17 18:28:23,464 INFO    MainThread:14976 [wandb_setup.py:_log_setup():205] Logging to wandb\wandb-20200417_182823-14976\debug.log
+2020-04-17 18:28:23,464 INFO    MainThread:14976 [wandb_setup.py:_setup():231] multiprocessing start_methods=spawn
+2020-04-17 18:28:23,473 INFO    MainThread:14976 [wandb_init.py:init():303] runconfig: {'_wandb': {'desc': None, 'value': {'cli_version': '0.0.14'}}}
+2020-04-17 18:28:25,497 INFO    MainThread:14976 [wandb_init.py:init():323] atexit reg
+2020-04-17 18:28:25,497 INFO    MainThread:14976 [wandb_init.py:_redirect():177] redirect
+2020-04-17 18:28:25,497 INFO    MainThread:14976 [redirect.py:install():72] install start
+2020-04-17 18:28:25,499 INFO    MainThread:14976 [redirect.py:install():87] install stop
+2020-04-17 18:28:25,499 INFO    MainThread:14976 [redirect.py:install():72] install start
+2020-04-17 18:28:25,500 INFO    MainThread:14976 [redirect.py:install():87] install stop
+2020-04-17 18:28:25,501 INFO    MainThread:14976 [wandb_init.py:_redirect():204] redirect2
+2020-04-17 18:28:25,502 INFO    MainThread:14976 [wandb_run.py:save():186] Saving from wandb-jobspec.json to wandb\wandb-20200417_182823-14976\files\wandb-jobspec.json
+2020-04-17 18:28:25,518 INFO    stdout    :14976 [wandb_init.py:_callback():173] callback: stdout, b'\x1b[H\x1b[2J'
+2020-04-17 18:28:25,519 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'2020-04-17 18:28:25,518 | INFO: Params file loaded successfully. | (__main__.utils.utils)\r\n'
+2020-04-17 18:28:25,522 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'2020-04-17 18:28:25,519 | INFO: AUTOSAVE: False | (__main__.utils.utils)\r\n'
+2020-04-17 18:28:25,522 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'2020-04-17 18:28:25,519 | INFO: Paths initialized successfully. | (__main__.utils.utils)\r\n'
+2020-04-17 18:28:25,630 INFO    stdout    :14976 [wandb_init.py:_callback():173] callback: stdout, b'Files already downloaded and verified'
+2020-04-17 18:28:25,630 INFO    stdout    :14976 [wandb_init.py:_callback():173] callback: stdout, b'\r\n'
+2020-04-17 18:28:27,235 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'2020-04-17 18:28:27,235 | INFO: Data loaded successfully. | (__main__)\r\n'
+2020-04-17 18:28:27,247 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'2020-04-17 18:28:27,246 | INFO: Epochs: 100, lr: 0.001, batch_size: 64 | (__main__)\r\n'
+2020-04-17 18:28:27,247 INFO    stdout    :14976 [wandb_init.py:_callback():173] callback: stdout, b'\r\n[---TRAINING START---]'
+2020-04-17 18:28:27,248 INFO    stdout    :14976 [wandb_init.py:_callback():173] callback: stdout, b'\r\n'
+2020-04-17 18:28:27,249 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   0%|          | 0/301 [00:00<?, ?it/s]'
+2020-04-17 18:28:27,577 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   0%|          | 0/301 [00:00<?, ?it/s, loss=0.67701006]'
+2020-04-17 18:28:27,578 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   0%|          | 1/301 [00:00<01:38,  3.04it/s, loss=0.67701006]'
+2020-04-17 18:28:27,816 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   0%|          | 1/301 [00:00<01:38,  3.04it/s, loss=0.67641586]'
+2020-04-17 18:28:27,817 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   1%|          | 2/301 [00:00<01:30,  3.31it/s, loss=0.67641586]'
+2020-04-17 18:28:28,074 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   1%|          | 2/301 [00:00<01:30,  3.31it/s, loss=0.67574269]'
+2020-04-17 18:28:28,075 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   1%|          | 3/301 [00:00<01:26,  3.46it/s, loss=0.67574269]'
+2020-04-17 18:28:28,341 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   1%|          | 3/301 [00:01<01:26,  3.46it/s, loss=0.67512387]'
+2020-04-17 18:28:28,342 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   1%|1         | 4/301 [00:01<01:23,  3.54it/s, loss=0.67512387]'
+2020-04-17 18:28:28,599 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   1%|1         | 4/301 [00:01<01:23,  3.54it/s, loss=0.67450913]'
+2020-04-17 18:28:28,599 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   2%|1         | 5/301 [00:01<01:21,  3.64it/s, loss=0.67450913]'
+2020-04-17 18:28:28,858 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   2%|1         | 5/301 [00:01<01:21,  3.64it/s, loss=0.67383603]'
+2020-04-17 18:28:28,859 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   2%|1         | 6/301 [00:01<01:19,  3.70it/s, loss=0.67383603]'
+2020-04-17 18:28:29,165 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   2%|1         | 6/301 [00:01<01:19,  3.70it/s, loss=0.67318936]'
+2020-04-17 18:28:29,166 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   2%|2         | 7/301 [00:01<01:22,  3.56it/s, loss=0.67318936]'
+2020-04-17 18:28:29,431 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   2%|2         | 7/301 [00:02<01:22,  3.56it/s, loss=0.67249457]'
+2020-04-17 18:28:29,431 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   3%|2         | 8/301 [00:02<01:21,  3.61it/s, loss=0.67249457]'
+2020-04-17 18:28:29,683 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   3%|2         | 8/301 [00:02<01:21,  3.61it/s, loss=0.67179074]'
+2020-04-17 18:28:29,684 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   3%|2         | 9/301 [00:02<01:18,  3.72it/s, loss=0.67179074]'
+2020-04-17 18:28:29,937 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   3%|2         | 9/301 [00:02<01:18,  3.72it/s, loss=0.67103579]'
+2020-04-17 18:28:29,937 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   3%|3         | 10/301 [00:02<01:17,  3.78it/s, loss=0.67103579]'
+2020-04-17 18:28:30,206 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   3%|3         | 10/301 [00:02<01:17,  3.78it/s, loss=0.67017208]'
+2020-04-17 18:28:30,207 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   4%|3         | 11/301 [00:02<01:17,  3.76it/s, loss=0.67017208]'
+2020-04-17 18:28:30,463 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   4%|3         | 11/301 [00:03<01:17,  3.76it/s, loss=0.66938453]'
+2020-04-17 18:28:30,464 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   4%|3         | 12/301 [00:03<01:16,  3.80it/s, loss=0.66938453]'
+2020-04-17 18:28:30,739 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   4%|3         | 12/301 [00:03<01:16,  3.80it/s, loss=0.66858881]'
+2020-04-17 18:28:30,740 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   4%|4         | 13/301 [00:03<01:16,  3.74it/s, loss=0.66858881]'
+2020-04-17 18:28:30,991 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   4%|4         | 13/301 [00:03<01:16,  3.74it/s, loss=0.66773279]'
+2020-04-17 18:28:30,991 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   5%|4         | 14/301 [00:03<01:15,  3.81it/s, loss=0.66773279]'
+2020-04-17 18:28:31,259 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   5%|4         | 14/301 [00:04<01:15,  3.81it/s, loss=0.66676609]'
+2020-04-17 18:28:31,259 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   5%|4         | 15/301 [00:04<01:15,  3.79it/s, loss=0.66676609]'
+2020-04-17 18:28:31,526 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   5%|4         | 15/301 [00:04<01:15,  3.79it/s, loss=0.66592666]'
+2020-04-17 18:28:31,527 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   5%|5         | 16/301 [00:04<01:15,  3.77it/s, loss=0.66592666]'
+2020-04-17 18:28:31,781 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   5%|5         | 16/301 [00:04<01:15,  3.77it/s, loss=0.66507750]'
+2020-04-17 18:28:31,781 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   6%|5         | 17/301 [00:04<01:14,  3.82it/s, loss=0.66507750]'
+2020-04-17 18:28:32,040 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   6%|5         | 17/301 [00:04<01:14,  3.82it/s, loss=0.66428111]'
+2020-04-17 18:28:32,041 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   6%|5         | 18/301 [00:04<01:13,  3.83it/s, loss=0.66428111]'
+2020-04-17 18:28:32,293 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   6%|5         | 18/301 [00:05<01:13,  3.83it/s, loss=0.66356492]'
+2020-04-17 18:28:32,294 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   6%|6         | 19/301 [00:05<01:12,  3.87it/s, loss=0.66356492]'
+2020-04-17 18:28:32,558 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   6%|6         | 19/301 [00:05<01:12,  3.87it/s, loss=0.66286618]'
+2020-04-17 18:28:32,558 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   7%|6         | 20/301 [00:05<01:13,  3.84it/s, loss=0.66286618]'
+2020-04-17 18:28:32,807 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   7%|6         | 20/301 [00:05<01:13,  3.84it/s, loss=0.66230188]'
+2020-04-17 18:28:32,808 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   7%|6         | 21/301 [00:05<01:12,  3.89it/s, loss=0.66230188]'
+2020-04-17 18:28:33,079 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   7%|6         | 21/301 [00:05<01:12,  3.89it/s, loss=0.66175746]'
+2020-04-17 18:28:33,079 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   7%|7         | 22/301 [00:05<01:12,  3.82it/s, loss=0.66175746]'
+2020-04-17 18:28:33,409 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   7%|7         | 22/301 [00:06<01:12,  3.82it/s, loss=0.66122850]'
+2020-04-17 18:28:33,410 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   8%|7         | 23/301 [00:06<01:18,  3.55it/s, loss=0.66122850]'
+2020-04-17 18:28:33,715 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   8%|7         | 23/301 [00:06<01:18,  3.55it/s, loss=0.66077526]'
+2020-04-17 18:28:33,715 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   8%|7         | 24/301 [00:06<01:20,  3.46it/s, loss=0.66077526]'
+2020-04-17 18:28:33,969 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   8%|7         | 24/301 [00:06<01:20,  3.46it/s, loss=0.66036660]'
+2020-04-17 18:28:33,970 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   8%|8         | 25/301 [00:06<01:16,  3.59it/s, loss=0.66036660]'
+2020-04-17 18:28:34,222 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   8%|8         | 25/301 [00:06<01:16,  3.59it/s, loss=0.65996252]'
+2020-04-17 18:28:34,223 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   9%|8         | 26/301 [00:06<01:14,  3.69it/s, loss=0.65996252]'
+2020-04-17 18:28:34,496 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   9%|8         | 26/301 [00:07<01:14,  3.69it/s, loss=0.65958894]'
+2020-04-17 18:28:34,496 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   9%|8         | 27/301 [00:07<01:14,  3.68it/s, loss=0.65958894]'
+2020-04-17 18:28:34,797 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   9%|8         | 27/301 [00:07<01:14,  3.68it/s, loss=0.65926912]'
+2020-04-17 18:28:34,797 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   9%|9         | 28/301 [00:07<01:16,  3.56it/s, loss=0.65926912]'
+2020-04-17 18:28:35,044 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:   9%|9         | 28/301 [00:07<01:16,  3.56it/s, loss=0.65887670]'
+2020-04-17 18:28:35,044 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  10%|9         | 29/301 [00:07<01:13,  3.70it/s, loss=0.65887670]'
+2020-04-17 18:28:35,302 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  10%|9         | 29/301 [00:08<01:13,  3.70it/s, loss=0.65853246]'
+2020-04-17 18:28:35,303 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  10%|9         | 30/301 [00:08<01:12,  3.75it/s, loss=0.65853246]'
+2020-04-17 18:28:35,568 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  10%|9         | 30/301 [00:08<01:12,  3.75it/s, loss=0.65819257]'
+2020-04-17 18:28:35,568 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  10%|#         | 31/301 [00:08<01:11,  3.75it/s, loss=0.65819257]'
+2020-04-17 18:28:35,875 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  10%|#         | 31/301 [00:08<01:11,  3.75it/s, loss=0.65772506]'
+2020-04-17 18:28:35,875 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  11%|#         | 32/301 [00:08<01:14,  3.59it/s, loss=0.65772506]'
+2020-04-17 18:28:36,129 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  11%|#         | 32/301 [00:08<01:14,  3.59it/s, loss=0.65736655]'
+2020-04-17 18:28:36,130 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  11%|#         | 33/301 [00:08<01:12,  3.68it/s, loss=0.65736655]'
+2020-04-17 18:28:36,391 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  11%|#         | 33/301 [00:09<01:12,  3.68it/s, loss=0.65702640]'
+2020-04-17 18:28:36,392 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  11%|#1        | 34/301 [00:09<01:11,  3.72it/s, loss=0.65702640]'
+2020-04-17 18:28:36,645 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  11%|#1        | 34/301 [00:09<01:11,  3.72it/s, loss=0.65668609]'
+2020-04-17 18:28:36,646 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  12%|#1        | 35/301 [00:09<01:10,  3.78it/s, loss=0.65668609]'
+2020-04-17 18:28:36,948 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  12%|#1        | 35/301 [00:09<01:10,  3.78it/s, loss=0.65631591]'
+2020-04-17 18:28:36,948 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  12%|#1        | 36/301 [00:09<01:13,  3.63it/s, loss=0.65631591]'
+2020-04-17 18:28:37,219 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  12%|#1        | 36/301 [00:09<01:13,  3.63it/s, loss=0.65595196]'
+2020-04-17 18:28:37,220 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  12%|#2        | 37/301 [00:09<01:12,  3.65it/s, loss=0.65595196]'
+2020-04-17 18:28:37,474 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  12%|#2        | 37/301 [00:10<01:12,  3.65it/s, loss=0.65557964]'
+2020-04-17 18:28:37,475 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  13%|#2        | 38/301 [00:10<01:10,  3.72it/s, loss=0.65557964]'
+2020-04-17 18:28:37,729 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  13%|#2        | 38/301 [00:10<01:10,  3.72it/s, loss=0.65526552]'
+2020-04-17 18:28:37,730 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  13%|#2        | 39/301 [00:10<01:09,  3.78it/s, loss=0.65526552]'
+2020-04-17 18:28:37,992 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  13%|#2        | 39/301 [00:10<01:09,  3.78it/s, loss=0.65502661]'
+2020-04-17 18:28:37,993 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  13%|#3        | 40/301 [00:10<01:08,  3.79it/s, loss=0.65502661]'
+2020-04-17 18:28:38,259 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  13%|#3        | 40/301 [00:11<01:08,  3.79it/s, loss=0.65478832]'
+2020-04-17 18:28:38,260 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  14%|#3        | 41/301 [00:11<01:08,  3.77it/s, loss=0.65478832]'
+2020-04-17 18:28:38,513 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  14%|#3        | 41/301 [00:11<01:08,  3.77it/s, loss=0.65447678]'
+2020-04-17 18:28:38,513 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  14%|#3        | 42/301 [00:11<01:07,  3.82it/s, loss=0.65447678]'
+2020-04-17 18:28:38,773 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  14%|#3        | 42/301 [00:11<01:07,  3.82it/s, loss=0.65417576]'
+2020-04-17 18:28:38,774 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  14%|#4        | 43/301 [00:11<01:07,  3.83it/s, loss=0.65417576]'
+2020-04-17 18:28:39,027 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  14%|#4        | 43/301 [00:11<01:07,  3.83it/s, loss=0.65385846]'
+2020-04-17 18:28:39,028 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  15%|#4        | 44/301 [00:11<01:06,  3.86it/s, loss=0.65385846]'
+2020-04-17 18:28:39,285 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  15%|#4        | 44/301 [00:12<01:06,  3.86it/s, loss=0.65356379]'
+2020-04-17 18:28:39,285 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  15%|#4        | 45/301 [00:12<01:06,  3.86it/s, loss=0.65356379]'
+2020-04-17 18:28:39,550 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  15%|#4        | 45/301 [00:12<01:06,  3.86it/s, loss=0.65335006]'
+2020-04-17 18:28:39,551 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  15%|#5        | 46/301 [00:12<01:06,  3.84it/s, loss=0.65335006]'
+2020-04-17 18:28:39,808 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  15%|#5        | 46/301 [00:12<01:06,  3.84it/s, loss=0.65310801]'
+2020-04-17 18:28:39,809 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  16%|#5        | 47/301 [00:12<01:05,  3.85it/s, loss=0.65310801]'
+2020-04-17 18:28:44,302 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  16%|#5        | 47/301 [00:12<01:05,  3.85it/s, loss=0.65278833]'
+2020-04-17 18:28:44,303 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  16%|#5        | 48/301 [00:12<01:05,  3.88it/s, loss=0.65278833]\rEpoch: 0:  16%|#5        | 48/301 [00:13<01:05,  3.88it/s, loss=0.65250183]\rEpoch: 0:  16%|#6        | 49/301 [00:13<01:06,  3.78it/s, loss=0.65250183]\rEpoch: 0:  16%|#6        | 49/301 [00:13<01:06,  3.78it/s, loss=0.65222201]\rEpoch: 0:  17%|#6        | 50/301 [00:13<01:05,  3.86it/s, loss=0.65222201]\rEpoch: 0:  17%|#6        | 50/301 [00:13<01:05,  3.86it/s, loss=0.65186265]\rEpoch: 0:  17%|#6        | 51/301 [00:13<01:04,  3.87it/s, loss=0.65186265]\rEpoch: 0:  17%|#6        | 51/301 [00:13<01:04,  3.87it/s, loss=0.65157491]\rEpoch: 0:  17%|#7        | 52/301 [00:13<01:04,  3.88it/s, loss=0.65157491]\rEpoch: 0:  17%|#7        | 52/301 [00:14<01:04,  3.88it/s, loss=0.65132558]\rEpoch: 0:  18%|#7        | 53/301 [00:14<01:03,  3.88it/s, loss=0.65132558]\rEpoch: 0:  18%|#7        | 53/301 [00:14<01:03,  3.88it/s, loss=0.65102437]\rEpoch: 0:  18%|#7        | 54/301 [00:14<01:03,  3.87it/s, loss=0.65102437]\rEpoch: 0:  '
+2020-04-17 18:28:44,304 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'18%|#7        | 54/301 [00:14<01:03,  3.87it/s, loss=0.65078864]\rEpoch: 0:  18%|#8        | 55/301 [00:14<01:02,  3.92it/s, loss=0.65078864]\rEpoch: 0:  18%|#8        | 55/301 [00:14<01:02,  3.92it/s, loss=0.65055242]\rEpoch: 0:  19%|#8        | 56/301 [00:14<01:02,  3.92it/s, loss=0.65055242]\rEpoch: 0:  19%|#8        | 56/301 [00:15<01:02,  3.92it/s, loss=0.65032722]\rEpoch: 0:  19%|#8        | 57/301 [00:15<01:02,  3.92it/s, loss=0.65032722]\rEpoch: 0:  19%|#8        | 57/301 [00:15<01:02,  3.92it/s, loss=0.65007854]\rEpoch: 0:  19%|#9        | 58/301 [00:15<01:02,  3.88it/s, loss=0.65007854]\rEpoch: 0:  19%|#9        | 58/301 [00:15<01:02,  3.88it/s, loss=0.64982566]\rEpoch: 0:  20%|#9        | 59/301 [00:15<01:01,  3.92it/s, loss=0.64982566]\rEpoch: 0:  20%|#9        | 59/301 [00:15<01:01,  3.92it/s, loss=0.64959415]\rEpoch: 0:  20%|#9        | 60/301 [00:15<01:01,  3.94it/s, loss=0.64959415]\rEpoch: 0:  20%|#9        | 60/301 [00:16<01:01,  3.94it/s, loss=0.64934950]\rEpoch: 0:  20%|##      '
+2020-04-17 18:28:44,304 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'  | 61/301 [00:16<01:01,  3.91it/s, loss=0.64934950]\rEpoch: 0:  20%|##        | 61/301 [00:16<01:01,  3.91it/s, loss=0.64911354]\rEpoch: 0:  21%|##        | 62/301 [00:16<01:02,  3.82it/s, loss=0.64911354]\rEpoch: 0:  21%|##        | 62/301 [00:16<01:02,  3.82it/s, loss=0.64888930]\rEpoch: 0:  21%|##        | 63/301 [00:16<01:01,  3.87it/s, loss=0.64888930]\rEpoch: 0:  21%|##        | 63/301 [00:16<01:01,  3.87it/s, loss=0.64866993]\rEpoch: 0:  21%|##1       | 64/301 [00:16<01:00,  3.91it/s, loss=0.64866993]'
+2020-04-17 18:28:44,437 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  21%|##1       | 64/301 [00:17<01:00,  3.91it/s, loss=0.64843802]'
+2020-04-17 18:28:44,437 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  22%|##1       | 65/301 [00:17<01:00,  3.88it/s, loss=0.64843802]'
+2020-04-17 18:28:44,737 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  22%|##1       | 65/301 [00:17<01:00,  3.88it/s, loss=0.64820264]'
+2020-04-17 18:28:44,737 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  22%|##1       | 66/301 [00:17<01:03,  3.70it/s, loss=0.64820264]'
+2020-04-17 18:28:44,985 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  22%|##1       | 66/301 [00:17<01:03,  3.70it/s, loss=0.64798551]'
+2020-04-17 18:28:44,986 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  22%|##2       | 67/301 [00:17<01:01,  3.79it/s, loss=0.64798551]'
+2020-04-17 18:28:45,260 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  22%|##2       | 67/301 [00:18<01:01,  3.79it/s, loss=0.64772198]'
+2020-04-17 18:28:45,261 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  23%|##2       | 68/301 [00:18<01:02,  3.74it/s, loss=0.64772198]'
+2020-04-17 18:28:45,538 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  23%|##2       | 68/301 [00:18<01:02,  3.74it/s, loss=0.64748586]'
+2020-04-17 18:28:45,539 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  23%|##2       | 69/301 [00:18<01:02,  3.70it/s, loss=0.64748586]'
+2020-04-17 18:28:45,850 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  23%|##2       | 69/301 [00:18<01:02,  3.70it/s, loss=0.64724559]'
+2020-04-17 18:28:45,850 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  23%|##3       | 70/301 [00:18<01:05,  3.54it/s, loss=0.64724559]'
+2020-04-17 18:28:46,416 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  23%|##3       | 70/301 [00:18<01:05,  3.54it/s, loss=0.64702326]'
+2020-04-17 18:28:46,417 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  24%|##3       | 71/301 [00:18<01:04,  3.54it/s, loss=0.64702326]\rEpoch: 0:  24%|##3       | 71/301 [00:19<01:04,  3.54it/s, loss=0.64676237]\rEpoch: 0:  24%|##3       | 72/301 [00:19<01:02,  3.66it/s, loss=0.64676237]'
+2020-04-17 18:28:46,686 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  24%|##3       | 72/301 [00:19<01:02,  3.66it/s, loss=0.64653335]'
+2020-04-17 18:28:46,688 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\rEpoch: 0:  24%|##3       | 72/301 [00:19<01:01,  3.70it/s, loss=0.64653335]'
+2020-04-17 18:28:46,689 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\r\nTraceback (most recent call last):\r\n  File "train.py", line 269, in <module>\r\n'
+2020-04-17 18:28:46,689 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'    '
+2020-04-17 18:28:46,690 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'main()\r\n  File "train.py", line 265, in main\r\n'
+2020-04-17 18:28:46,691 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'    '
+2020-04-17 18:28:46,691 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'train(model, dataloader, optimizer, loss_fn, metrics, params)\r\n  File "train.py", line 199, in train\r\n'
+2020-04-17 18:28:46,692 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'    '
+2020-04-17 18:28:46,693 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b't.set_postfix(loss="{:05.8f}".format(loss_avg()))\r\n  File "C:\\ProgramData\\Anaconda3\\lib\\site-packages\\tqdm\\std.py", line 1390, in set_postfix\r\n'
+2020-04-17 18:28:46,694 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'    '
+2020-04-17 18:28:46,694 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'self.refresh()\r\n  File "C:\\ProgramData\\Anaconda3\\lib\\site-packages\\tqdm\\std.py", line 1314, in refresh\r\n'
+2020-04-17 18:28:46,695 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'    '
+2020-04-17 18:28:46,697 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'self.display()\r\n  File "C:\\ProgramData\\Anaconda3\\lib\\site-packages\\tqdm\\std.py", line 1438, in display\r\n'
+2020-04-17 18:28:46,698 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'    self.sp(self.__repr__() if msg is None else msg)\r\n  File "C:\\ProgramData\\Anaconda3\\lib\\site-packages\\tqdm\\std.py", line 305, in print_status\r\n'
+2020-04-17 18:28:46,700 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'    '
+2020-04-17 18:28:46,701 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'fp_write(\'\\r\' + s + (\' \' * max(last_len[0] - len_s, 0)))\r\n  File "C:\\ProgramData\\Anaconda3\\lib\\site-packages\\tqdm\\std.py", line 298, in fp_write\r\n    fp.write(_unicode(s))\r\n  File "C:\\ProgramData\\Anaconda3\\lib\\site-packages\\wandb\\util\\redirect.py", line 21, in write\r\n'
+2020-04-17 18:28:46,701 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'    self.stream.flush()\r\nKeyboardInterrupt'
+2020-04-17 18:28:46,702 INFO    stderr    :14976 [wandb_init.py:_callback():173] callback: stderr, b'\r\n'
+2020-04-17 18:28:46,706 INFO    MainThread:14976 [wandb_init.py:_atexit_cleanup():163] got exit ret: exit {
+}
+control {
+  req_resp: true
+}
+
+2020-04-17 18:28:46,706 INFO    MainThread:14976 [wandb_init.py:_restore():226] restore
+2020-04-17 18:28:46,706 INFO    MainThread:14976 [redirect.py:uninstall():90] uninstall start
+2020-04-17 18:28:46,707 INFO    MainThread:14976 [redirect.py:_stop():130] _stop: stdout
+2020-04-17 18:28:46,707 INFO    stdout    :14976 [redirect.py:_pipe_relay():41] relay done saw last write: stdout
+2020-04-17 18:28:46,707 INFO    MainThread:14976 [redirect.py:_stop():136] _stop closed: stdout
+2020-04-17 18:28:46,707 INFO    stdout    :14976 [redirect.py:_pipe_relay():47] relay done done: stdout
+2020-04-17 18:28:46,707 INFO    MainThread:14976 [redirect.py:_stop():142] _stop joined: stdout
+2020-04-17 18:28:46,707 INFO    MainThread:14976 [redirect.py:_stop():144] _stop rd closed: stdout
+2020-04-17 18:28:46,708 INFO    MainThread:14976 [redirect.py:uninstall():93] uninstall done
+2020-04-17 18:28:46,708 INFO    MainThread:14976 [redirect.py:uninstall():90] uninstall start
+2020-04-17 18:28:46,708 INFO    MainThread:14976 [redirect.py:_stop():130] _stop: stderr
+2020-04-17 18:28:46,708 INFO    stderr    :14976 [redirect.py:_pipe_relay():41] relay done saw last write: stderr
+2020-04-17 18:28:46,708 INFO    MainThread:14976 [redirect.py:_stop():136] _stop closed: stderr
+2020-04-17 18:28:46,708 INFO    stderr    :14976 [redirect.py:_pipe_relay():47] relay done done: stderr
+2020-04-17 18:28:46,708 INFO    MainThread:14976 [redirect.py:_stop():142] _stop joined: stderr
+2020-04-17 18:28:46,708 INFO    MainThread:14976 [redirect.py:_stop():144] _stop rd closed: stderr
+2020-04-17 18:28:46,708 INFO    MainThread:14976 [redirect.py:uninstall():93] uninstall done
