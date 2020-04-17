@@ -3,3 +3,5 @@
 2020-04-16 23:17:02,146 | INFO: Data loaded successfully. | __main__.py
 2020-04-16 23:17:02,147 | INFO: AUTOSAVE: False | __main__.py
 2020-04-16 23:17:02,148 | INFO: Training set for 100 epoch(s). | __main__.py
+2020-04-16 23:22:18,775 | INFO: - Train metrics: accuracy: 0.507 ; loss: 0.472 | __main__.py
+2020-04-16 23:22:18,775 | INFO: Epoch: 0 - Train Loss: 0.45725583903398753 | __main__.py
