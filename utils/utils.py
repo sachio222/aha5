@@ -76,7 +76,7 @@ class Experiment():
         Args:
             --json: (str, required) Path to params.json.
             --data: (str) Override params.json model path.
-            --model: (str) Override params.json model path.
+            --model: (str) Save/load model weights.
             --seed: (int) Manual seed for stochasticity
             --paths: (bool) Print loaded paths to console. 
             --silent: (bool) Do not print status.
@@ -95,12 +95,12 @@ class Experiment():
             type=str)
 
         parser.add_argument('--data',
-                            help='(str) Data folder path. Eg. "data_folder".',
+                            help='(str) Dataset folder path. Eg. "data_folder".',
                             default=None,
                             type=str)
 
         parser.add_argument('--model',
-                            help='(str) Model path, eg."pretrained_folder".',
+                            help='(str) Model weights path, eg."pretrained_folder".',
                             default=None,
                             type=str)
 
