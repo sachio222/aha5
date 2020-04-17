@@ -1,0 +1,26 @@
+2020-04-17 01:33:33,625 INFO    wandb_write:16116 [datastore.py:open():19] open: wandb\wandb-20200417_013331-14976\wandb-20200417_013331-14976-data.bin
+2020-04-17 01:33:33,639 DEBUG   wandb_send:16116 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 01:33:34,526 DEBUG   wandb_send:16116 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-04-17 01:33:34,533 INFO    wandb_send:16116 [internal.py:handle_run():184] run started: 2hbmraqa
+2020-04-17 01:33:34,533 INFO    wandb_send:16116 [internal.py:_save_file():241] saving file wandb-metadata.json at wandb\wandb-20200417_013331-14976\files
+2020-04-17 01:33:34,533 INFO    wandb_send:16116 [internal.py:_save_file():243] saving file wandb-metadata.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_013331-14976\files\wandb-metadata.json
+2020-04-17 01:33:34,546 INFO    wandb_send:16116 [internal.py:_save_file():241] saving file wandb-jobspec.json at wandb\wandb-20200417_013331-14976\files
+2020-04-17 01:33:34,546 INFO    wandb_send:16116 [internal.py:_save_file():243] saving file wandb-jobspec.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_013331-14976\files\wandb-jobspec.json
+2020-04-17 01:33:36,591 DEBUG   Thread-6  :16116 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 01:33:36,717 INFO    wandb_send:16116 [internal.py:handle_exit():139] scan: wandb\wandb-20200417_013331-14976\files
+2020-04-17 01:33:36,717 INFO    wandb_send:16116 [internal.py:handle_exit():145] scan save: wandb\wandb-20200417_013331-14976\files\wandb-jobspec.json wandb-jobspec.json
+2020-04-17 01:33:36,718 INFO    wandb_send:16116 [internal.py:_save_file():241] saving file wandb-jobspec.json at wandb\wandb-20200417_013331-14976\files
+2020-04-17 01:33:36,718 INFO    wandb_send:16116 [internal.py:_save_file():243] saving file wandb-jobspec.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_013331-14976\files\wandb-jobspec.json
+2020-04-17 01:33:36,719 INFO    wandb_send:16116 [internal.py:handle_exit():145] scan save: wandb\wandb-20200417_013331-14976\files\wandb-metadata.json wandb-metadata.json
+2020-04-17 01:33:36,719 INFO    wandb_send:16116 [internal.py:_save_file():241] saving file wandb-metadata.json at wandb\wandb-20200417_013331-14976\files
+2020-04-17 01:33:36,719 INFO    wandb_send:16116 [internal.py:_save_file():243] saving file wandb-metadata.json at full C:\Users\r3dta\Documents\Dev\woodhouse\aha5\aha5\wandb\wandb-20200417_013331-14976\files\wandb-metadata.json
+2020-04-17 01:33:37,469 DEBUG   Thread-6  :16116 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/2hbmraqa/file_stream HTTP/1.1" 200 None
+2020-04-17 01:33:37,546 DEBUG   Thread-9  :16116 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): api.wandb.ai:443
+2020-04-17 01:33:37,718 INFO    wandb_write:16116 [datastore.py:close():68] close: wandb\wandb-20200417_013331-14976\wandb-20200417_013331-14976-data.bin
+2020-04-17 01:33:38,047 DEBUG   Thread-6  :16116 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/2hbmraqa/file_stream HTTP/1.1" 200 None
+2020-04-17 01:33:38,252 DEBUG   Thread-9  :16116 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /graphql HTTP/1.1" 200 None
+2020-04-17 01:33:38,260 DEBUG   Thread-9  :16116 [connectionpool.py:_new_conn():959] Starting new HTTPS connection (1): storage.googleapis.com:443
+2020-04-17 01:33:38,369 DEBUG   Thread-6  :16116 [connectionpool.py:_make_request():437] https://api.wandb.ai:443 "POST /files/redtailedhawk/aha/2hbmraqa/file_stream HTTP/1.1" 200 None
+2020-04-17 01:33:38,371 INFO    wandb_send:16116 [internal.py:finish():263] Finish Sync: wandb-metadata.json
+2020-04-17 01:33:38,371 INFO    wandb_send:16116 [internal.py:finish():263] Finish Sync: wandb-jobspec.json
+2020-04-17 01:33:39,517 DEBUG   Thread-9  :16116 [connectionpool.py:_make_request():437] https://storage.googleapis.com:443 "PUT /wandb-production.appspot.com/redtailedhawk/aha/2hbmraqa/___batch_archive_1.tgz?Expires=1587101676&GoogleAccessId=gorilla-cloud-storage%40wandb-production.iam.gserviceaccount.com&Signature=kXPjppKIoyRPk91%2FnRsiKxXwIKN8UY3NeNKJTnUAQc%2BqUtDJdNQ0K%2FVlKChS%2B7V%2B2Gq0EAnpD4jcOIiN8mkZaqc%2BePPPiJlnqcRk%2BmFRD%2BQKFf1gOlDqiuo0A7Mt1JTJE2lZ8BlYt8IAGVwYIN6eGq9ksdlJGdAofliEl1yU%2FmDv5LyhEkkZpUhpUQFkfjUqZDvlL04vsXMY9c5co5zutfVCh3SaWKc8SKIZ7GDGdNhKMIqMeb36EKIvRRAh1rjVf4uDsFiPWEwGE8lKYs9%2BzkgQMXypp%2FgVzdCoq3teGaoITkQWvSS9xG%2BwQOixDFBWgXAEkWZsvjI5BWDsHA2AVQ%3D%3D HTTP/1.1" 200 0

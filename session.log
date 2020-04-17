@@ -14,3 +14,5 @@
 2020-04-17 01:19:43,036 | INFO: Epochs: 100, lr: 0.001 | __main__.py
 2020-04-17 01:24:05,369 | INFO: - Train metrics: accuracy: 0.507 ; loss: 0.472 | __main__.py
 2020-04-17 01:24:05,369 | INFO: Epoch: 0 - Train Loss: 0.45725583903398753 | __main__.py
+2020-04-17 01:33:34,562 | INFO: Params file loaded successfully. | __main__.utils.utils.py
+2020-04-17 01:33:34,563 | INFO: Paths initialized successfully. | __main__.utils.utils.py
