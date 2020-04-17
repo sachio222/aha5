@@ -16,7 +16,6 @@ import torchvision
 
 logger = logging.getLogger('__main__.' + __name__)
 
-
 class Params():
     """Loads params file from params.json"""
 
@@ -58,9 +57,15 @@ class Experiment():
         """Initialize new experiment. Run argparser, grab params file, init paths.
         """
         super(Experiment, self).__init__()
+        # Parse args
         self.args = self._set_args()
+        # Load params file
         self.params = self._load_params(path=self.args.json)
+
+        # Set params file to args
         self._set_params()
+
+        # Complete the paths relative to __main__
         self._init_paths(params=self.params, args=self.args)
 
     def _set_args(self):
@@ -293,30 +298,30 @@ def load_checkpoint(checkpoint, model, optimizer=None, name="last"):
         optimizer: (torch.optim) optional: resume optimizer from checkpoint
         name: (string) previx to '.pth.tar' eg: name.pth.tar
     """
-    filepath = checkpoint / "{}.pth.tar".format(name)
+    filepath = checkpoint/ "{}.pth.tar".format(name)
 
-    print("Looking for saved files...", end=" ")
+    logger.info("Looking for saved files...")
 
     if not Path(checkpoint).exists():
         raise ("File does not exist at {}".format(checkpoint))
     checkpoint = torch.load(str(filepath))
 
-    print("Found.")
+    logger.info("Weights found.")
 
     model.load_state_dict(checkpoint.get("state_dict"), strict=False)
 
     if optimizer:
         optimizer.load_state_dict(checkpoint.get("optim_dict"))
 
-    print("OK. Loading saved weights complete.")
+    logger.info("Loading saved weights complete.")
     return checkpoint
 
 
-def set_logger(logger, params):
+def set_logger(logger):
     # logger = logging.getLogger(__name__)
     
-    path = params.model_path
-    log_path = Path(path, 'session.log')
+    # path = params.model_path
+    log_path = './session.log'
 
     for handler in logger.handlers[:]:
         logger.removeHandler(handler)
@@ -333,7 +338,7 @@ def set_logger(logger, params):
 
     # Output to file
     # Set mode to 'a' for append, 'w' for overwrite.
-    f_handler = logging.FileHandler(filename=log_path, mode='w')
+    f_handler = logging.FileHandler(filename=log_path, mode='a')
     f_handler.setLevel(logging.DEBUG)
     f_formatter = logging.Formatter(
         '%(asctime)s | %(levelname)s: %(message)s | %(name)s.py')
