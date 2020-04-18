@@ -17,8 +17,8 @@ from torchvision.datasets import Omniglot
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-
-import wandb
+# Buggy, I think it's them, not me. 
+# import wandb
 
 
 # User modules
@@ -145,7 +145,8 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
                     if my_system.lower() != 'windows':
                         # For mac only
-                        # Uncomment 1 of the following at a time to view kernels while training:
+                        # Uncomment 1 of the following at a time to view kernels
+                        #       while training:
 
                         # FULL VIEW
                         # --------------------------
@@ -165,7 +166,12 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                         # --------------------------
 
                     else:
-                        '''Show full kernels on windows'''
+                        '''Show full kernels on windows
+
+                        Animation does not work with Windows, but each step can be
+                            displayed manually.
+                            
+                        '''
                         
                         # FULL VIEW
                         # ------------------------- -

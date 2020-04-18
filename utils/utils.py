@@ -218,8 +218,8 @@ class Experiment():
             logger.info(f'AUTOSAVE: {self.params.autosave}')
 
         self.params.wandb = self.args.wandb
-        if not self.params.silent:
-            if self.params.wandb:
+        if self.params.wandb:
+            if not self.params.silent:
                 logger.info('Uploading to W&B')
         
 
