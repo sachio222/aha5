@@ -157,8 +157,8 @@ class Experiment():
         parser.add_argument('-a',
                             '--autosave',
                             nargs='?',
-                            const=False,
-                            default=True,
+                            const=True,
+                            default=False,
                             type=bool,
                             help='(bool) Autosave.')
         return parser.parse_args()

@@ -11,14 +11,14 @@
     "ectoca3_learning_rate": 7e-5,
     "ectoca3_weight_decay": 25e-6,
 
-    "num_epochs": 100,
+    "num_epochs": 350,
     "num_workers": 0,
 
     "background_set": true,
     "resize_dim": 52,
     "save_summary_steps": 100,
     "seed": 100,
-    "test_seed": 33,
+    "sampler_seed": 33,
     "test_shift": 1,
     "train_shift": 0
     

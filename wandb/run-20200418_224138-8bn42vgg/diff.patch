@@ -1,0 +1,167 @@
+diff --git a/experiments/pretrain/params.json b/experiments/pretrain/params.json
+index 0938bf5..55baa41 100644
+--- a/experiments/pretrain/params.json
++++ b/experiments/pretrain/params.json
+@@ -11,14 +11,14 @@
+     "ectoca3_learning_rate": 7e-5,
+     "ectoca3_weight_decay": 25e-6,
+ 
+-    "num_epochs": 100,
++    "num_epochs": 350,
+     "num_workers": 0,
+ 
+     "background_set": true,
+     "resize_dim": 52,
+     "save_summary_steps": 100,
+     "seed": 100,
+-    "test_seed": 33,
++    "sampler_seed": 33,
+     "test_shift": 1,
+     "train_shift": 0
+     
+diff --git a/experiments/train/params.json b/experiments/train/params.json
+index 064089f..4d9042b 100644
+--- a/experiments/train/params.json
++++ b/experiments/train/params.json
+@@ -18,7 +18,7 @@
+     "resize_dim": 52,
+     "save_summary_steps": 100,
+     "seed": 100,
+-    "test_seed": 33,
++    "sampler_seed": 33,
+     "test_shift": 1,
+     "train_shift": 0
+     
+diff --git a/train.py b/train.py
+index 1633f98..246e190 100644
+--- a/train.py
++++ b/train.py
+@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
+ from tqdm import tqdm
+ 
+ # Buggy, I think it's them, not me. 
+-# import wandb
++import wandb
+ 
+ 
+ # User modules
+@@ -54,7 +54,12 @@ def make_dataset(params):
+                        transform=tsfm,
+                        download=True)
+ 
+-    dataloader = DataLoader(dataset,
++    # For individual module training.
++    # train_dataloader, test_dataloader = train_test_split(dataset, params)
++
++    # TODO: Switch dataloaders depending on what tests are being run. 
++
++    train_dataloader = DataLoader(dataset,
+                             params.batch_size,
+                             shuffle=True,
+                             num_workers=params.num_workers,
+@@ -63,8 +68,62 @@ def make_dataset(params):
+     if not params.silent:
+         logger.info('Data loaded successfully.')
+ 
+-    return dataloader
++    return train_dataloader
++
++def train_test_split(dataset, params):
++    """Grabs random Omniglot samples and generates test samples from same class.
++
++    The random seed is taken from params.sampler_seed, the test_shift is which sample
++            to grab as a test. If it ends up being a different class, the sampler is
++            walked back until the class is same, and the sample is different. 
++        
++    Args:
++        dataset: (Dataset) Sampler from Omniglot dataset.
++        params: (json dict) Params.json file. 
++
++    Returns:
++        train_dataloader, test_dataloader: (tuple) Containing matched train test pairs.
++    """
++    train_dataset = []
++    test_dataset = []
++
++    # Random seed from params file. 
++    torch.manual_seed(params.sampler_seed)
++
++    # Create batch_size random indices from dataset. 
++    #       Subtract params.test_shift so that we don't pick a random sample
++    #       so close to the end of the set that it looks for a test pair in 
++    #       the blackness of 'index out of range'.  
++    idxs = torch.randint(len(dataset) - params.test_shift, (1, params.batch_size))
++
++    # Make sure one of them is our control.
++    idxs[0, 0] = 19
++
++    for i, idx in enumerate(idxs[0]):
++        shift_idx = params.test_shift
++        train_sample, train_lbl = dataset[idx]
++        test_sample, test_lbl = dataset[idx + shift_idx]
++
++        # Make sure labels are the same, and it is not the same sample. 
++        while (train_lbl != test_lbl) or (torch.equal(train_sample, test_sample)):
++            test_sample, test_lbl = dataset[idx + shift_idx]
++            shift_idx -= 1
++
++        train_dataset.append(train_sample)
++        test_dataset.append(test_sample)
++        #=====MONITORING=====#
++
++        # Uncomment to see train_samples or change selection to test_sample.
++        # utils.animate_weights(train_sample, auto=True)
++
++        #=====END MONITORING=====#
++
++    train_dataloader = torch.stack(train_dataset)
++    train_dataloader.unsqueeze_(1)
++    test_dataloader = torch.stack(test_dataset)
++    test_dataloader.unsqueeze_(1)
+ 
++    return train_dataloader, test_dataloader
+ 
+ def load_model(params):
+     """Returns model, loss function and optimizer for training"""
+@@ -223,7 +282,7 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
+ 
+         if params.wandb:
+             pass
+-            # wandb.log({"Train Loss": loss_avg()})
++            wandb.log({"Train Loss": loss_avg()})
+ 
+         # SAVE WEIGHTS
+         # --------------------------
+@@ -250,7 +309,7 @@ def main():
+     # Wandb Credentials
+     if params.wandb:
+         pass
+-        # wandb.init(entity="redtailedhawk", project="aha")
++        wandb.init(entity="redtailedhawk", project="aha")
+ 
+     # If GPU
+     params.cuda = torch.cuda.is_available()
+@@ -268,7 +327,7 @@ def main():
+ 
+     if params.wandb:
+         pass
+-        # wandb.watch(model)
++        wandb.watch(model)
+ 
+     if not params.silent:
+         logger.info(
+diff --git a/utils/utils.py b/utils/utils.py
+index 5302ab3..a7ed43a 100644
+--- a/utils/utils.py
++++ b/utils/utils.py
+@@ -157,8 +157,8 @@ class Experiment():
+         parser.add_argument('-a',
+                             '--autosave',
+                             nargs='?',
+-                            const=False,
+-                            default=True,
++                            const=True,
++                            default=False,
+                             type=bool,
+                             help='(bool) Autosave.')
+         return parser.parse_args()

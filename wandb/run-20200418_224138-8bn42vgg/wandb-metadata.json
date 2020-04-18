@@ -1,0 +1,28 @@
+{
+    "root": "/Users/Eclipse/Documents/Dev/woodhouse/aha5",
+    "program": "train.py",
+    "git": {
+        "remote": "https://github.com/sachio222/aha5.git",
+        "commit": "bea5593b48549fad54043917a3c150215b61c3fa"
+    },
+    "email": "brainpowerux@gmail.com",
+    "codePath": "train.py",
+    "startedAt": "2020-04-18T22:41:38.514170",
+    "host": "Js-MacBook-Pro.local",
+    "username": "Eclipse",
+    "executable": "/Users/Eclipse/opt/anaconda3/bin/python",
+    "os": "Darwin-16.7.0-x86_64-i386-64bit",
+    "python": "3.7.6",
+    "cpu_count": 4,
+    "args": [
+        "--wandb",
+        "-a",
+        "--model=experiments/pretrain",
+        "--json=experiments/pretrain/params.json"
+    ],
+    "state": "running",
+    "jobType": null,
+    "mode": "run",
+    "project": "aha",
+    "heartbeatAt": "2020-04-18T22:42:59.837992"
+}
