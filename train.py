@@ -24,6 +24,7 @@ from tqdm import tqdm
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
+
 """Todo: store, access multisession train loss.
 """
 
@@ -170,7 +171,7 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
                         Animation does not work with Windows, but each step can be
                             displayed manually.
-                            
+
                         '''
                         
                         # FULL VIEW
@@ -221,7 +222,8 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
         logger.info(f'Epoch: {epoch} - Train Loss: {loss_avg()}')
 
         if params.wandb:
-            wandb.log({"Train Loss": loss_avg()})
+            pass
+            # wandb.log({"Train Loss": loss_avg()})
 
         # SAVE WEIGHTS
         # --------------------------
@@ -247,7 +249,8 @@ def main():
 
     # Wandb Credentials
     if params.wandb:
-        wandb.init(entity="redtailedhawk", project="aha")
+        pass
+        # wandb.init(entity="redtailedhawk", project="aha")
 
     # If GPU
     params.cuda = torch.cuda.is_available()
@@ -264,7 +267,8 @@ def main():
     metrics = modules.metrics
 
     if params.wandb:
-        wandb.watch(model)
+        pass
+        # wandb.watch(model)
 
     if not params.silent:
         logger.info(
