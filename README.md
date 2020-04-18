@@ -28,18 +28,26 @@ Sending metrics to wandb.ai:
 ```--wandb```
 
 Display image after each epoch:
+
 ```--showlast```
 
 Animate training(mac only)
+
 ```--animate```
 
-Customize relative paths with:
+Customize relative paths:
 
-weights: ```--model```
+weights:
 
-datafolder: ```--data```
+```--model```
 
-params.json: ```--json```
+datafolder:
+
+```--data```
+
+params.json:
+
+```--json```
 
 ### Running
 Coming...
