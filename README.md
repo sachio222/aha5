@@ -34,8 +34,11 @@ Animate training(mac only)
 ```--animate```
 
 Customize relative paths with:
+
 weights: ```--model```
+
 datafolder: ```--data```
+
 params.json: ```--json```
 
 ### Running
