@@ -54,9 +54,6 @@ def make_dataset(params):
                        transform=tsfm,
                        download=True)
 
-    print(dataset)
-    exit()
-
     dataloader = DataLoader(dataset,
                             params.batch_size,
                             shuffle=True,
