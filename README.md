@@ -15,18 +15,35 @@ To pretrain the visual cortex modules, run the following:
 
 ```python train.py --model=experiments/pretrain --json=experiments/pretrain/params.json```
 
-It will autosave to the model folder after every epoch. If you want to disable autosave use:
+To enable saving of weights after each epoch add the autosave flag:
 
-```--autosave=False```
+```--autosave or -a```
 
 To load pre-trained weights, include:
 
 ```--load```
 
+Sending metrics to wandb.ai:
+
+```--wandb```
+
+Display image after each epoch:
+```--showlast```
+
+Animate training(mac only)
+```--animate```
+
+Customize relative paths with:
+weights: ```--model```
+datafolder: ```--data```
+params.json: ```--json```
+
 ### Running
+Coming...
+
 Weights should already be trained for the VC module, so to run predictions, do the following:
 
-1. run /train.py
+1. python train.py
 
 ### Logs
 Logs are stored in session.log in the project root dir. They are currently set to overwrite (```w```) and can be set to append with an ```a``` in the ```set_logs```
