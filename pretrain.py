@@ -7,7 +7,7 @@ Description: Pretraining for model implemented from 2019 paper
              "AHA an Artificial Hippocampal Algorithm for Episodic Machine 
              Learning" by Kowadlo, Ahmed and Rawlinson.
 
-             Trains visual cortex on Omniglot dataset.
+             Trains visual cortex on Omniglot background dataset.
 
 Thanks: Special thanks to Gideon Kowaldo and David Rawlinson for
              putting me up to the task of recreating their model in Pytorch!
