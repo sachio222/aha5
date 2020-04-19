@@ -276,9 +276,9 @@ class RunningAverage():
 
     Example:
     ```
-    loss_avg = RunningAverage()
-    loss_avg.update(2)
-    loss_avg() = 3
+    >>> loss_avg = RunningAverage()
+    >>> loss_avg.update(2)
+    >>> loss_avg() = 3
     ```
     """
 
@@ -309,9 +309,8 @@ def print_full_tensor(tensor):
 
     Example:
 
-        print_full_tensor(tensor_name)
-
-        >>> # Prints all in tensor without elipses.
+        >>> print_full_tensor(tensor_name)
+        # Prints all in tensor without elipses.
     """
 
     torch.set_printoptions(profile="full")
@@ -412,7 +411,7 @@ def set_logger(logger):
     # Output to file
     # Set mode to 'a' for append, 'w' for overwrite.
     from datetime import datetime
-    time = str(datetime.utcnow().strftime('%y.%m.%d_%I.%M.%S')) 
+    time = str(datetime.utcnow().strftime('%I.%M.%S_%d%m%y')) 
     f_handler = logging.FileHandler(filename=f'{log_path}_{time}.log', mode='a')
     f_handler.setLevel(logging.DEBUG)
     f_formatter = logging.Formatter(

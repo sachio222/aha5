@@ -60,7 +60,7 @@ def make_dataset(params):
     # TODO: Switch dataloaders depending on what tests are being run. 
 
     # if params.pretrain:
-    train_dataloader = DataLoader(dataset,
+    dataloader = DataLoader(dataset,
                             params.batch_size,
                             shuffle=True,
                             num_workers=params.num_workers,
@@ -71,7 +71,7 @@ def make_dataset(params):
     if not params.silent:
         logger.info('Data loaded successfully.')
 
-    return train_dataloader
+    return dataloader
 
 
 def train_test_split(dataset, params):
@@ -134,11 +134,31 @@ def train_test_split(dataset, params):
 def load_model(params):
     """Returns model, loss function and optimizer for training"""
 
+    model = 'what'
+
+    if model == 'pretrain':
+        pass
+    if model == 'train':
+        pass
+    if model == 'dg':
+        pass
+    if model == 'ecca3':
+        pass
+    if model == 'ca3':
+        pass
+    if model == 'ca1':
+        pass
+    else:
+        print('what is it')
+
+
     model = modules.ECPretrain(D_in=1,
                                D_out=121,
                                KERNEL_SIZE=9,
                                STRIDE=5,
                                PADDING=1)
+
+    # model = modules.ECToCA3
 
     loss_fn = nn.BCELoss()
     optimizer = optim.Adam(model.parameters(), lr=params.learning_rate)
