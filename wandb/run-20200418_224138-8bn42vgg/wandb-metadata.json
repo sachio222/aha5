@@ -20,9 +20,10 @@
         "--model=experiments/pretrain",
         "--json=experiments/pretrain/params.json"
     ],
-    "state": "running",
+    "state": "finished",
     "jobType": null,
     "mode": "run",
     "project": "aha",
-    "heartbeatAt": "2020-04-19T03:50:20.520555"
+    "heartbeatAt": "2020-04-19T15:42:40.033283",
+    "exitcode": 0
 }
