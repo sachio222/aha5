@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # Buggy, I think it's them, not me.
-import wandb
+# import wandb
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
