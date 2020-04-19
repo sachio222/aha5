@@ -62,7 +62,7 @@ class Experiment():
         self.args = self._set_args()
 
         # Check if pretrain for custom json path. 
-        if args.pretrain:
+        if self.args.pretrain:
             json_path='experiments/pretrain/params.json'
         else:
             json_path=self.args.json

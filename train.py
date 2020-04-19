@@ -59,14 +59,14 @@ def make_dataset(params):
 
     # TODO: Switch dataloaders depending on what tests are being run. 
 
-    if params.pretrain:
-        train_dataloader = DataLoader(dataset,
-                                params.batch_size,
-                                shuffle=True,
-                                num_workers=params.num_workers,
-                                drop_last=True)
-    else:
-        train_dataloader, test_dataloader = train_test_split(dataset, params)
+    # if params.pretrain:
+    train_dataloader = DataLoader(dataset,
+                            params.batch_size,
+                            shuffle=True,
+                            num_workers=params.num_workers,
+                            drop_last=True)
+    # else:
+    #     train_dataloader, test_dataloader = train_test_split(dataset, params)
 
     if not params.silent:
         logger.info('Data loaded successfully.')
@@ -124,6 +124,7 @@ def train_test_split(dataset, params):
 
     train_dataloader = torch.stack(train_dataset)
     train_dataloader.unsqueeze_(1)
+
     test_dataloader = torch.stack(test_dataset)
     test_dataloader.unsqueeze_(1)
 
