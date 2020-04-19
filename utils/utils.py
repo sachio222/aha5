@@ -17,6 +17,7 @@ import torchvision
 # Set global logger
 logger = logging.getLogger('__main__.' + __name__)
 
+
 class Params():
     """Loads params file from params.json"""
 
@@ -61,19 +62,19 @@ class Experiment():
         # Parse args
         self.args = self._set_args()
 
-        # Check if pretrain for custom json path. 
+        # Check if pretrain for custom json path.
         if self.args.pretrain:
-            json_path='experiments/pretrain/params.json'
+            json_path = 'experiments/pretrain/params.json'
         else:
-            json_path=self.args.json
+            json_path = self.args.json
 
         # Load params file with class method.
         self.params = self._load_params(path=json_path)
 
-        # Rewrite params file with user args. 
+        # Rewrite params file with user args.
         self._set_params()
 
-        # Convert relative paths to absolute paths. 
+        # Convert relative paths to absolute paths.
         self._init_paths()
 
     def _set_args(self):
@@ -103,15 +104,17 @@ class Experiment():
             default='experiments/train/params.json',
             type=str)
 
-        parser.add_argument('--data',
-                            help='(str) Dataset folder path. Eg. "data_folder".',
-                            default=None,
-                            type=str)
+        parser.add_argument(
+            '--data',
+            help='(str) Dataset folder path. Eg. "data_folder".',
+            default=None,
+            type=str)
 
-        parser.add_argument('--model',
-                            help='(str) Model weights path, eg."pretrained_folder".',
-                            default=None,
-                            type=str)
+        parser.add_argument(
+            '--model',
+            help='(str) Model weights path, eg."pretrained_folder".',
+            default=None,
+            type=str)
 
         parser.add_argument('--paths',
                             nargs='?',
@@ -139,7 +142,7 @@ class Experiment():
             default=False,
             type=bool,
             help='(bool) Load pretrained weights from model path.')
-        
+
         parser.add_argument('--wandb',
                             nargs='?',
                             const=True,
@@ -153,7 +156,7 @@ class Experiment():
                             default=False,
                             type=bool,
                             help='(bool) Shows output img after each epoch.')
-        
+
         parser.add_argument('--animate',
                             nargs='?',
                             const=True,
@@ -168,7 +171,7 @@ class Experiment():
                             default=False,
                             type=bool,
                             help='(bool) Autosave.')
-        
+
         parser.add_argument('--pretrain',
                             nargs='?',
                             const=True,
@@ -236,7 +239,7 @@ class Experiment():
         if self.params.wandb:
             if not self.params.silent:
                 logger.info('Uploading to W&B')
-        
+
         self.params.pretrain = self.args.pretrain
         if self.params.pretrain:
             if not self.params.silent:
@@ -411,7 +414,7 @@ def set_logger(logger):
     # Output to file
     # Set mode to 'a' for append, 'w' for overwrite.
     from datetime import datetime
-    time = str(datetime.utcnow().strftime('%I.%M.%S_%d%m%y')) 
+    time = str(datetime.utcnow().strftime('%I.%M.%S_%d%m%y'))
     f_handler = logging.FileHandler(filename=f'{log_path}_{time}.log', mode='a')
     f_handler.setLevel(logging.DEBUG)
     f_formatter = logging.Formatter(

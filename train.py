@@ -17,14 +17,12 @@ from torchvision.datasets import Omniglot
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-# Buggy, I think it's them, not me. 
+# Buggy, I think it's them, not me.
 import wandb
-
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
-
 """Todo: store, access multisession train loss.
 """
 
@@ -56,8 +54,7 @@ def make_dataset(params):
 
     # For individual module training.
 
-
-    # TODO: Switch dataloaders depending on what tests are being run. 
+    # TODO: Switch dataloaders depending on what tests are being run.
 
     # if params.pretrain:
     dataloader = DataLoader(dataset,
@@ -91,14 +88,15 @@ def train_test_split(dataset, params):
     train_dataset = []
     test_dataset = []
 
-    # Random seed from params file. 
+    # Random seed from params file.
     torch.manual_seed(params.sampler_seed)
 
-    # Create batch_size random indices from dataset. 
+    # Create batch_size random indices from dataset.
     #       Subtract params.test_shift so that we don't pick a random sample
-    #       so close to the end of the set that it looks for a test pair in 
-    #       the blackness of 'index out of range'.  
-    idxs = torch.randint(len(dataset) - params.test_shift, (1, params.batch_size))
+    #       so close to the end of the set that it looks for a test pair in
+    #       the blackness of 'index out of range'.
+    idxs = torch.randint(
+        len(dataset) - params.test_shift, (1, params.batch_size))
 
     # Make sure one of them is our control.
     idxs[0, 0] = 19
@@ -108,8 +106,9 @@ def train_test_split(dataset, params):
         train_sample, train_lbl = dataset[idx]
         test_sample, test_lbl = dataset[idx + shift_idx]
 
-        # Make sure labels are the same, and it is not the same sample. 
-        while (train_lbl != test_lbl) or (torch.equal(train_sample, test_sample)):
+        # Make sure labels are the same, and it is not the same sample.
+        while (train_lbl != test_lbl) or (torch.equal(train_sample,
+                                                      test_sample)):
             test_sample, test_lbl = dataset[idx + shift_idx]
             shift_idx -= 1
 
@@ -151,7 +150,6 @@ def load_model(params):
     else:
         print('what is it')
 
-
     model = modules.ECPretrain(D_in=1,
                                D_out=121,
                                KERNEL_SIZE=9,
@@ -180,7 +178,7 @@ def load_model(params):
                 '--load request failed. Continuing without pre-trained weights.'
             )
             pass
-    
+
     # --------------------------
 
     return model, loss_fn, optimizer
@@ -258,7 +256,7 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                             displayed manually.
 
                         '''
-                        
+
                         # FULL VIEW
                         # ------------------------- -
 
@@ -282,7 +280,6 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
                     batch_summary['loss'] = loss.item()
                     summ.append(batch_summary)
-
 
                 # Update avg. loss after batch.
                 loss_avg.update(loss.item())
@@ -349,7 +346,7 @@ def main():
     dataloader = make_dataset(params)
 
     model, loss_fn, optimizer = load_model(params)
-    
+
     metrics = modules.metrics
 
     if params.wandb:
