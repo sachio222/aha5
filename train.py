@@ -55,20 +55,24 @@ def make_dataset(params):
                        download=True)
 
     # For individual module training.
-    # train_dataloader, test_dataloader = train_test_split(dataset, params)
+
 
     # TODO: Switch dataloaders depending on what tests are being run. 
 
-    train_dataloader = DataLoader(dataset,
-                            params.batch_size,
-                            shuffle=True,
-                            num_workers=params.num_workers,
-                            drop_last=True)
+    if params.pretrain:
+        train_dataloader = DataLoader(dataset,
+                                params.batch_size,
+                                shuffle=True,
+                                num_workers=params.num_workers,
+                                drop_last=True)
+    else:
+        train_dataloader, test_dataloader = train_test_split(dataset, params)
 
     if not params.silent:
         logger.info('Data loaded successfully.')
 
     return train_dataloader
+
 
 def train_test_split(dataset, params):
     """Grabs random Omniglot samples and generates test samples from same class.
@@ -124,6 +128,7 @@ def train_test_split(dataset, params):
     test_dataloader.unsqueeze_(1)
 
     return train_dataloader, test_dataloader
+
 
 def load_model(params):
     """Returns model, loss function and optimizer for training"""
@@ -308,7 +313,6 @@ def main():
 
     # Wandb Credentials
     if params.wandb:
-        pass
         wandb.init(entity="redtailedhawk", project="aha")
 
     # If GPU
@@ -322,11 +326,12 @@ def main():
         params.num_workers = 2
 
     dataloader = make_dataset(params)
+
     model, loss_fn, optimizer = load_model(params)
+    
     metrics = modules.metrics
 
     if params.wandb:
-        pass
         wandb.watch(model)
 
     if not params.silent:

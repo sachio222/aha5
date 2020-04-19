@@ -56,18 +56,24 @@ class Experiment():
     """
 
     def __init__(self):
-        """Initialize new experiment. Run argparser, grab params file, init paths.
-        """
         super(Experiment, self).__init__()
+
         # Parse args
         self.args = self._set_args()
-        # Load params file
-        self.params = self._load_params(path=self.args.json)
 
-        # Set params file to args
+        # Check if pretrain for custom json path. 
+        if args.pretrain:
+            json_path='experiments/pretrain/params.json'
+        else:
+            json_path=self.args.json
+
+        # Load params file with class method.
+        self.params = self._load_params(path=json_path)
+
+        # Rewrite params file with user args. 
         self._set_params()
 
-        # Complete the paths relative to __main__
+        # Convert relative paths to absolute paths. 
         self._init_paths()
 
     def _set_args(self):
@@ -84,6 +90,7 @@ class Experiment():
             --showlast: (bool) Show image after each epoch.
             --animate: (bool) Shows image after each step.
             --load: (bool) Load pretrained weights.
+            --pretrain: (bool) pretrain VC, background set=True, preset json path. 
             -a, --autosave: (bool)
         """
 
@@ -161,6 +168,14 @@ class Experiment():
                             default=False,
                             type=bool,
                             help='(bool) Autosave.')
+        
+        parser.add_argument('--pretrain',
+                            nargs='?',
+                            const=True,
+                            default=False,
+                            type=bool,
+                            help='(bool) Pretrain weights.')
+
         return parser.parse_args()
 
     def _load_params(self, path):
@@ -179,7 +194,7 @@ class Experiment():
             _params = Params(self.json_path)
 
             if not self.args.silent:
-                logger.info('Params file loaded successfully.')
+                logger.info(f'Reading params from {self.json_path}.')
 
         except:
             logger.error(f'No params.json file found at {self.json_path}.\n')
@@ -222,6 +237,10 @@ class Experiment():
             if not self.params.silent:
                 logger.info('Uploading to W&B')
         
+        self.params.pretrain = self.args.pretrain
+        if self.params.pretrain:
+            if not self.params.silent:
+                logger.info('ATTENTION: Pretraining Mode...')
 
     def get_params(self):
         return self.params
