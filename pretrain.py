@@ -33,14 +33,12 @@ from torchvision.datasets import Omniglot
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-# Buggy, I think it's them, not me. 
+# Buggy, I think it's them, not me.
 import wandb
-
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
 from utils import utils  # pylint: disable=RP0003, F0401
-
 """Todo: store, access multisession train loss.
 """
 
@@ -113,7 +111,7 @@ def load_model(params):
                 '--load request failed. Continuing without pre-trained weights.'
             )
             pass
-    
+
     # --------------------------
 
     return model, loss_fn, optimizer
@@ -191,7 +189,7 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
                             displayed manually.
 
                         '''
-                        
+
                         # FULL VIEW
                         # ------------------------- -
 
@@ -215,7 +213,6 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
 
                     batch_summary['loss'] = loss.item()
                     summ.append(batch_summary)
-
 
                 # Update avg. loss after batch.
                 loss_avg.update(loss.item())
@@ -282,7 +279,7 @@ def main():
     dataloader = make_dataset(params)
 
     model, loss_fn, optimizer = load_model(params)
-    
+
     metrics = modules.metrics
 
     if params.wandb:
