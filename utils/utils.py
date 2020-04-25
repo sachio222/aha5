@@ -19,16 +19,31 @@ logger = logging.getLogger('__main__.' + __name__)
 
 
 class Params():
-    """Loads params file from params.json"""
+    """Loads params file from params.json
+
+        
+    """
 
     def __init__(self, json_path):
         with open(json_path) as f:
             params = json.load(f)
             self.__dict__.update(params)
+            # self.build_experiment(params)
 
     def save(self, json_path):
         with open(json_path, "w") as f:
             json.dump(self.__dict__, f, indent=4)
+
+    # def build_experiment(self, params):
+    #     for key, value in params.items():
+    #         if isinstance(value, list):
+    #             # Create subfolder
+    #             for v in value:
+    #                 subfolder = create_subfolder(f'{key}_{v}')
+
+    #         else:
+    #             print(value)
+    #     exit()
 
     def update(self, json_path):
         """Loads parameters from json file."""

@@ -13,13 +13,13 @@ Use Pipenv to install dependencies and create compatible virtual environment. (h
 ### Pretraining weights
 To pretrain the visual cortex modules, run the following:
 
-```python train.py --model=experiments/pretrain --json=experiments/pretrain/params.json```
+```python pretrain.py --model=experiments/pretrain --json=experiments/pretrain/params.json```
 
 To enable saving of weights after each epoch add the autosave flag:
 
 ```--autosave or -a```
 
-To load pre-trained weights, include:
+To load pre-trained weights from model path, include:
 
 ```--load```
 
