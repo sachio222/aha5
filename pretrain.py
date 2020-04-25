@@ -34,7 +34,10 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # Buggy, I think it's them, not me.
-import wandb
+try:
+    import wandb
+except:
+    pass
 
 # User modules
 from model import modules  # pylint: disable=no-name-in-module
@@ -237,8 +240,10 @@ def train(model, dataloader, optimizer, loss_fn, metrics, params):
         logger.info(f'Epoch: {epoch} - Train Loss: {loss_avg()}')
 
         if params.wandb:
-            pass
-            wandb.log({"Train Loss": loss_avg()})
+            try:
+                wandb.log({"Train Loss": loss_avg()})
+            except:
+                pass
 
         # SAVE WEIGHTS
         # --------------------------
@@ -264,7 +269,10 @@ def main():
 
     # Wandb Credentials
     if params.wandb:
-        wandb.init(entity="redtailedhawk", project="aha")
+        try:
+            wandb.init(entity="redtailedhawk", project="aha")
+        except:
+            pass
 
     # If GPU
     params.cuda = torch.cuda.is_available()
@@ -283,7 +291,10 @@ def main():
     metrics = modules.metrics
 
     if params.wandb:
-        wandb.watch(model)
+        try:
+            wandb.watch(model)
+        except:
+            pass
 
     if not params.silent:
         logger.info(

@@ -370,11 +370,9 @@ def main():
         )
 
     # Run training
-    # train(model, dataloader, optimizer, loss_fn, metrics, params)
+    train(model, dataloader, optimizer, loss_fn, metrics, params)
 
-    test_metrics = evaluate(model, loss_fn, dataloader, metrics, params)
+    # test_metrics = evaluate(model, loss_fn, dataloader, metrics, params)
     
-
-
 if __name__ == '__main__':
     main()
