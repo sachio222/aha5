@@ -57,6 +57,6 @@ def evaluate(model, loss_fn, dataloader, metrics, params):
 
     return metrics_mean
 
-# if __name__ == '__main__':
-    
-#     '''Evaluate the model on a test set'z
+if __name__ == '__main__':
+    print('\nINFO: Please run via train.py until standalone functionality is added.\n')
+
