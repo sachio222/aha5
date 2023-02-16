@@ -247,7 +247,7 @@ wandb==0.8.32
 watchdog==0.10.2
 wcwidth==0.1.8
 webencodings==0.5.1
-werkzeug==1.0.0
+werkzeug==2.2.3
 wheel==0.34.2
 widgetsnbextension==3.5.1
 wrapt==1.11.2
